@@ -11,6 +11,7 @@ import model.entity.UserCategoryStatusTaskBean;
 
 /**
  * タスク登録画面とタスク編集画面で使用する情報を取得する
+ * @author 森田
  */
 public class SelectBoxDAO {
 
