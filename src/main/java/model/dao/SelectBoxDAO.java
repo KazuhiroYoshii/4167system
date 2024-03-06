@@ -27,7 +27,7 @@ public class SelectBoxDAO {
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
 		try (Connection con = ConnectionManager.getConnection();
 				Statement stmt = con.createStatement();
-				ResultSet res = stmt.executeQuery("SELECT catgory_id, category_name FROM m_category")) {
+				ResultSet res = stmt.executeQuery("SELECT category_id, category_name FROM m_category")) {
 			// 結果の操作
 			while (res.next()) {
 				int categoryID = res.getInt("category_id");
