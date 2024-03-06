@@ -28,7 +28,7 @@ public class TaskAlterDAO {
 		int taskId = taskBean.getTaskId();
 		String taskName = taskBean.getTaskName();
 		int categoryId = taskBean.getCategoryId();
-		Date limitDate = java.sql.Date.valueOf(taskBean.getLimitDate());
+		Date limitDate = Date.valueOf(taskBean.getLimitDate());
 		String statusCode = taskBean.getStatusCode();
 		String memo = taskBean.getMemo();
 
