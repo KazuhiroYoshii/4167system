@@ -19,12 +19,13 @@
 	%>
 	<h1>タスク編集画面</h1>
 	<hr>
-	<form action="task-confilm-servlet" method="post">
+	<form action="TaskAlterServlet" method="post">
 		<table border=1>
 			<tr>
 				<th>タスク名</th>
 				<td>
 					<input type="text" size=50 name="task_name" value="<%=task.getTaskName()%>">
+					<input type="hidden" name="task_id" value="<%=task.getTaskId()%>">
 				</td>
 			</tr>
 			<tr>
@@ -33,7 +34,15 @@
 						<%
 						for(UserCategoryStatusTaskBean category : categoryList){
 						%>
-						<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
+						<option value="<%=category.getCategoryId()%>"
+							<%
+							if(category.getCategoryId() == task.getCategoryId()){
+							%>
+							selected
+							<%
+							}
+							%>
+						><%=category.getCategoryName()%></option>
 						<%
 						}
 						%>
@@ -51,7 +60,15 @@
 						<%
 						for(UserCategoryStatusTaskBean user : userList){
 						%>
-						<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
+						<option value="<%=user.getUserId()%>"
+							<%
+							if(user.getUserId().equals(task.getUserId())){
+							%>
+							selected
+							<%
+							}
+							%>
+						><%=user.getUserName()%></option>
 						<%
 						}
 						%>
@@ -63,7 +80,15 @@
 						<%
 						for(UserCategoryStatusTaskBean status : statusList){
 						%>
-						<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
+						<option value="<%=status.getStatusCode()%>"
+							<%
+							if(status.getStatusCode().equals(task.getStatusCode())){
+							%>
+							selected
+							<%
+							}
+							%>
+						><%=status.getStatusName()%></option>
 						<%
 						}
 						%>
