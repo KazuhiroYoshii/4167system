@@ -1,41 +1,120 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.dao.SelectBoxDAO;
+import model.dao.TaskAddDAO;
+import model.entity.UserCategoryStatusTaskBean;
+
+/*
+ * タスク登録機能のサーブレット
+ * @author 森田
+ */
 /**
  * Servlet implementation class TaskAddServlet
  */
-@WebServlet("/task-add-servlet")
+@WebServlet("/TaskAddServlet")
 public class TaskAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TaskAddServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public TaskAddServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * メニュー画面からタスク登録画面に遷移する
+	 * タスク登録画面の表示の際に使用するカテゴリ情報、担当者情報、ステータス情報を渡す
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// リクエストのエンコーディング方式を指定
+		request.setCharacterEncoding("UTF-8");
+
+		List<UserCategoryStatusTaskBean> CategoryList = null;
+		List<UserCategoryStatusTaskBean> UserList = null;
+		List<UserCategoryStatusTaskBean> StatusList = null;
+
+		SelectBoxDAO dao = new SelectBoxDAO();
+
+		try {
+			// プルダウン用のカテゴリ一覧を取得
+			// カテゴリ情報
+			CategoryList = dao.selectCategory();
+			// 担当者情報
+			UserList = dao.selectUser();
+			// ステータス情報
+			StatusList = dao.selectStatus();
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		// リクエストスコープへの属性の設定
+		request.setAttribute("CategoryList", CategoryList);
+		request.setAttribute("UserList", UserList);
+		request.setAttribute("StatusList", StatusList);
+
+		// 商品登録画面への転送
+		RequestDispatcher rd = request.getRequestDispatcher("task-register.jsp");
+		rd.forward(request, response);
+	}
+
+	/**
+	 * タスク登録画面からタスク情報を取得し、DB上で登録する。
+	 * タスク登録画面からタスク登録完了画面もしくはタスク登録失敗画面に遷移する
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// リクエストのエンコーディング方式を指定
+		request.setCharacterEncoding("UTF-8");
+
+		// DAOのインスタンス化
+		TaskAddDAO dao = new TaskAddDAO();
 		
+		// Beanのインスタンス化
+		UserCategoryStatusTaskBean taskInfo = new UserCategoryStatusTaskBean();
+
+		//入力されたタスク情報をbeanにセット
+		taskInfo.setTaskName(request.getParameter("task_name"));
+		taskInfo.setCategoryId(Integer.parseInt(request.getParameter("category_id")));
+		taskInfo.setLimitDate(request.getParameter("limit_date"));
+		taskInfo.setUserId(request.getParameter("user_id"));
+		taskInfo.setStatusCode(request.getParameter("status_code"));
+		taskInfo.setMemo("memo");
+		
+		int processingNumber = 0; //処理件数
+		
+		try {
+			processingNumber = dao.insertTask(taskInfo); //登録処理	
+		}  catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String url = ""; //転送先
+		// 遷移先画面の分岐
+		if(processingNumber > 0) {
+			url = "task-register-success.jsp"; //登録成功画面
+		} else {
+			url = "task-register-failure.jsp"; //登録失敗画面
+		}
+		
+		// 画面遷移
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 }

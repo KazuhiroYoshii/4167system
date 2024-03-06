@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="java.util.List,model.entity.UserCategoryStatusTaskBean"%>
 <!-- タスクを登録する画面 -->
 <!DOCTYPE html>
 <html>
@@ -8,56 +9,70 @@
 <title>タスク登録画面</title>
 </head>
 <body>
+	<%
+	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
+	List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
+	List<UserCategoryStatusTaskBean> statusList = (List<UserCategoryStatusTaskBean>) request.getAttribute("StatusList");
+	%>
 
 	<h1>タスク登録画面</h1>
 	<hr>
-	<form action="task-register-failure.jsp" method="POST">
+	<form action="TaskAddServlet" method="POST">
 		<table border="1">
 			<tr>
 				<th>タスク名</th>
 				<td><input type="text" name="task_name" size="100"
-					maxlength="100" required></td>
+					maxlength="100"></td>
 			</tr>
 			<tr>
 				<th>カテゴリ情報</th>
 				<td><select name="category_id">
-						<!-- ステータスマスタ参照  -->
-
-						<option value="1">新商品A：開発プロジェクト</option>
-						<option value="2">既存商品B：改良プロジェクト</option>
-
+						<%
+						for (UserCategoryStatusTaskBean category : categoryList) {
+						%>
+						<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
+						<%
+						}
+						%>
 				</select></td>
 			</tr>
 			<tr>
 				<th>期限</th>
-				<td><input type="date" name="limit_date" required></td>
+				<td><input type="date" name="limit_date"></td>
 			</tr>
 			<tr>
 				<th>担当者情報</th>
-				<td><input type="text" name="user_id" required></td>
+				<td><select name="user_id">
+						<%
+						for (UserCategoryStatusTaskBean user : userList) {
+						%>
+						<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
+						<%
+						}
+						%>
+				</select></td>
 			</tr>
 			<tr>
 				<th>ステータス情報</th>
 				<td><select name="status_code">
-
-						<!-- ステータスマスタ参照  -->
-
-						<option value="00">未着手</option>
-						<option value="50">着手</option>
-						<option value="99">完了</option>
+						<%
+						for (UserCategoryStatusTaskBean status : statusList) {
+						%>
+						<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
+						<%
+						}
+						%>
 
 				</select></td>
 			</tr>
 			<tr>
 				<th>メモ</th>
-				<td><textarea id="memo" name="memo" rows="5" cols="33">
-					
-					</textarea></td>
+				<td><textarea id="memo" name="memo" rows="5" cols="33"></textarea>
+				</td>
 			</tr>
 		</table>
-		<br> 
-		<input type="submit" value="登録実行">
-		<input type="reset" value="クリア">
+		<br> <input type="submit" value="登録実行"> <input
+			type="reset" value="クリア">
 	</form>
 	<br>
 	<br>
