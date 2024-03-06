@@ -13,7 +13,7 @@ public class UserCategoryStatusTaskBean {
 	private String taskName;
 	
 	// カテゴリID
-	private int categoryID;
+	private int categoryId;
 	
 	// カテゴリ名
 	private String categoryName;
@@ -22,7 +22,7 @@ public class UserCategoryStatusTaskBean {
 	private String limitDate;
 	
 	// ユーザID
-	private String userID;
+	private String userId;
 	
 	// ユーザ名
 	private String userName;
@@ -52,10 +52,10 @@ public class UserCategoryStatusTaskBean {
 	}
 
 	/**
-	 * @return categoryID
+	 * @return categoryId
 	 */
-	public int getCategoryID() {
-		return categoryID;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
 	/**
@@ -73,10 +73,10 @@ public class UserCategoryStatusTaskBean {
 	}
 
 	/**
-	 * @return userID
+	 * @return userId
 	 */
-	public String getUserID() {
-		return userID;
+	public String getUserId() {
+		return userId;
 	}
 
 	/**
@@ -122,10 +122,10 @@ public class UserCategoryStatusTaskBean {
 	}
 
 	/**
-	 * @param categoryID セットする categoryID
+	 * @param categoryId セットする categoryId
 	 */
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	/**
@@ -143,10 +143,10 @@ public class UserCategoryStatusTaskBean {
 	}
 
 	/**
-	 * @param userID セットする userID
+	 * @param userId セットする userId
 	 */
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**
