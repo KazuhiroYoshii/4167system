@@ -37,10 +37,10 @@
 				<td><%=task.getStatusName() %></td>
 				<td><%=task.getMemo() %></td>
 				<td><form action="TaskAlterFormServlet" method="post">
-					<button type="submit" value="<%=task.getTaskId() %>" >変更</button>
+					<button type="submit" value="<%=task.getTaskId() %>" name = "taskId">変更</button>
 				</form></td>
 				<td><form action="TaskDeleteServlet" method="post" >
-					<button type="submit" value="<%=task.getTaskId() %>" >削除</button>
+					<button type="submit" value="<%=task.getTaskId() %>" name = "taskId">削除</button>
 				</form></td>
 			</tr>
 			<%
