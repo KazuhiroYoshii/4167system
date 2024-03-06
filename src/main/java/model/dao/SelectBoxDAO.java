@@ -27,7 +27,7 @@ public class SelectBoxDAO {
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
 		try (Connection con = ConnectionManager.getConnection();
 				Statement stmt = con.createStatement();
-				ResultSet res = stmt.executeQuery("SELECT category_id, category_name FROM m_category")) {
+				ResultSet res = stmt.executeQuery("SELECT category_id, category_name FROM m_category ORDER BY category_id ASC")) {
 			// 結果の操作
 			while (res.next()) {
 				int categoryID = res.getInt("category_id");
@@ -53,7 +53,7 @@ public class SelectBoxDAO {
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
 		try (Connection con = ConnectionManager.getConnection();
 				Statement stmt = con.createStatement();
-				ResultSet res = stmt.executeQuery("SELECT user_id, user_name FROM m_user")) {
+				ResultSet res = stmt.executeQuery("SELECT user_id, user_name FROM m_user ORDER BY user_name ASC")) {
 			// 結果の操作
 			while (res.next()) {
 				String userID = res.getString("user_id");
@@ -79,7 +79,7 @@ public class SelectBoxDAO {
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
 		try (Connection con = ConnectionManager.getConnection();
 				Statement stmt = con.createStatement();
-				ResultSet res = stmt.executeQuery("SELECT status_code, status_name FROM m_status")) {
+				ResultSet res = stmt.executeQuery("SELECT status_code, status_name FROM m_status ORDER BY status_code ASC")) {
 			// 結果の操作
 			while (res.next()) {
 				String statusCode = res.getString("status_code");
