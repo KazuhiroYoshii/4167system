@@ -13,6 +13,7 @@ import model.entity.UserCategoryStatusTaskBean;
  * @author 櫻井
  */
 public class TaskAlterFormDAO {
+	
 	/**
 	 * 指定されたタスクIDのタスク情報を返します。
 	 * @throws SQLException, ClassNotFoundException 
@@ -23,8 +24,7 @@ public class TaskAlterFormDAO {
 		UserCategoryStatusTaskBean task = new UserCategoryStatusTaskBean();
 
 		String sql = "SELECT task_id,task_name,t1.category_id,"
-				+ "category_name,limit_date,t1.user_id,"
-				+ "user_name,t1.status_code,status_name,memo "
+				+ "limit_date,t1.user_id,t1.status_code,memo "
 				+ "FROM t_task t1 "
 				+ "INNER JOIN m_user t2 ON t1.user_id = t2.user_id "
 				+ "INNER JOIN m_category t3 ON t1.category_id = t3.category_id "
@@ -46,12 +46,9 @@ public class TaskAlterFormDAO {
 				task.setTaskId(res.getInt("task_id"));
 				task.setTaskName(res.getString("task_name"));
 				task.setCategoryId(res.getInt("category_id"));
-				task.setCategoryName(res.getString("category_name"));
 				task.setLimitDate(res.getString("limit_date"));
 				task.setUserId(res.getString("user_id"));
-				task.setUserName(res.getString("user_name"));
 				task.setStatusCode(res.getString("status_code"));
-				task.setStatusName(res.getString("status_name"));
 				task.setMemo(res.getString("memo"));
 			}
 		}
