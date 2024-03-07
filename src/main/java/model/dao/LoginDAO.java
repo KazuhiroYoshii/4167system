@@ -27,7 +27,7 @@ public class LoginDAO {
 			ResultSet res = pstmt.executeQuery();
 
 			// 結果の操作
-			if (res.next()) {
+			while (res.next()) {
 				userName = res.getString("user_name");
 				userBean.setUserName(userName);
 			}
