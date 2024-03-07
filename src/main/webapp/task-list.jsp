@@ -32,10 +32,22 @@
 			<tr>
 				<td><%=task.getTaskName()%></td>
 				<td><%=task.getCategoryName() %></td>
-				<td><%=task.getLimitDate() %></td>
+				<%
+				if(task.getLimitDate() == null){
+				%>
+					<td>未設定</td>
+				<%
+				}else{
+				%>
+					<td><%=task.getLimitDate() %></td>
+				<%
+				}
+				%>
 				<td><%=task.getUserName() %></td>
 				<td><%=task.getStatusName() %></td>
 				<td><%=task.getMemo() %></td>
+				
+				<!-- 変更、削除ボタンから各サーブレットにtaskIdの値を送信 -->
 				<td><form action="TaskAlterFormServlet" method="post">
 					<button type="submit" value="<%=task.getTaskId() %>" name = "taskId">変更</button>
 				</form></td>
@@ -47,6 +59,8 @@
 			}
 			%>
 		</table>
+		<br>
+		<button onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
 
 </body>
 </html>
