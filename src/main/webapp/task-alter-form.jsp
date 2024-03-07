@@ -9,7 +9,7 @@
 <body>
 	<% 
 		UserCategoryStatusTaskBean task 
-			= (UserCategoryStatusTaskBean)request.getAttribute("task");
+			= (UserCategoryStatusTaskBean)session.getAttribute("task");
 		List<UserCategoryStatusTaskBean> categoryList 
 			= (List<UserCategoryStatusTaskBean>) request.getAttribute("categoryList");
 		List<UserCategoryStatusTaskBean> userList 
@@ -24,7 +24,7 @@
 			<tr>
 				<th>タスク名</th>
 				<td>
-					<input type="text" size=100 name="task_name" value="<%=task.getTaskName()%>">
+					<input type="text" name="task_name" size=100 maxlength="50" required value="<%=task.getTaskName()%>">
 					<input type="hidden" name="task_id" value="<%=task.getTaskId()%>">
 				</td>
 			</tr>
