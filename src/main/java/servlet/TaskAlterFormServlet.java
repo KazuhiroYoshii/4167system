@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.SelectBoxDAO;
 import model.dao.TaskAlterFormDAO;
@@ -44,7 +45,7 @@ public class TaskAlterFormServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// リクエストオブジェクトのエンコーディング方式の指定
+		// リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの取得
@@ -58,24 +59,29 @@ public class TaskAlterFormServlet extends HttpServlet {
 		List<UserCategoryStatusTaskBean> categoryList = null;
 		List<UserCategoryStatusTaskBean> userList = null;
 		List<UserCategoryStatusTaskBean> statusList = null;
-		
+
 		try {
 			// DAOの利用
 			task = dao1.selectTask(taskId);
 			categoryList = dao2.selectCategory();
 			userList = dao2.selectUser();
 			statusList = dao2.selectStatus();
-			
+
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
+		// セッションオブジェクトの取得
+		HttpSession session = request.getSession();
+
+		// セッションスコープへの属性の設定
+		session.setAttribute("task", task);
+
 		// リクエストスコープへの属性の設定
-		request.setAttribute("task", task);
 		request.setAttribute("categoryList", categoryList);
 		request.setAttribute("userList", userList);
 		request.setAttribute("statusList", statusList);
-		
+
 		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher("task-alter-form.jsp");
 		rd.forward(request, response);
