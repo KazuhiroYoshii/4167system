@@ -6,27 +6,26 @@ package model.entity;
  */
 public class UserBean {
 	// ユーザID
-	private String userID;
+	private String userId;
 	
 	// パスワード
 	private String password;
 	
 	// ユーザ名
 	private String userName;
-	
 
 	/**
-	 * @return userID
+	 * @return userId
 	 */
-	public String getUserID() {
-		return userID;
+	public String getUserId() {
+		return userId;
 	}
 
 	/**
-	 * @param userID セットする userID
+	 * @param userId セットする userId
 	 */
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**
