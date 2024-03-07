@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.SelectBoxDAO;
 import model.dao.TaskAddDAO;
@@ -35,8 +36,8 @@ public class TaskAddServlet extends HttpServlet {
 	}
 
 	/**
-	 * メニュー画面からタスク登録画面に遷移する
 	 * タスク登録画面の表示の際に使用するカテゴリ情報、担当者情報、ステータス情報を渡す
+	 * メニュー画面からタスク登録画面に遷移する
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -44,10 +45,12 @@ public class TaskAddServlet extends HttpServlet {
 		// リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
 
+		// 各情報を格納するリスト型の変数
 		List<UserCategoryStatusTaskBean> CategoryList = null;
 		List<UserCategoryStatusTaskBean> UserList = null;
 		List<UserCategoryStatusTaskBean> StatusList = null;
 
+		// DAOのインスタンス化
 		SelectBoxDAO dao = new SelectBoxDAO();
 
 		try {
@@ -88,30 +91,43 @@ public class TaskAddServlet extends HttpServlet {
 		// Beanのインスタンス化
 		UserCategoryStatusTaskBean taskInfo = new UserCategoryStatusTaskBean();
 
-		//入力されたタスク情報をbeanにセット
+		// リクエストパラメータを取得しbeanにセット
 		taskInfo.setTaskName(request.getParameter("task_name"));
 		taskInfo.setCategoryId(Integer.parseInt(request.getParameter("category_id")));
 		taskInfo.setLimitDate(request.getParameter("limit_date"));
 		taskInfo.setUserId(request.getParameter("user_id"));
 		taskInfo.setStatusCode(request.getParameter("status_code"));
-		taskInfo.setMemo("memo");
-		
+		taskInfo.setMemo(request.getParameter("memo"));
+
 		int processingNumber = 0; //処理件数
+		String categoryName = null;
 		
 		try {
-			processingNumber = dao.insertTask(taskInfo); //登録処理	
-		}  catch (SQLException | ClassNotFoundException e) {
+			// DAOの利用
+			processingNumber = dao.insertTask(taskInfo); //登録処理
+
+			categoryName = dao.categoryChange(taskInfo.getCategoryId());
+			taskInfo.setCategoryName(categoryName);
+			
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		String url = ""; //転送先
 		// 遷移先画面の分岐
-		if(processingNumber > 0) {
+		if (processingNumber > 0) {
 			url = "task-register-success.jsp"; //登録成功画面
 		} else {
 			url = "task-register-failure.jsp"; //登録失敗画面
 		}
+
+		// セッションオブジェクトを生成
+		HttpSession session = request.getSession();
+
+		// セッションスコープへの属性の設定
+		request.setAttribute("taskInfo", taskInfo);
 		
+
 		// 画面遷移
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);

@@ -21,12 +21,12 @@
 		<table border="1">
 			<tr>
 				<th>タスク名</th>
-				<td><input type="text" name="task_name" size="100"
-					maxlength="100"></td>
+				<td><input type="text" name="task_name" size="50"
+					maxlength="50" required></td>
 			</tr>
 			<tr>
 				<th>カテゴリ情報</th>
-				<td><select name="category_id">
+				<td><select name="category_id" required>
 						<%
 						for (UserCategoryStatusTaskBean category : categoryList) {
 						%>
@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<th>担当者情報</th>
-				<td><select name="user_id">
+				<td><select name="user_id" required>
 						<%
 						for (UserCategoryStatusTaskBean user : userList) {
 						%>
@@ -54,7 +54,7 @@
 			</tr>
 			<tr>
 				<th>ステータス情報</th>
-				<td><select name="status_code">
+				<td><select name="status_code" required>
 						<%
 						for (UserCategoryStatusTaskBean status : statusList) {
 						%>
@@ -67,12 +67,13 @@
 			</tr>
 			<tr>
 				<th>メモ</th>
-				<td><textarea id="memo" name="memo" rows="5" cols="33"></textarea>
+				<td><textarea rows="4" cols="25" maxlength="100"></textarea>
 				</td>
 			</tr>
 		</table>
-		<br> <input type="submit" value="登録実行"> <input
-			type="reset" value="クリア">
+		<br>
+		<input type="submit" value="登録実行"> 
+		<input type="reset" value="クリア">
 	</form>
 	<br>
 	<br>
