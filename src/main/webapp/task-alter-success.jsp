@@ -8,8 +8,8 @@
 </head>
 <body>
 	<% 
-		UserCategoryStatusTaskBean task 
-			= (UserCategoryStatusTaskBean)request.getAttribute("task");
+		UserCategoryStatusTaskBean alterTask 
+			= (UserCategoryStatusTaskBean)request.getAttribute("alterTask");
 	%>
 	<h1>タスク編集完了</h1>
 	<hr>
@@ -17,27 +17,39 @@
 	<table border=1>
 		<tr>
 			<th>タスク名</th>
-			<td><%=task.getTaskName() %></td>
+			<td><%=alterTask.getTaskName() %></td>
 		</tr>
 		<tr>
 			<th>カテゴリ情報</th>
-			<td><%=task.getCategoryName() %></td>
+			<td><%=alterTask.getCategoryName() %></td>
 		</tr>
 		<tr>
 			<th>期限</th>
-			<td><%=task.getLimitDate() %></td>
+			<td>
+				<%
+				if(alterTask.getLimitDate() == null){
+				%>
+				未設定
+				<%
+				} else {
+				%>
+					<%=alterTask.getLimitDate() %>
+				<%
+				}
+				%>
+			</td>
 		</tr>
 		<tr>
 			<th>担当者情報</th>
-			<td><%=task.getUserName() %></td>
+			<td><%=alterTask.getUserName() %></td>
 		</tr>
 		<tr>
 			<th>ステータス情報</th>
-			<td><%=task.getStatusName() %></td>
+			<td><%=alterTask.getStatusName() %></td>
 		</tr>
 		<tr>
 			<th>メモ</th>
-			<td><%=task.getMemo() %></td>
+			<td><%=alterTask.getMemo()%></td>
 		</tr>
 	</table><br>
 	<form action="TaskListServlet" method="post">
