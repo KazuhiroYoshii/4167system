@@ -24,7 +24,7 @@
 			<tr>
 				<th>タスク名</th>
 				<td>
-					<input type="text" size=50 name="task_name" value="<%=task.getTaskName()%>">
+					<input type="text" size=100 name="task_name" value="<%=task.getTaskName()%>">
 					<input type="hidden" name="task_id" value="<%=task.getTaskId()%>">
 				</td>
 			</tr>
@@ -97,7 +97,7 @@
 			<tr>
 				<th>メモ</th>
 				<td>
-					<input type="text" size=50 name="memo" value="<%=task.getMemo() %>">
+					<textarea id="memo" name="memo" rows="5" cols="33"><%=task.getMemo() %></textarea>
 				</td>
 			</tr>
 		</table><br>
