@@ -13,7 +13,7 @@
 	taskList = (List) request.getAttribute("taskList");
 	%>
 	<h1>タスク一覧表示</h1>
-	
+	<hr>
 		<table border = "1">
 			<tr>
 				<th>タスク名</th>
@@ -30,8 +30,8 @@
 			for(UserCategoryStatusTaskBean task : taskList){
 			%>
 			<tr>
-				<td><%=task.getTaskName()%></td>
-				<td><%=task.getCategoryName() %></td>
+				<td><%=task.getTaskName()%>　</td>
+				<td><%=task.getCategoryName() %>　</td>
 				<%
 				if(task.getLimitDate() == null){
 				%>
@@ -39,13 +39,13 @@
 				<%
 				}else{
 				%>
-					<td><%=task.getLimitDate() %></td>
+					<td><%=task.getLimitDate() %>　</td>
 				<%
 				}
 				%>
-				<td><%=task.getUserName() %></td>
-				<td><%=task.getStatusName() %></td>
-				<td><%=task.getMemo() %></td>
+				<td><%=task.getUserName() %>　</td>
+				<td><%=task.getStatusName() %>　</td>
+				<td><%=task.getMemo() %>　</td>
 				
 				<!-- 変更、削除ボタンから各サーブレットにtaskIdの値を送信 -->
 				<td><form action="TaskAlterFormServlet" method="post">
