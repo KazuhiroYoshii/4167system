@@ -77,12 +77,17 @@ public class TaskAlterServlet extends HttpServlet {
 		int processingNumber = 0; //処理件数
 		String url = null; // 転送先
 		UserCategoryStatusTaskBean alterTask = null;
+		
+		String limit = task.getLimitDate();
+		if(limit == null) {
+			limit = "";
+		}
 
 		try {
 			// タスク情報が変更されている場合変更処理を行う
 			if (!task.getTaskName().equals(taskBean.getTaskName())
 					|| task.getCategoryId() != taskBean.getCategoryId()
-					|| !taskBean.getLimitDate().equals(task.getLimitDate())
+					|| !taskBean.getLimitDate().equals(limit)
 					|| !task.getUserId().equals(taskBean.getUserId())
 					|| !task.getStatusCode().equals(taskBean.getStatusCode())
 					|| !task.getMemo().equals(taskBean.getMemo()) ) {
