@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ヘッダー</title>
+<title>ログイン判定</title>
 </head>
 <body>
 	<%
@@ -12,10 +12,6 @@
 	String userName = (String)session.getAttribute("userName");
 	if(userId == null){
 		response.sendRedirect("login.jsp");
-	}else{
-	%>
-	<h2><%=userName %>さん、こんにちは。</h2>
-	<%
 	}
 	%>
 </body>
