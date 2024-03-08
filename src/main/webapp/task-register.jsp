@@ -67,7 +67,7 @@
 			</tr>
 			<tr>
 				<th>メモ</th>
-				<td><textarea rows="4" cols="25" maxlength="100"></textarea>
+				<td><textarea name="memo" rows="4" cols="25" maxlength="100"></textarea>
 				</td>
 			</tr>
 		</table>
