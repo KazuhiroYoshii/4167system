@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
 	import="java.util.List,model.entity.UserCategoryStatusTaskBean"%>
-<!-- タスク登録の完了画面 -->
+<!-- タスク登録の失敗画面 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,13 +9,15 @@
 <title>タスク登録失敗画面</title>
 </head>
 <body>
+	<%@ include file ="login-check.jsp" %>
+	
 	<%
 	UserCategoryStatusTaskBean taskInfo 
 		= (UserCategoryStatusTaskBean) request.getAttribute("taskInfo");
 	%>
 	<h1>タスク登録失敗画面</h1>
 	<hr>
-	<h3>タスク情報の登録に失敗しました。</h3>
+	<h3>タスク情報を登録できませんでした。</h3>
 	<table border=1>
 		<tr>
 			<th>タスク名</th>
@@ -58,7 +60,7 @@
 		<input type="submit" value="タスク登録画面に戻る">
 	</form>
 	<form action="menu.jsp" method="POST">
-		<input type="submit" value="メニュー画面へ">
+		<input type="submit" value="メニュー画面に戻る">
 	</form>
 
 </body>
