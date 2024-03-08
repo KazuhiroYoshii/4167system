@@ -9,6 +9,8 @@
 <title>タスク登録画面</title>
 </head>
 <body>
+	<%@ include file ="login-check.jsp" %>
+	
 	<%
 	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
 	List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
@@ -67,18 +69,18 @@
 			</tr>
 			<tr>
 				<th>メモ</th>
-				<td><textarea name="memo" rows="4" cols="25" maxlength="100"></textarea>
+				<td><textarea id="memo" name="memo" rows="4" cols="25" maxlength="100"></textarea>
 				</td>
 			</tr>
 		</table>
 		<br>
-		<input type="submit" value="登録実行"> 
+		<input type="submit" value="登録する"> 
 		<input type="reset" value="クリア">
 	</form>
 	<br>
 	<br>
 	<form action="menu.jsp" method="POST">
-		<input type="submit" value="メニュー画面へ">
+		<input type="submit" value="メニュー画面に戻る">
 
 	</form>
 
