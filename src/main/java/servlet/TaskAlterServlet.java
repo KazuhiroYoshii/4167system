@@ -9,9 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.TaskAlterDAO;
-import model.dao.TaskAlterFormDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
@@ -43,36 +43,47 @@ public class TaskAlterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// リクエストオブジェクトのエンコーディング方式の指定
+		// リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
+
+		// セッションオブジェクトの取得
+		HttpSession session = request.getSession();
+
+		// 変更前の商品詳細情報をセッションから取得
+		UserCategoryStatusTaskBean task = (UserCategoryStatusTaskBean) session.getAttribute("task");
 
 		// リクエストパラメータの取得
 		int taskId = Integer.parseInt(request.getParameter("task_id"));
 		String taskName = request.getParameter("task_name");
 		int categoryId = Integer.parseInt(request.getParameter("category_id"));
 		String limitDate = request.getParameter("limit_date");
+		String userId = request.getParameter("user_id");
 		String statusCode = request.getParameter("status_code");
 		String memo = request.getParameter("memo");
 
+		// 変更情報をbeanにセット
 		UserCategoryStatusTaskBean taskBean = new UserCategoryStatusTaskBean();
 		taskBean.setTaskId(taskId);
 		taskBean.setTaskName(taskName);
 		taskBean.setCategoryId(categoryId);
 		taskBean.setLimitDate(limitDate);
+		taskBean.setUserId(userId);
 		taskBean.setStatusCode(statusCode);
 		taskBean.setMemo(memo);
-		
+
 		// DAOの生成
-		TaskAlterDAO dao1 = new TaskAlterDAO();
-		TaskAlterFormDAO dao2 = new TaskAlterFormDAO();
+		TaskAlterDAO dao = new TaskAlterDAO();
 
 		int processingNumber = 0; //処理件数
 		String url = null; // 転送先
-		UserCategoryStatusTaskBean task = null;
+		UserCategoryStatusTaskBean alterTask = null;
 
 		try {
-			// DAOの利用
-			processingNumber = dao1.update(taskBean);
+			// タスク情報が変更されている場合変更処理を行う
+			if (!task.equals(taskBean)) {
+				processingNumber = dao.update(taskBean); //変更処理
+				alterTask = dao.selectTask(taskId); //変更後のタスク情報
+			}
 
 			if (processingNumber == 0) {
 				// 転送先の設定
@@ -81,17 +92,17 @@ public class TaskAlterServlet extends HttpServlet {
 				// 転送先の設定
 				url = "task-alter-success.jsp";
 			}
-			
-			// DAOの利用
-			task = dao2.selectTask(taskId);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		// リクエストスコープへの属性の設定
-		request.setAttribute("task", task);
+		request.setAttribute("alterTask", alterTask);
 		
+		// セッション情報を削除
+		session.removeAttribute("task");
+
 		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
