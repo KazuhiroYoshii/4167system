@@ -7,7 +7,11 @@
 <title>メニュー画面</title>
 </head>
 <body>
+	<%@ include file ="login-check.jsp" %>
+
 	<h1>メニュー画面</h1>
+	
+	<b>ようこそ！<%=session.getAttribute("userName") %>さん</b>
 	
 	<hr>
 	<form action="TaskAddServlet" method="get">
