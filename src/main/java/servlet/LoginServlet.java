@@ -66,6 +66,7 @@ public class LoginServlet extends HttpServlet {
 		// セッションスコープへの属性の設定
 		HttpSession session = request.getSession();
 		session.setAttribute("userName", userName);
+		session.setAttribute("userId", userId);
 
 		// リクエストの転送
 		if(userName == null) {
