@@ -15,6 +15,7 @@ import model.dao.TaskListDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
+ * タスク一覧表示画面で使用するサーブレット
  * @author 吉井
  * Servlet implementation class TaskListServlet
  */
@@ -31,6 +32,7 @@ public class TaskListServlet extends HttpServlet {
     }
 
 	/**
+	 * 一覧表示画面のリストを取得する
 	 * @author 吉井
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

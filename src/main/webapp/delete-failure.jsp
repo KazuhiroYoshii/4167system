@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>削除完了画面</title>
+<title>削除失敗画面</title>
 </head>
 <body>
 	<!-- ログイン状態を判定 -->
