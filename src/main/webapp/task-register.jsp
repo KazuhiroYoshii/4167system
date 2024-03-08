@@ -23,7 +23,7 @@
 		<table border="1">
 			<tr>
 				<th>タスク名</th>
-				<td><input type="text" name="task_name" size="50"
+				<td><input type="text" name="task_name" size="100"
 					maxlength="50" required></td>
 			</tr>
 			<tr>
