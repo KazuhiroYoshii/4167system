@@ -7,7 +7,7 @@
 <title>タスク一覧表示</title>
 </head>
 <body>
-	<%@ include file ="header.jsp" %>
+	<%@ include file ="login-check.jsp" %>
 
 	<%
 	//リクエストスコープ内の一覧表示用リストを取得
