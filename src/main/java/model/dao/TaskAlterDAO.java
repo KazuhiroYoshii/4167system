@@ -17,6 +17,8 @@ public class TaskAlterDAO {
 
 	/**
 	 * 指定されたタスクIDに該当するタスクの情報を変更します
+	 * @param taskBean 変更情報をセットしたBean型taskBean
+	 * @return processingNumber 処理件数
 	 * @throws SQLException, ClassNotFoundException 
 	 */
 	public int update(UserCategoryStatusTaskBean taskBean)
@@ -53,6 +55,8 @@ public class TaskAlterDAO {
 	
 	/**
 	 * 指定されたタスクIDのタスク情報を返します
+	 * @param taskId タスクID
+	 * @return alterTask 変更後のタスク情報
 	 * @throws SQLException, ClassNotFoundException 
 	 */
 	public UserCategoryStatusTaskBean selectTask(int taskId) 
@@ -60,8 +64,7 @@ public class TaskAlterDAO {
 
 		UserCategoryStatusTaskBean alterTask = new UserCategoryStatusTaskBean();
 
-		String sql = "SELECT task_name, category_name, limit_date,"
-				+ "user_name, status_name, memo "
+		String sql = "SELECT t1.task_name, t3.category_name, t1.limit_date, t2.user_name, t4.status_name, t1.memo "
 				+ "FROM t_task t1 "
 				+ "INNER JOIN m_user t2 ON t1.user_id = t2.user_id "
 				+ "INNER JOIN m_category t3 ON t1.category_id = t3.category_id "
@@ -80,6 +83,7 @@ public class TaskAlterDAO {
 
 			// 結果の操作
 			while (res.next()) {
+				alterTask.setTaskId(taskId);
 				alterTask.setTaskName(res.getString("task_name"));
 				alterTask.setCategoryName(res.getString("category_name"));
 				alterTask.setLimitDate(res.getString("limit_date"));
