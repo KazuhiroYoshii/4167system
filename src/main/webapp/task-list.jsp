@@ -7,6 +7,8 @@
 <title>タスク一覧表示</title>
 </head>
 <body>
+	<%@ include file ="header.jsp" %>
+
 	<%
 	//リクエストスコープ内の一覧表示用リストを取得
 	List<UserCategoryStatusTaskBean> taskList = new ArrayList<>();
