@@ -15,6 +15,7 @@ import model.dao.LoginDAO;
 import model.entity.UserBean;
 
 /**
+ * @author 古野
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
@@ -38,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	/**
+	 * @author 古野
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

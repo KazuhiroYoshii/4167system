@@ -7,7 +7,20 @@ import java.sql.SQLException;
 
 import model.entity.UserBean;
 
+/**
+ * @author 古野
+ * ログイン機能に使用するDAO
+ */
 public class LoginDAO {
+	
+	/**
+	 * @author 古野
+	 * @param userId
+	 * @param password
+	 * @return ユーザIDとパスワードに該当するユーザ情報
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public UserBean selectName(String userId, String password) throws SQLException, ClassNotFoundException {
 
 		String userName = null; //氏名
