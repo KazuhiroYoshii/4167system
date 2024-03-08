@@ -9,11 +9,12 @@
 <body>
 	<%
 	String userId = (String)session.getAttribute("userId");
+	String userName = (String)session.getAttribute("userName");
 	if(userId == null){
 		response.sendRedirect("login.jsp");
 	}else{
 	%>
-	<h2><%=userId %>さん、こんにちは。</h2>
+	<h2><%=userName %>さん、こんにちは。</h2>
 	<%
 	}
 	%>
