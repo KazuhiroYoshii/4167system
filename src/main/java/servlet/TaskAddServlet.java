@@ -15,7 +15,7 @@ import model.dao.SelectBoxDAO;
 import model.dao.TaskAddDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
-/*
+/**
  * タスク登録機能のサーブレット
  * @author 森田
  */
@@ -44,10 +44,10 @@ public class TaskAddServlet extends HttpServlet {
 		// リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
 
-		// 各情報を格納するリスト型の変数
-		List<UserCategoryStatusTaskBean> CategoryList = null;
-		List<UserCategoryStatusTaskBean> UserList = null;
-		List<UserCategoryStatusTaskBean> StatusList = null;
+		// 情報を格納するリスト型の変数
+		List<UserCategoryStatusTaskBean> CategoryList = null; //カテゴリ情報
+		List<UserCategoryStatusTaskBean> UserList = null; //担当者情報
+		List<UserCategoryStatusTaskBean> StatusList = null; //ステータス情報
 
 		// DAOのインスタンス化
 		SelectBoxDAO dao = new SelectBoxDAO();
@@ -99,8 +99,11 @@ public class TaskAddServlet extends HttpServlet {
 		taskInfo.setMemo(request.getParameter("memo"));
 
 		int processingNumber = 0; //処理件数
+		//カテゴリ名を設定
 		String categoryName = null;
+		//ユーザ名を設定
 		String userName = null;
+		//ステータス名を設定
 		String statusName = null;
 		
 		try {
