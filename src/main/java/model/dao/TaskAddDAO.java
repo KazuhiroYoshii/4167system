@@ -34,12 +34,14 @@ public class TaskAddDAO {
 			// プレースホルダへの値の設定
 			pstmt.setString(1, taskInfo.getTaskName());
 			pstmt.setInt(2, taskInfo.getCategoryId());
-			if (taskInfo.getLimitDate().equals("")) {
+			
+			if(taskInfo.getLimitDate().equals("")) {
 				pstmt.setDate(3, null);
 			} else {
 				Date date = Date.valueOf(taskInfo.getLimitDate());
 				pstmt.setDate(3, date);
 			}
+			
 			pstmt.setString(4, taskInfo.getUserId());
 			pstmt.setString(5, taskInfo.getStatusCode());
 			pstmt.setString(6, taskInfo.getMemo());
@@ -59,8 +61,7 @@ public class TaskAddDAO {
 	 */
 	public String categoryChange(int categoryId) throws SQLException, ClassNotFoundException {
 
-		//
-		String categoryName = null;
+		String categoryName = null; // 戻り値
 		String sql = "SELECT category_name FROM m_category WHERE category_id = ?";
 
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
@@ -75,9 +76,64 @@ public class TaskAddDAO {
 			while (res.next()) {
 				categoryName = res.getString("category_name");
 			}
-			
 		}
 		return categoryName;
 	}
+	
+	/**
+	 * ユーザIDからユーザ名を取得する
+	 * @param userId
+	 * @return userName
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 
+	public String userChange(String userId) throws SQLException, ClassNotFoundException {
+
+		String userName = null; // 戻り値
+		String sql = "SELECT user_name FROM m_user WHERE user_id = ?";
+
+		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+			// プレースホルダへの値の設定
+			pstmt.setString(1, userId);
+			ResultSet res = pstmt.executeQuery();
+			
+			// 結果の操作
+			while (res.next()) {
+				userName = res.getString("user_name");
+			}	
+		}
+		return userName;
+	}
+	
+	/**
+	 * ステータスコードからステータス名を取得する
+	 * @param statusCode
+	 * @return statusName
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
+	public String statusChange(String statusCode)throws SQLException, ClassNotFoundException {
+
+		String statusName = null; // 戻り値
+		String sql = "SELECT status_name FROM m_status WHERE status_code = ?";
+
+		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+			// プレースホルダへの値の設定
+			pstmt.setString(1, statusCode);
+			ResultSet res = pstmt.executeQuery();
+			
+			// 結果の操作
+			while (res.next()) {
+				statusName = res.getString("status_name");
+			}	
+		}
+		return statusName;
+	}
 }
