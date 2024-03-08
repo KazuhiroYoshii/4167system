@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.dao.SelectBoxDAO;
 import model.dao.TaskAddDAO;
@@ -101,13 +100,24 @@ public class TaskAddServlet extends HttpServlet {
 
 		int processingNumber = 0; //処理件数
 		String categoryName = null;
+		String userName = null;
+		String statusName = null;
 		
 		try {
 			// DAOの利用
 			processingNumber = dao.insertTask(taskInfo); //登録処理
 
+			// カテゴリ名を取得しbeanにセット
 			categoryName = dao.categoryChange(taskInfo.getCategoryId());
 			taskInfo.setCategoryName(categoryName);
+			
+			// ユーザ名を取得しbeanにセット
+			userName = dao.userChange(taskInfo.getUserId());
+			taskInfo.setUserName(userName);
+			
+			// ステータス名を取得しbeanにセット
+			statusName = dao.statusChange(taskInfo.getStatusCode());
+			taskInfo.setStatusName(statusName);
 			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -121,10 +131,7 @@ public class TaskAddServlet extends HttpServlet {
 			url = "task-register-failure.jsp"; //登録失敗画面
 		}
 
-		// セッションオブジェクトを生成
-		HttpSession session = request.getSession();
-
-		// セッションスコープへの属性の設定
+		// リクエストスコープへの属性の設定
 		request.setAttribute("taskInfo", taskInfo);
 		
 
