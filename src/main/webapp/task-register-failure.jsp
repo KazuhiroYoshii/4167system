@@ -11,7 +11,7 @@
 <body>
 	<%
 	UserCategoryStatusTaskBean taskInfo 
-		= (UserCategoryStatusTaskBean) session.getAttribute("taskInfo");
+		= (UserCategoryStatusTaskBean) request.getAttribute("taskInfo");
 	%>
 	<h1>タスク登録失敗画面</h1>
 	<hr>
@@ -27,7 +27,17 @@
 		</tr>
 		<tr>
 			<th>期限</th>
-			<td><%=taskInfo.getLimitDate()%></td>
+			<%
+				if(taskInfo.getLimitDate() == ""){
+			%>
+					<td>未設定</td>
+			<%
+				}else{
+			%>
+					<td><%=taskInfo.getLimitDate() %>　</td>
+			<%
+				}
+			%>
 		</tr>
 		<tr>
 			<th>担当者情報</th>
