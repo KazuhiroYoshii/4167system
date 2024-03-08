@@ -15,6 +15,7 @@ import model.dao.TaskListDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
+ * @author 吉井
  * Servlet implementation class TaskListServlet
  */
 @WebServlet("/TaskListServlet")
@@ -30,8 +31,8 @@ public class TaskListServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 * @author 吉井
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

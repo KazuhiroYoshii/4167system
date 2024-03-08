@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.TaskListDAO;
+import model.dao.TaskDeleteDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
+ * @author 吉井
  * Servlet implementation class DeleteExecuteServlet
  */
 @WebServlet("/DeleteExecuteServlet")
@@ -29,6 +30,7 @@ public class DeleteExecuteServlet extends HttpServlet {
     }
 
 	/**
+	 * @author 吉井
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +43,7 @@ public class DeleteExecuteServlet extends HttpServlet {
 		int taskId = task.getTaskId();
 		
 		//TaskListDAOをインスタンス化、メソッドを用いて削除を実行し実行件数を取得
-		TaskListDAO dao = new TaskListDAO();
+		TaskDeleteDAO dao = new TaskDeleteDAO();
 		int result = dao.delete(taskId);
 		
 		//実行件数をリクエストスコープに設定

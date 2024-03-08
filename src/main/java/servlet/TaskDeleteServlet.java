@@ -14,6 +14,7 @@ import model.dao.TaskListDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
+ * @author 吉井
  * Servlet implementation class TaskDeleteServlet
  */
 @WebServlet("/TaskDeleteServlet")
@@ -37,6 +38,7 @@ public class TaskDeleteServlet extends HttpServlet {
 	}
 
 	/**
+	 * @author 吉井
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

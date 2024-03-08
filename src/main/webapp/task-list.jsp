@@ -7,6 +7,7 @@
 <title>タスク一覧表示</title>
 </head>
 <body>
+	<!-- ログイン状態を判定 -->
 	<%@ include file ="login-check.jsp" %>
 
 	<%
@@ -35,6 +36,7 @@
 				<td><%=task.getTaskName()%>　</td>
 				<td><%=task.getCategoryName() %>　</td>
 				<%
+				//期限が登録されていない場合は「未設定」と表示
 				if(task.getLimitDate() == null){
 				%>
 					<td>未設定</td>
@@ -49,9 +51,9 @@
 				<td><%=task.getStatusName() %>　</td>
 				<td><%=task.getMemo() %>　</td>
 				
-				<!-- 変更、削除ボタンから各サーブレットにtaskIdの値を送信 -->
+				<!-- 編集、削除ボタンから各サーブレットにtaskIdの値を送信 -->
 				<td><form action="TaskAlterFormServlet" method="post">
-					<button type="submit" value="<%=task.getTaskId() %>" name = "taskId">変更</button>
+					<button type="submit" value="<%=task.getTaskId() %>" name = "taskId">編集</button>
 				</form></td>
 				<td><form action="TaskDeleteServlet" method="post" >
 					<button type="submit" value="<%=task.getTaskId() %>" name = "taskId">削除</button>
