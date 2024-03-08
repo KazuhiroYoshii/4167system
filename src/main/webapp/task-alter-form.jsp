@@ -7,6 +7,7 @@
 <title>タスク編集画面</title>
 </head>
 <body>
+	<%@ include file="login-check.jsp" %>
 	<% 
 		UserCategoryStatusTaskBean task 
 			= (UserCategoryStatusTaskBean)session.getAttribute("task");
@@ -24,7 +25,7 @@
 			<tr>
 				<th>タスク名</th>
 				<td>
-					<input type="text" name="task_name" size=100 maxlength="50" required value="<%=task.getTaskName()%>">
+					<input type="text" name="task_name" size="100" maxlength="50" required value="<%=task.getTaskName()%>">
 					<input type="hidden" name="task_id" value="<%=task.getTaskId()%>">
 				</td>
 			</tr>
@@ -97,7 +98,7 @@
 			<tr>
 				<th>メモ</th>
 				<td>
-					<textarea id="memo" name="memo" rows="5" cols="33"><%=task.getMemo() %></textarea>
+					<textarea id="memo" name="memo" rows="4" cols="25" maxlength="100"><%=task.getMemo() %></textarea>
 				</td>
 			</tr>
 		</table><br>
@@ -105,7 +106,7 @@
 		<input type="reset" value="取消">
 	</form><br>
 	<form action="TaskListServlet" method="post">
-		<input type="submit" value="一覧画面へ">
+		<input type="submit" value="一覧画面に戻る">
 	</form>
 </body>
 </html>
