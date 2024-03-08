@@ -80,10 +80,9 @@ public class TaskAlterServlet extends HttpServlet {
 
 		try {
 			// タスク情報が変更されている場合変更処理を行う
-//			if (!task.equals(taskBean)) {
 			if (!task.getTaskName().equals(taskBean.getTaskName())
 					|| task.getCategoryId() != taskBean.getCategoryId()
-					|| !task.getLimitDate().equals(taskBean.getLimitDate())
+					|| !taskBean.getLimitDate().equals(task.getLimitDate())
 					|| !task.getUserId().equals(taskBean.getUserId())
 					|| !task.getStatusCode().equals(taskBean.getStatusCode())
 					|| !task.getMemo().equals(taskBean.getMemo()) ) {
