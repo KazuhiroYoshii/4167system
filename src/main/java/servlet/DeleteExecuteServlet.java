@@ -14,6 +14,7 @@ import model.dao.TaskDeleteDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
+ * タスク削除を実行するためのサーブレット
  * @author 吉井
  * Servlet implementation class DeleteExecuteServlet
  */
@@ -46,11 +47,16 @@ public class DeleteExecuteServlet extends HttpServlet {
 		TaskDeleteDAO dao = new TaskDeleteDAO();
 		int result = dao.delete(taskId);
 		
-		//実行件数をリクエストスコープに設定
-		request.setAttribute("result", result);
+		//実行件数が1の場合のみ削除完了画面のurl、それ以外の場合は削除失敗画面のurlを設定
+		String url = null;
+		if(result == 1) {
+			url = "delete-success.jsp";
+		}else {
+			url = "delete-failure.jsp";
+		}
 		
 		//転送用オブジェクトの取得、転送
-		RequestDispatcher rd = request.getRequestDispatcher("delete-result.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 		
 	}

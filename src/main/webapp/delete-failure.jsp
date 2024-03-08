@@ -13,27 +13,12 @@
 	<%
 	//セッションスコープから選択したタスクの詳細情報を取得
 	UserCategoryStatusTaskBean task = (UserCategoryStatusTaskBean)session.getAttribute("task");
-	
-	//リクエストスコープから削除実行件数を取得
-	int result = (int) request.getAttribute("result");
 	%>
 	
-	<%
-	//実行件数が1の場合のみ削除成功メッセージを表示
-	if(result == 1){
-	%>
-		<h1>タスク削除完了画面</h1>
-		<hr>
-		<h3>以下の内容のタスクを削除しました。</h3>
-	<%
-	}else{
-	%>
-		<h1>エラー画面</h1>
-		<hr>
-		<h3>以下の内容のタスクを削除できませんでした。</h3>
-	<%
-	}
-	%>
+	<h1>エラー画面</h1>
+	<hr>
+	<h3>以下の内容のタスクを削除できませんでした。</h3>
+	
 	<table border = "1">
 		<!-- テーブル内で詳細情報を切り出し、表示 -->
 		<tr><th>タスク名</th><td><%=task.getTaskName() %></td></tr>

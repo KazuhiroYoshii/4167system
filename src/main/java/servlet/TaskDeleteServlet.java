@@ -14,6 +14,7 @@ import model.dao.TaskListDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
+ * タスク削除実行前の確認画面に使用するサーブレット
  * @author 吉井
  * Servlet implementation class TaskDeleteServlet
  */
