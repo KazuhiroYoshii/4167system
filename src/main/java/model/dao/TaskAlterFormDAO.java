@@ -15,7 +15,9 @@ import model.entity.UserCategoryStatusTaskBean;
 public class TaskAlterFormDAO {
 	
 	/**
-	 * 指定されたタスクIDのタスク情報を返します。
+	 * 指定されたタスクIDのタスク情報を返します
+	 * @param taskId タスクID
+	 * @return task タスク情報をセットしたBean型task
 	 * @throws SQLException, ClassNotFoundException 
 	 */
 	public UserCategoryStatusTaskBean selectTask(int taskId) 
@@ -23,13 +25,9 @@ public class TaskAlterFormDAO {
 
 		UserCategoryStatusTaskBean task = new UserCategoryStatusTaskBean();
 
-		String sql = "SELECT task_id,task_name,t1.category_id,"
-				+ "limit_date,t1.user_id,t1.status_code,memo "
-				+ "FROM t_task t1 "
-				+ "INNER JOIN m_user t2 ON t1.user_id = t2.user_id "
-				+ "INNER JOIN m_category t3 ON t1.category_id = t3.category_id "
-				+ "INNER JOIN m_status t4 ON t1.status_code = t4.status_code "
-				+ "WHERE task_id = ?";
+		String sql = "SELECT task_name, category_id, limit_date,"
+				+ "user_id, status_code, memo "
+				+ "FROM t_task WHERE task_id = ?";
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
@@ -43,7 +41,7 @@ public class TaskAlterFormDAO {
 
 			// 結果の操作
 			while (res.next()) {
-				task.setTaskId(res.getInt("task_id"));
+				task.setTaskId(taskId);
 				task.setTaskName(res.getString("task_name"));
 				task.setCategoryId(res.getInt("category_id"));
 				task.setLimitDate(res.getString("limit_date"));
