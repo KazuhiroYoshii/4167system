@@ -62,17 +62,16 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		String userName = user.getUserName();
-				
-		// セッションスコープへの属性の設定
-		HttpSession session = request.getSession();
-		session.setAttribute("userName", userName);
-		session.setAttribute("userId", userId);
 
 		// リクエストの転送
 		if(userName == null) {
 			RequestDispatcher rd = request.getRequestDispatcher("login-failure.jsp");
 			rd.forward(request, response);
 		}else {
+			// セッションスコープへの属性の設定
+			HttpSession session = request.getSession();
+			session.setAttribute("userName", userName);
+			session.setAttribute("userId", userId);
 			RequestDispatcher rd = request.getRequestDispatcher("menu.jsp");
 			rd.forward(request, response);
 		}
