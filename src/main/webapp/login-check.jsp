@@ -8,8 +8,10 @@
 </head>
 <body>
 	<%
+	//セッションスコープからユーザーIDを取得
 	String userId = (String)session.getAttribute("userId");
-	String userName = (String)session.getAttribute("userName");
+	
+	//ユーザーIDがnullの場合はログアウト状態と判定、ログイン画面へ遷移させる
 	if(userId == null){
 		response.sendRedirect("login.jsp");
 	}

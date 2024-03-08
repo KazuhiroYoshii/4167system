@@ -14,7 +14,7 @@ import model.dao.TaskDeleteDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
- * タスク削除を実行するためのサーブレット
+ * タスク削除の実行を制御するサーブレット
  * @author 吉井
  * Servlet implementation class DeleteExecuteServlet
  */
@@ -31,6 +31,7 @@ public class DeleteExecuteServlet extends HttpServlet {
     }
 
 	/**
+	 * 選択されたタスクを削除する
 	 * @author 吉井
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
