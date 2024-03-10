@@ -16,8 +16,8 @@ public class TaskAddDAO {
 
 	/**
 	 * 入力されたタスク情報を登録します
-	 * @param taskInfo
-	 * @return processionNumber 
+	 * @param taskInfo タスク登録情報一覧が格納されたUserCategoryStatusTaskBeanオブジェクト（task_name, category_id, limit_date, user_id, status_code, memo）
+	 * @return processionNumber 成功した場合に更新された行数を返します。
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
@@ -54,9 +54,9 @@ public class TaskAddDAO {
 	
 	/**
 	 * カテゴリIDからカテゴリ名を取得する
-	 * @param categoryId
-	 * @return categoryName
-	 * @throws SQLException
+	 * @param categoryId 取得したいカテゴリID
+	 * @return categoryName 対象のカテゴリ名が存在しない場合、nullを返す。
+	 * @throws SQLException 
 	 * @throws ClassNotFoundException
 	 */
 	public String categoryChange(int categoryId) throws SQLException, ClassNotFoundException {
