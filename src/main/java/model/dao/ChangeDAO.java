@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * カテゴリ情報、ユーザ情報、ステータス情報を取得するDAO
  * @author 森田
  */
-public class CategoryUserStatusChangeDAO {
+public class ChangeDAO {
 
 	/**
 	 * カテゴリIDからカテゴリ名を取得する
