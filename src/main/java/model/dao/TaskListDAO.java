@@ -59,7 +59,6 @@ public class TaskListDAO {
 					task.setCategoryName(rs.getString("category_name"));
 					task.setLimitDate(rs.getString("limit_date"));
 					task.setUserName(rs.getString("user_name"));
-					// m_statusテーブルからの情報を設定
 					task.setStatusName(rs.getString("status_name"));
 					task.setMemo(rs.getString("memo"));
 
@@ -122,7 +121,6 @@ public class TaskListDAO {
 					task.setLimitDate(rs.getString("limit_date"));
 					task.setUserName(rs.getString("user_name"));
 					task.setStatusName(rs.getString("status_name"));
-					;
 					task.setMemo(rs.getString("memo"));
 				}
 

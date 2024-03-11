@@ -9,8 +9,11 @@
 <body>
 	<%@ include file="login-check.jsp" %>
 	<% 
+		//選択されたタスク情報をセッションスコープから取得
 		UserCategoryStatusTaskBean task 
 			= (UserCategoryStatusTaskBean)session.getAttribute("task");
+	
+		//選択肢のデータをリクエストスコープから取得
 		List<UserCategoryStatusTaskBean> categoryList 
 			= (List<UserCategoryStatusTaskBean>) request.getAttribute("categoryList");
 		List<UserCategoryStatusTaskBean> userList 
@@ -18,6 +21,7 @@
 		List<UserCategoryStatusTaskBean> statusList 
 			= (List<UserCategoryStatusTaskBean>) request.getAttribute("statusList");
 	%>
+	
 	<h1>タスク編集画面</h1>
 	<hr>
 	<form action="TaskAlterServlet" method="post">
@@ -25,7 +29,8 @@
 			<tr>
 				<th>タスク名</th>
 				<td>
-					<input type="text" name="task_name" size="100" maxlength="50" required value="<%=task.getTaskName()%>">
+					<input type="text" name="task_name" size="100" maxlength="50"
+						required value="<%=task.getTaskName()%>">
 					<input type="hidden" name="task_id" value="<%=task.getTaskId()%>">
 				</td>
 			</tr>

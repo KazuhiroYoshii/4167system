@@ -9,32 +9,32 @@
 <body>
 	<%@ include file="login-check.jsp" %>
 	<% 
-		UserCategoryStatusTaskBean alterTask 
-			= (UserCategoryStatusTaskBean)request.getAttribute("alterTask");
+		UserCategoryStatusTaskBean alteredTask 
+			= (UserCategoryStatusTaskBean)request.getAttribute("alteredTask");
 	%>
 	<h1>タスク編集完了</h1>
 	<hr>
-	<h3>タスク情報を編集しました。</h3>
+	<h3>タスク情報を以下の内容で編集しました。</h3>
 	<table border=1>
 		<tr>
 			<th>タスク名</th>
-			<td><%=alterTask.getTaskName() %></td>
+			<td><%=alteredTask.getTaskName() %></td>
 		</tr>
 		<tr>
 			<th>カテゴリ情報</th>
-			<td><%=alterTask.getCategoryName() %></td>
+			<td><%=alteredTask.getCategoryName() %></td>
 		</tr>
 		<tr>
 			<th>期限</th>
 			<td>
 				<%
-				if(alterTask.getLimitDate() == null){
+				if(alteredTask.getLimitDate() == null){
 				%>
 				未設定
 				<%
 				} else {
 				%>
-					<%=alterTask.getLimitDate() %>
+					<%=alteredTask.getLimitDate() %>
 				<%
 				}
 				%>
@@ -42,15 +42,15 @@
 		</tr>
 		<tr>
 			<th>担当者情報</th>
-			<td><%=alterTask.getUserName() %></td>
+			<td><%=alteredTask.getUserName() %></td>
 		</tr>
 		<tr>
 			<th>ステータス情報</th>
-			<td><%=alterTask.getStatusName() %></td>
+			<td><%=alteredTask.getStatusName() %></td>
 		</tr>
 		<tr>
 			<th>メモ</th>
-			<td><%=alterTask.getMemo()%></td>
+			<td><%=alteredTask.getMemo()%></td>
 		</tr>
 	</table><br>
 	<table>

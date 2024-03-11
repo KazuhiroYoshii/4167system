@@ -27,7 +27,7 @@ public class TaskAlterDAO {
 		int processingNumber = 0; //処理件数
 
 		String sql = "UPDATE t_task SET task_name = ?, category_id = ?, "
-				+ "limit_date = ?, status_code = ?, memo = ? WHERE task_id = ?";
+				+ "limit_date = ?, user_id = ?, status_code = ?, memo = ? WHERE task_id = ?";
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
@@ -36,9 +36,10 @@ public class TaskAlterDAO {
 			// プレースホルダへの値の設定
 			pstmt.setString(1, taskBean.getTaskName());
 			pstmt.setInt(2, taskBean.getCategoryId());
-			pstmt.setString(4, taskBean.getStatusCode());
-			pstmt.setString(5, taskBean.getMemo());
-			pstmt.setInt(6, taskBean.getTaskId());
+			pstmt.setString(4, taskBean.getUserId());
+			pstmt.setString(5, taskBean.getStatusCode());
+			pstmt.setString(6, taskBean.getMemo());
+			pstmt.setInt(7, taskBean.getTaskId());
 			
 			if(taskBean.getLimitDate().equals("")) {
 				pstmt.setDate(3, null);

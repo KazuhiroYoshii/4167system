@@ -53,8 +53,8 @@ public class TaskAlterFormServlet extends HttpServlet {
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
 
 		// DAOの生成
-		TaskAlterFormDAO dao1 = new TaskAlterFormDAO();
-		SelectBoxDAO dao2 = new SelectBoxDAO();
+		TaskAlterFormDAO taskAlterFormDao = new TaskAlterFormDAO();
+		SelectBoxDAO selectBoxDao = new SelectBoxDAO();
 
 		UserCategoryStatusTaskBean task = null;
 		List<UserCategoryStatusTaskBean> categoryList = null;
@@ -62,11 +62,13 @@ public class TaskAlterFormServlet extends HttpServlet {
 		List<UserCategoryStatusTaskBean> statusList = null;
 
 		try {
-			// DAOの利用
-			task = dao1.selectTask(taskId);
-			categoryList = dao2.selectCategory();
-			userList = dao2.selectUser();
-			statusList = dao2.selectStatus();
+			// DAOを利用して該当タスクの詳細情報を取得
+			task = taskAlterFormDao.selectTask(taskId);
+			
+			// DAOを利用してフォームに表示する各選択肢のデータを取得
+			categoryList = selectBoxDao.selectCategory();
+			userList = selectBoxDao.selectUser();
+			statusList = selectBoxDao.selectStatus();
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

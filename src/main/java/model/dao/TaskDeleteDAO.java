@@ -11,8 +11,7 @@ import java.sql.SQLException;
 public class TaskDeleteDAO {
 	
 	/**
-	 * @author 吉井
-	 * @param taskId
+	 * @param taskId 削除したいタスクのID
 	 * @return 該当レコードの削除実行件数
 	 */
 	public int delete(int taskId) {
