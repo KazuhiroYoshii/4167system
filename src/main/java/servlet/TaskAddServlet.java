@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.dao.ChangeDAO;
 import model.dao.SelectBoxDAO;
 import model.dao.TaskAddDAO;
 import model.entity.UserCategoryStatusTaskBean;
@@ -44,10 +45,12 @@ public class TaskAddServlet extends HttpServlet {
 		// リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
 
-		// 情報を格納するリスト型の変数
-		List<UserCategoryStatusTaskBean> CategoryList = null; //カテゴリ情報
-		List<UserCategoryStatusTaskBean> UserList = null; //担当者情報
-		List<UserCategoryStatusTaskBean> StatusList = null; //ステータス情報
+		// カテゴリ情報を格納するリスト型の変数
+		List<UserCategoryStatusTaskBean> CategoryList = null;
+		// 担当者情報を格納するリスト型の変数
+		List<UserCategoryStatusTaskBean> UserList = null;
+		// ステータス情報を格納するリスト型の変数
+		List<UserCategoryStatusTaskBean> StatusList = null;
 
 		// DAOのインスタンス化
 		SelectBoxDAO dao = new SelectBoxDAO();
@@ -85,7 +88,8 @@ public class TaskAddServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// DAOのインスタンス化
-		TaskAddDAO dao = new TaskAddDAO();
+		TaskAddDAO taskAddDao = new TaskAddDAO();
+		ChangeDAO changeDao = new ChangeDAO();
 		
 		// Beanのインスタンス化
 		UserCategoryStatusTaskBean taskInfo = new UserCategoryStatusTaskBean();
@@ -98,7 +102,8 @@ public class TaskAddServlet extends HttpServlet {
 		taskInfo.setStatusCode(request.getParameter("status_code"));
 		taskInfo.setMemo(request.getParameter("memo"));
 
-		int processingNumber = 0; //処理件数
+		// メソッドの処理件数
+		int processingNumber = 0;
 		//カテゴリ名を設定
 		String categoryName = null;
 		//ユーザ名を設定
@@ -108,30 +113,33 @@ public class TaskAddServlet extends HttpServlet {
 		
 		try {
 			// DAOの利用
-			processingNumber = dao.insertTask(taskInfo); //登録処理
+			processingNumber = taskAddDao.insertTask(taskInfo); //登録処理
 
 			// カテゴリ名を取得しbeanにセット
-			categoryName = dao.categoryChange(taskInfo.getCategoryId());
+			categoryName = changeDao.categoryChange(taskInfo.getCategoryId());
 			taskInfo.setCategoryName(categoryName);
 			
 			// ユーザ名を取得しbeanにセット
-			userName = dao.userChange(taskInfo.getUserId());
+			userName = changeDao.userChange(taskInfo.getUserId());
 			taskInfo.setUserName(userName);
 			
 			// ステータス名を取得しbeanにセット
-			statusName = dao.statusChange(taskInfo.getStatusCode());
+			statusName = changeDao.statusChange(taskInfo.getStatusCode());
 			taskInfo.setStatusName(statusName);
 			
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
-		String url = ""; //転送先
+		// 転送先
+		String url = "";
 		// 遷移先画面の分岐
 		if (processingNumber > 0) {
-			url = "task-register-success.jsp"; //登録成功画面
+			// 登録成功画面
+			url = "task-register-success.jsp"; 
 		} else {
-			url = "task-register-failure.jsp"; //登録失敗画面
+			// 登録失敗画面
+			url = "task-register-failure.jsp";
 		}
 
 		// リクエストスコープへの属性の設定
