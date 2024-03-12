@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク一覧表示</title>
+<title>タスク一覧表示画面</title>
 <link rel="stylesheet" href="css/TaskList.css" type="text/css" />
 </head>
 <body>
@@ -20,7 +20,7 @@
 	String loggedInUserId = (String)session.getAttribute("userId");
 	String loggedInUserName = (String)session.getAttribute("userName");
 	%>
-	<h1>タスク一覧表示</h1>
+	<h1>タスク一覧表示画面</h1>
 	<b>ログイン中：<%=loggedInUserName %>さん</b>
 	<hr>
 		<table border = "1">

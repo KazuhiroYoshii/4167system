@@ -9,7 +9,7 @@
 <body>
 	<h1>ログイン失敗画面</h1>
 	<hr>
-	<h1>ログインに失敗しました。</h1>
+	<h1>ログインできませんでした。</h1>
 
 	<form action="login.jsp" method="POST">
 		<input type="submit" value="ログイン画面へ">

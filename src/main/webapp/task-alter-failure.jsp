@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク編集失敗</title>
+<title>タスク編集失敗画面</title>
 </head>
 <body>
 	<%@ include file="login-check.jsp" %>
-	<h1>タスク編集失敗</h1>
+	<h1>タスク編集失敗画面</h1>
 	<hr>
 	<h3>タスク情報を編集できませんでした。</h3><br>
 	<form action="TaskListServlet" method="post">

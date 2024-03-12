@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>削除失敗画面</title>
+<title>タスク削除失敗画面</title>
 </head>
 <body>
 	<!-- ログイン状態を判定 -->
@@ -15,7 +15,7 @@
 	UserCategoryStatusTaskBean task = (UserCategoryStatusTaskBean)session.getAttribute("task");
 	%>
 	
-	<h1>エラー画面</h1>
+	<h1>タスク削除失敗画面</h1>
 	<hr>
 	<h3>以下の内容のタスクを削除できませんでした。</h3>
 	
