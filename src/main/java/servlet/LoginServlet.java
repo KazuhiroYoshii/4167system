@@ -54,11 +54,11 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		// DAOの生成
-		LoginDAO dao = new LoginDAO();
+		LoginDAO loginDAO = new LoginDAO();
 		
 		try {
 			// DAOの利用
-			user = dao.selectName(userId, password);
+			user = loginDAO.selectName(userId, password);
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
