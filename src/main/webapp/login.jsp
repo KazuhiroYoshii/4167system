@@ -6,23 +6,20 @@
 <meta charset="UTF-8">
 <title>ログイン画面</title>
 </head>
+<link rel="stylesheet" href="css/Login.css" type="text/css" />
 <body>
-	<h1>ログイン画面</h1>
-	<hr>
-	<form action="LoginServlet" method="post">
-		<table>
-			<tr>
-				<td align="center" valign="middle"><b>ユーザ名</b></td>
-				<td><input type="text" name="userId"></td>
-			</tr>
-			
-			<tr>
-				<td align="center" valign="middle"><b>パスワード</b></td>
-				<td><input type="password" name="password"></td>
-			</tr>
-		</table>
-		<br>
-		<input type="submit" value="ログイン">
-	</form>
+	<header class="header">
+    	<p class="font">タスク管理システム【4167system】</p>
+    </header>
+    <div class="main">
+    	<main>
+			<form action="LoginServlet" method="post">
+				 <p class="fsize">ログイン画面</p>
+				 <input type="text" placeholder="Username" name="userId" />
+				 <input type="password" placeholder="Password" name="password" />
+				 <button type="submit">ログイン</button>
+			</form>
+		</main>
+	</div>
 </body>
 </html>
