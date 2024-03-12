@@ -53,16 +53,16 @@ public class TaskAddServlet extends HttpServlet {
 		List<UserCategoryStatusTaskBean> StatusList = null;
 
 		// DAOのインスタンス化
-		SelectBoxDAO dao = new SelectBoxDAO();
+		SelectBoxDAO selectBoxDao = new SelectBoxDAO();
 
 		try {
 			// プルダウン用のカテゴリ一覧を取得
 			// カテゴリ情報
-			CategoryList = dao.selectCategory();
+			CategoryList = selectBoxDao.selectCategory();
 			// 担当者情報
-			UserList = dao.selectUser();
+			UserList = selectBoxDao.selectUser();
 			// ステータス情報
-			StatusList = dao.selectStatus();
+			StatusList = selectBoxDao.selectStatus();
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
