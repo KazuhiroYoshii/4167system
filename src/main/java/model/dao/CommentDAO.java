@@ -87,6 +87,7 @@ public class CommentDAO {
 				+ " FROM t_comment t1"
 				+ " INNER JOIN m_user t2"
 				+ " 	ON t1.user_id = t2.user_id"
+				+ " WHERE task_id = ?"
 				+ " ORDER BY comment_id ASC";
 
 		// データベースへの接続の取得、PreparedStatementの取得
