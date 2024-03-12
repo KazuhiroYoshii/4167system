@@ -11,7 +11,7 @@
 <body>
 	<% 
 		UserCategoryStatusTaskBean taskDetail = 
-				(UserCategoryStatusTaskBean)session.getAttribute("taskDetail");
+				(UserCategoryStatusTaskBean)request.getAttribute("taskDetail");
 		List<UserCommentBean> commentList = new ArrayList<>();
 		commentList = (List) request.getAttribute("commentList");
 	%>
