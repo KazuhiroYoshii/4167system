@@ -10,12 +10,9 @@
 </head>
 <body>
 	<% 
-		UserCategoryStatusTaskBean taskDetail = 
-				(UserCategoryStatusTaskBean)request.getAttribute("taskDetail");
-		List<UserCommentBean> commentList = new ArrayList<>();
-		commentList = (List) request.getAttribute("commentList");
+	//リクエストスコープからタスクの詳細情報を取得
+	UserCategoryStatusTaskBean taskDetail = (UserCategoryStatusTaskBean)request.getAttribute("taskDetail");
 	%>
-
 	<h1>コメント</h1>
 	<hr>
 	<h2>タスク情報</h2>
@@ -29,23 +26,37 @@
 			<th>メモ</th>
 		</tr>
 		<tr>
-			<th><%=taskDetail.getTaskName() %></th>
-			<th><%=taskDetail.getCategoryName() %></th>
-			<th><%=taskDetail.getLimitDate() %></th>
-			<th><%=taskDetail.getCategoryName() %></th>
+			<td><%=taskDetail.getTaskName() %></td>
+			<td><%=taskDetail.getCategoryName() %></td>
+			<td><%=taskDetail.getLimitDate() %></td>
 			<td><%=taskDetail.getUserName() %>　</td>
 			<td><%=taskDetail.getStatusName() %>　</td>
 			<td><%=taskDetail.getMemo() %>　</td>
 		</tr>
-
-	</table>
-	<br>
+	</table><br>
+	
+	<%
+	//リクエストスコープからコメント情報を取得
+	List<UserCommentBean> commentList = new ArrayList<>();
+	commentList = (List) request.getAttribute("commentList");
+	%>
 	<h2>コメント一覧</h2>
 	<table border="1">
 		<tr>
 			<th>投稿者</th>
 			<th>コメント内容</th>
 			<th>投稿日時</th>
+		</tr>
+		<tr>
+			<%
+			for(UserCommentBean commentData : commentList){
+			%>
+				<td><%=commentData.getUserName() %></td>
+				<td><%=commentData.getComment() %></td>
+				<td><%=commentData.getUpdateDatetime() %></td>
+			<%
+			}
+			%>
 		</tr>
 	</table>
 
