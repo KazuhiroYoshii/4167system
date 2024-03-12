@@ -18,14 +18,14 @@ import model.entity.UserCategoryStatusTaskBean;
  * タスク情報の変更を実行するためのサーブレット
  * @author 吉井
  */
-@WebServlet("/AlterExecuteServlet")
-public class AlterExecuteServlet extends HttpServlet {
+@WebServlet("/TaskAlterExecuteServlet")
+public class TaskAlterExecuteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AlterExecuteServlet() {
+    public TaskAlterExecuteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,7 +53,7 @@ public class AlterExecuteServlet extends HttpServlet {
 		UserCategoryStatusTaskBean newTask = (UserCategoryStatusTaskBean) session.getAttribute("newTask");
 		
 		// DAOの生成
-		TaskAlterDAO dao = new TaskAlterDAO();
+		TaskAlterDAO taskAlterDao = new TaskAlterDAO();
 
 		int processingNumber = 0; //処理件数
 		String url = "task-alter-failure.jsp"; // 転送先
@@ -81,10 +81,10 @@ public class AlterExecuteServlet extends HttpServlet {
 					|| !task.getMemo().equals(newTask.getMemo()) ) {
 				
 				//変更処理を行い、実行件数を取得
-				processingNumber = dao.update(newTask);
+				processingNumber = taskAlterDao.update(newTask);
 				
 				//変更実行後のタスク情報をデータベースから取得
-				alteredTask = dao.selectTask(newTask.getTaskId());
+				alteredTask = taskAlterDao.selectTask(newTask.getTaskId());
 			}
 
 			//実行件数によってurlを変更

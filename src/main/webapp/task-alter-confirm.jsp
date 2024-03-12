@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>タスク編集確認画面</title>
 </head>
 <body>
 	<%@ include file="login-check.jsp" %>
@@ -55,7 +55,7 @@
 	</table><br>
 	<table>
 		<tr>
-			<td><form action="AlterExecuteServlet" method="post">
+			<td><form action="TaskAlterExecuteServlet" method="post">
 				<input type="submit" value="編集する">
 			</form></td>
 			<td><form action="TaskListServlet" method="post">

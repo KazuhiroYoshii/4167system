@@ -39,11 +39,11 @@ public class TaskListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//TaskListDAOをインスタンス化
-		TaskListDAO dao = new TaskListDAO();
+		TaskListDAO taskListDao = new TaskListDAO();
 		
-		//daoを使って一覧表示用リストを取得
+		//taskListDaoを使って一覧表示用リストを取得
 		List<UserCategoryStatusTaskBean> taskList = new ArrayList<>();
-		taskList = dao.getTaskList();
+		taskList = taskListDao.getTaskList();
 		
 		//一覧表示用リストをリクエストスコープに設定
 		request.setAttribute("taskList", taskList);
