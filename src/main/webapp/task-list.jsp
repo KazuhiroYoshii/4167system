@@ -84,7 +84,7 @@
 				
 				<!-- コメントボタンからサーブレットにtaskIdの値を送信 -->
 				<td><form action="CommentServlet" method="get">
-					<button type="submit" value="<%=taskId %>">コメント</button>
+					<button type="submit" value="<%=taskId %>" name = "taskId">コメント</button>
 				</form></td>
 			</tr>
 			<%
