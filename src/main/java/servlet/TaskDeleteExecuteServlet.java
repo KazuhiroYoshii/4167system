@@ -45,8 +45,8 @@ public class TaskDeleteExecuteServlet extends HttpServlet {
 		int taskId = task.getTaskId();
 		
 		//TaskListDAOをインスタンス化、メソッドを用いて削除を実行し実行件数を取得
-		TaskDeleteDAO dao = new TaskDeleteDAO();
-		int result = dao.delete(taskId);
+		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
+		int result = taskDeleteDao.delete(taskId);
 		
 		//実行件数が1の場合のみ削除完了画面のurl、それ以外の場合は削除失敗画面のurlを設定
 		String url = null;

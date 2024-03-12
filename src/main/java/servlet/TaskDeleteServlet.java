@@ -52,8 +52,8 @@ public class TaskDeleteServlet extends HttpServlet {
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
 		
 		//DAOをインスタンス化、当該レコードの詳細情報取得
-		TaskListDAO dao = new TaskListDAO();
-		UserCategoryStatusTaskBean task = dao.getTaskData(taskId);
+		TaskListDAO taskListDao = new TaskListDAO();
+		UserCategoryStatusTaskBean task = taskListDao.getTaskData(taskId);
 		
 		//セッションスコープに詳細情報を設定
 		HttpSession session = request.getSession();
