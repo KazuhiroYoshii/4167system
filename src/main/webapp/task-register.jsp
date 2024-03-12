@@ -7,10 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>タスク登録画面</title>
+<script src="js/date.js"></script>
 </head>
 <body>
-	<%@ include file ="login-check.jsp" %>
-	
+	<%@ include file="login-check.jsp"%>
+
 	<%
 	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
 	List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
@@ -40,7 +41,7 @@
 			</tr>
 			<tr>
 				<th>期限</th>
-				<td><input type="date" name="limit_date"></td>
+				<td><input type="date" name="limit_date" id="today" min="" required></td>
 			</tr>
 			<tr>
 				<th>担当者情報</th>
@@ -74,7 +75,7 @@
 			</tr>
 		</table>
 		<br>
-		<input type="submit" value="登録する"> 
+		<input type="submit" value="登録する">
 		<input type="reset" value="クリア">
 	</form>
 	<br>
