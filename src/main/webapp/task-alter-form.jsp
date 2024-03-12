@@ -57,7 +57,7 @@
 			<tr>
 				<th>期限</th>
 				<td>
-					<input type="date" name="limit_date" value="<%=task.getLimitDate() %>">
+					<input type="date" name="limit_date" value="<%=task.getLimitDate() %>" required>
 				</td>
 			</tr>
 			<tr>
