@@ -38,7 +38,8 @@ public class TaskListDAO {
 				+ "    INNER JOIN m_user mu\n"
 				+ "        ON tt.user_id = mu.user_id\n"
 				+ "    INNER JOIN m_status ms\n"
-				+ "        ON tt.status_code = ms.status_code";
+				+ "        ON tt.status_code = ms.status_code\n"
+				+ "ORDER BY tt.task_id ASC";
 
 		try {
 			//データベースへの接続、sql文の用意
