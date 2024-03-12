@@ -82,6 +82,12 @@ public class CommentServlet extends HttpServlet {
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
 		String userId = request.getParameter("userId");
 		String comment = request.getParameter("comment");
+		
+		// 新規コメントをpostCommentにセット
+		UserCommentBean postComment = new UserCommentBean();
+		postComment.setTaskId(taskId);
+		postComment.setUserId(userId);
+		postComment.setComment(comment);
 
 		// DAOの生成
 		CommentDAO commentDao = new CommentDAO();
@@ -92,8 +98,7 @@ public class CommentServlet extends HttpServlet {
 
 		try {
 			// DAOを利用してコメントを追加
-			processingNumber = commentDao.insertComment(taskId);
-			
+			processingNumber = commentDao.insertComment(postComment);
 			// DAOを利用して該当タスクの詳細情報を取得
 			taskDetail = commentDao.selectTask(taskId);
 			// DAOを利用して該当タスクのコメント情報を取得
@@ -107,8 +112,6 @@ public class CommentServlet extends HttpServlet {
 		request.setAttribute("taskDetail", taskDetail);
 		// コメント一覧表示用リストをリクエストスコープに設定
 		request.setAttribute("commentList", commentList);
-		// タスク詳細情報をリクエストスコープに設定
-		request.setAttribute("taskDetail", taskDetail);
 
 		// 転送用オブジェクトの取得、転送
 		RequestDispatcher rd = request.getRequestDispatcher("comment.jsp");
