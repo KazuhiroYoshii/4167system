@@ -56,7 +56,7 @@ public class TaskAlterServlet extends HttpServlet {
 		String memo = request.getParameter("memo");
 		
 		//ChangeDAOをインスタンス化
-		ChangeDAO dao = new ChangeDAO();
+		ChangeDAO changeDAO = new ChangeDAO();
 		
 		String categoryName = null;
 		String userName = null;
@@ -64,9 +64,9 @@ public class TaskAlterServlet extends HttpServlet {
 		
 		try {
 			//DAOのメソッドを使い、入力された値と対応するカテゴリー名、ユーザー名、ステータス名を取得
-			categoryName = dao.categoryChange(categoryId);
-			userName = dao.userChange(userId);
-			statusName = dao.statusChange(statusCode);
+			categoryName = changeDAO.categoryChange(categoryId);
+			userName = changeDAO.userChange(userId);
+			statusName = changeDAO.statusChange(statusCode);
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
