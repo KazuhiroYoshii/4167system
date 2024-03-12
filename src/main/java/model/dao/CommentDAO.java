@@ -25,11 +25,23 @@ public class CommentDAO {
 	public UserCategoryStatusTaskBean selectTask(int taskId)
 			throws SQLException, ClassNotFoundException {
 
-		UserCategoryStatusTaskBean task = new UserCategoryStatusTaskBean();
+		UserCategoryStatusTaskBean taskDetail = new UserCategoryStatusTaskBean();
 
-		String sql = "SELECT task_name, category_id, limit_date,"
-				+ "user_id, status_code, memo "
-				+ "FROM t_task WHERE task_id = ?";
+		String sql = "SELECT t1.task_name"
+				+ " , t3.category_name"
+				+ " , t1.limit_date"
+				+ " , t2.user_name"
+				+ " , t1.status_code"
+				+ " , t4.status_name"
+				+ " , t1.memo"
+				+ " FROM t_task t1 "
+				+ " INNER JOIN m_user t2 "
+				+ " 	ON t1.user_id = t2.user_id "
+				+ " INNER JOIN m_category t3 "
+				+ "     ON t1.category_id = t3.category_id "
+				+ " INNER JOIN m_status t4 "
+				+ "     ON t1.status_code = t4.status_code"
+				+ " WHERE task_id = ?";
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
@@ -43,16 +55,16 @@ public class CommentDAO {
 
 			// 結果の操作
 			while (res.next()) {
-				task.setTaskId(taskId);
-				task.setTaskName(res.getString("task_name"));
-				task.setCategoryId(res.getInt("category_id"));
-				task.setLimitDate(res.getString("limit_date"));
-				task.setUserId(res.getString("user_id"));
-				task.setStatusCode(res.getString("status_code"));
-				task.setMemo(res.getString("memo"));
+				taskDetail.setTaskId(taskId);
+				taskDetail.setTaskName(res.getString("task_name"));
+				taskDetail.setCategoryId(res.getInt("category_id"));
+				taskDetail.setLimitDate(res.getString("limit_date"));
+				taskDetail.setUserId(res.getString("user_id"));
+				taskDetail.setStatusCode(res.getString("status_code"));
+				taskDetail.setMemo(res.getString("memo"));
 			}
 		}
-		return task;
+		return taskDetail;
 	}
 
 	/**
@@ -67,9 +79,12 @@ public class CommentDAO {
 
 		List<UserCommentBean> commentList = new ArrayList<>();
 
-		String sql = "SELECT t1.comment_id, t1.task_id"
-				+ " , t1.user_id, t2.user_name"
-				+ " , t1.comment, t1.update_datetime"
+		String sql = "SELECT t1.comment_id"
+				+ " , t1.task_id"
+				+ " , t1.user_id"
+				+ " , t2.user_name"
+				+ " , t1.comment"
+				+ " , t1.update_datetime"
 				+ " FROM t_comment t1"
 				+ " INNER JOIN m_user t2"
 				+ " 	ON t1.user_id = t2.user_id"
@@ -147,7 +162,7 @@ public class CommentDAO {
 			throws SQLException, ClassNotFoundException {
 
 		// 処理件数
-		int processingNumber = 0;
+		int deleteResult = 0;
 
 		String sql = "DELETE FROM t_comment WHERE comment_id = ?";
 
@@ -159,9 +174,9 @@ public class CommentDAO {
 			pstmt.setInt(1, commentId);
 			
 			// 実行
-			processingNumber = pstmt.executeUpdate();
+			deleteResult = pstmt.executeUpdate();
 		}
-		return processingNumber;
+		return deleteResult;
 
 	}
 }
