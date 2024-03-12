@@ -47,17 +47,17 @@
 			<th>コメント内容</th>
 			<th>投稿日時</th>
 		</tr>
-		<tr>
-			<%
-			for(UserCommentBean commentData : commentList){
-			%>
+		<%
+		for(UserCommentBean commentData : commentList){
+		%>
+			<tr>
 				<td><%=commentData.getUserName() %></td>
 				<td><%=commentData.getComment() %></td>
 				<td><%=commentData.getUpdateDatetime() %></td>
-			<%
-			}
-			%>
-		</tr>
+			</tr>
+		<%
+		}
+		%>
 	</table>
 
 	<br>
