@@ -19,7 +19,8 @@ public class CommentDAO {
 	/**
 	 * 指定されたタスクIDのタスク情報を返します
 	 * @param taskId タスクID
-	 * @return task タスク情報をセットしたBean型task
+	 * @return taskDetail タスク情報をセットしたBean型taskDetail
+	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
 	public UserCategoryStatusTaskBean selectTask(int taskId)
@@ -31,7 +32,6 @@ public class CommentDAO {
 				+ " , t3.category_name"
 				+ " , t1.limit_date"
 				+ " , t2.user_name"
-				+ " , t1.status_code"
 				+ " , t4.status_name"
 				+ " , t1.memo"
 				+ " FROM t_task t1 "
@@ -55,12 +55,11 @@ public class CommentDAO {
 
 			// 結果の操作
 			while (res.next()) {
-				taskDetail.setTaskId(taskId);
 				taskDetail.setTaskName(res.getString("task_name"));
-				taskDetail.setCategoryId(res.getInt("category_id"));
+				taskDetail.setCategoryName(res.getString("category_name"));
 				taskDetail.setLimitDate(res.getString("limit_date"));
-				taskDetail.setUserId(res.getString("user_id"));
-				taskDetail.setStatusCode(res.getString("status_code"));
+				taskDetail.setUserName(res.getString("user_name"));
+				taskDetail.setStatusName(res.getString("status_name"));
 				taskDetail.setMemo(res.getString("memo"));
 			}
 		}
@@ -122,27 +121,27 @@ public class CommentDAO {
 
 	/**
 	 * 入力されたコメントを登録します
-	 * @param commentInfo コメント登録情報が格納されたUserCommentBeanオブジェクト(task_id, user_id, comment)
+	 * @param postComment コメント登録情報が格納されたUserCommentBeanオブジェクト(task_id, user_id, comment)
 	 * @return processingNumber 処理件数
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	public int insertComment(UserCommentBean commentInfo)
+	public int insertComment(UserCommentBean postComment)
 			throws SQLException, ClassNotFoundException {
 
 		// 処理件数
 		int processingNumber = 0;
 
-		String sql = "INSERT INTO t_comment(task_id, user_id, comment)VALUES(?, ?, ?);";
+		String sql = "INSERT INTO t_comment(task_id, user_id, comment)VALUES(?, ?, ?)";
 
 		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);) {
 
 			// プレースホルダへの値の設定
-			pstmt.setInt(1, commentInfo.getTaskId());
-			pstmt.setString(2, commentInfo.getUserId());
-			pstmt.setString(3, commentInfo.getComment());
+			pstmt.setInt(1, postComment.getTaskId());
+			pstmt.setString(2, postComment.getUserId());
+			pstmt.setString(3, postComment.getComment());
 
 			// 実行
 			processingNumber = pstmt.executeUpdate();
@@ -154,7 +153,7 @@ public class CommentDAO {
 	/**
 	 * 指定されたコメントIDのコメントを削除します
 	 * @param commentId コメントID
-	 * @return processionNumber 処理件数
+	 * @return deleteResult 処理件数
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
