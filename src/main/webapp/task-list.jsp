@@ -21,7 +21,7 @@
 	String loggedInUserName = (String)session.getAttribute("userName");
 	%>
 	<h1>タスク一覧表示</h1>
-	<h3>ログイン中：<%=loggedInUserName %>さん</h3>
+	<b>ログイン中：<%=loggedInUserName %>さん</b>
 	<hr>
 		<table border = "1">
 			<tr>
@@ -33,10 +33,14 @@
 				<th>メモ</th>
 				<th>　</th>
 				<th>　</th>
+				<th>　</th>
 			</tr>
 			<%
 			//リクエストスコープから取得した一覧表示用リストを切り分け、表示
 			for(UserCategoryStatusTaskBean task : taskList){
+				
+				//タスクID
+				int taskId = task.getTaskId();
 				
 				//タスクごとのユーザーID
 				String userIdOnTask = task.getUserId();
@@ -49,10 +53,10 @@
 				<td><%=task.getStatusName() %>　</td>
 				<td><%=task.getMemo() %>　</td>
 				
-				<!-- 編集、削除ボタンから各サーブレットにtaskIdの値を送信 -->
+				<!-- 編集ボタンからサーブレットにtaskIdの値を送信 -->
 				<td><form action="TaskAlterFormServlet" method="post">
 					<div class="tooltip4">
-						<button type="submit" value="<%=task.getTaskId() %>" name = "taskId"
+						<button type="submit" value="<%=taskId %>" name = "taskId"
 						<%
 						//ログイン中ユーザー以外のタスク編集ボタンを非活性化
 						if(!loggedInUserId.equals(userIdOnTask)){
@@ -72,8 +76,15 @@
 					%>
 					</div>
 				</form></td>
+				
+				<!-- 編集ボタンからサーブレットにtaskIdの値を送信 -->
 				<td><form action="TaskDeleteServlet" method="post" >
-					<button type="submit" value="<%=task.getTaskId() %>" name = "taskId">削除</button>
+					<button type="submit" value="<%=taskId %>" name = "taskId">削除</button>
+				</form></td>
+				
+				<!-- コメントボタンからサーブレットにtaskIdの値を送信 -->
+				<td><form action="CommentServlet" method="get">
+					<button type="submit" value="<%=taskId %>">コメント</button>
 				</form></td>
 			</tr>
 			<%
