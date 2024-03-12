@@ -52,9 +52,16 @@ public class CommentDeleteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int taskId = (int)session.getAttribute("taskId");
 		
-		//DAOをインスタンス化、commentIdに該当する項目を削除し、実行件数を取得
+		//DAOをインスタンス化
 		CommentDAO commentDao = new CommentDAO();
-		int deleteResult = commentDao.deleteComment(commentId);
+		
+		//commentIdに該当する項目を削除し、実行件数を取得
+		int deleteResult = 0;
+		try {
+			deleteResult = commentDao.deleteComment(commentId);
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 		//タスクの詳細情報、コメントリストをインスタンス化
 		UserCategoryStatusTaskBean taskDetail = new UserCategoryStatusTaskBean();
