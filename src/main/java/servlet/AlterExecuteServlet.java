@@ -15,7 +15,8 @@ import model.dao.TaskAlterDAO;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
- * Servlet implementation class AlterExecuteServlet
+ * タスク情報の変更を実行するためのサーブレット
+ * @author 吉井
  */
 @WebServlet("/AlterExecuteServlet")
 public class AlterExecuteServlet extends HttpServlet {
@@ -55,7 +56,7 @@ public class AlterExecuteServlet extends HttpServlet {
 		TaskAlterDAO dao = new TaskAlterDAO();
 
 		int processingNumber = 0; //処理件数
-		String url = "task-alter-success.jsp"; // 転送先
+		String url = "task-alter-failure.jsp"; // 転送先
 		UserCategoryStatusTaskBean alteredTask = null;
 		
 		//変更前データに期限が設定されていない場合、空文字に変換

@@ -68,9 +68,7 @@ public class TaskAlterServlet extends HttpServlet {
 			userName = dao.userChange(userId);
 			statusName = dao.statusChange(statusCode);
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 
