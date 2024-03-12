@@ -18,14 +18,14 @@ import model.entity.UserCategoryStatusTaskBean;
  * タスク情報の変更を実行するためのサーブレット
  * @author 吉井
  */
-@WebServlet("/AlterExecuteServlet")
-public class AlterExecuteServlet extends HttpServlet {
+@WebServlet("/TaskAlterExecuteServlet")
+public class TaskAlterExecuteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AlterExecuteServlet() {
+    public TaskAlterExecuteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

@@ -40,7 +40,7 @@
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>
 	</table>
 	<br>
-	<button onclick="location.href='DeleteExecuteServlet'" >削除する</button><br>
+	<button onclick="location.href='TaskDeleteExecuteServlet'" >削除する</button><br>
 	<br>
 	<button onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
 </body>

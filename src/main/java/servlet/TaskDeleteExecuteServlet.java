@@ -18,14 +18,14 @@ import model.entity.UserCategoryStatusTaskBean;
  * @author 吉井
  * Servlet implementation class DeleteExecuteServlet
  */
-@WebServlet("/DeleteExecuteServlet")
-public class DeleteExecuteServlet extends HttpServlet {
+@WebServlet("/TaskDeleteExecuteServlet")
+public class TaskDeleteExecuteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteExecuteServlet() {
+    public TaskDeleteExecuteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

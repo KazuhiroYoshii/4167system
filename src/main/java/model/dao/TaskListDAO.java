@@ -29,6 +29,7 @@ public class TaskListDAO {
 				+ "    mc.category_name,\n"
 				+ "    tt.limit_date,\n"
 				+ "    mu.user_name,\n"
+				+ "    mu.user_id,\n"
 				+ "    ms.status_name,\n"
 				+ "    tt.memo\n"
 				+ "FROM\n"
@@ -60,6 +61,7 @@ public class TaskListDAO {
 					task.setCategoryName(rs.getString("category_name"));
 					task.setLimitDate(rs.getString("limit_date"));
 					task.setUserName(rs.getString("user_name"));
+					task.setUserId(rs.getString("user_id"));
 					task.setStatusName(rs.getString("status_name"));
 					task.setMemo(rs.getString("memo"));
 
