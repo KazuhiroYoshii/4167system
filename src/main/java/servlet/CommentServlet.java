@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.CommentDAO;
 import model.entity.UserCategoryStatusTaskBean;
@@ -47,7 +48,7 @@ public class CommentServlet extends HttpServlet {
 		CommentDAO commentDao = new CommentDAO();
 
 		UserCategoryStatusTaskBean taskDetail = null;
-		List<UserCommentBean> commentList  = new ArrayList();
+		List<UserCommentBean> commentList  = new ArrayList<>();
 
 		try {
 			// DAOを利用して該当タスクの詳細情報を取得
@@ -64,6 +65,11 @@ public class CommentServlet extends HttpServlet {
 		// コメント一覧表示用リストをリクエストスコープに設定
 		request.setAttribute("commentList", commentList);
 
+		// セッションオブジェクトの取得
+		HttpSession session = request.getSession();
+		// タスクIDをセッションスコープに設定
+		session.setAttribute("taskId", taskId);
+
 		// 転送用オブジェクトの取得、転送
 		RequestDispatcher rd = request.getRequestDispatcher("comment.jsp");
 		rd.forward(request, response);
@@ -79,10 +85,14 @@ public class CommentServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの取得
-		int taskId = Integer.parseInt(request.getParameter("taskId"));
 		String userId = request.getParameter("userId");
 		String comment = request.getParameter("comment");
-		
+
+		// セッションオブジェクトの取得
+		HttpSession session = request.getSession();
+		// セッションスコープからの属性値の取得
+		int taskId = Integer.parseInt(request.getParameter("taskId"));
+
 		// 新規コメントをpostCommentにセット
 		UserCommentBean postComment = new UserCommentBean();
 		postComment.setTaskId(taskId);
@@ -94,7 +104,7 @@ public class CommentServlet extends HttpServlet {
 
 		int processingNumber = 0; // 処理件数
 		UserCategoryStatusTaskBean taskDetail = null;
-		List<UserCommentBean> commentList  = new ArrayList();
+		List<UserCommentBean> commentList  = new ArrayList<>();
 
 		try {
 			// DAOを利用してコメントを追加
