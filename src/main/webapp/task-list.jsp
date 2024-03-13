@@ -73,7 +73,7 @@
 					//非活性化された編集ボタンにツールチップを付与
 					if(!loggedInUserId.equals(userIdOnTask)){
 					%>
-						<div class="description4"><%=task.getUserName() %>さんのみ権限があります。</div>
+						<div class="description4"><%=task.getUserName() %>さんのみ編集できます。</div>
 					<%
 					}
 					%>
