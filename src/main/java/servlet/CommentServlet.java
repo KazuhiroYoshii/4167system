@@ -49,6 +49,7 @@ public class CommentServlet extends HttpServlet {
 
 		UserCategoryStatusTaskBean taskDetail = null;
 		List<UserCommentBean> commentList  = new ArrayList<>();
+		int processingNumber = 2; // 投稿実行件数
 		int deleteResult = 2; // 削除実行件数
 
 		try {
@@ -65,7 +66,9 @@ public class CommentServlet extends HttpServlet {
 		request.setAttribute("taskDetail", taskDetail);
 		// コメント一覧表示用リストをリクエストスコープに設定
 		request.setAttribute("commentList", commentList);
-		// コメント一覧表示用リストをリクエストスコープに設定
+		// 投稿実行件数をリクエストスコープに設定
+		request.setAttribute("processingNumber", processingNumber);
+		// 削除実行件数をリクエストスコープに設定
 		request.setAttribute("deleteResult", deleteResult);
 
 		// セッションオブジェクトの取得
@@ -88,13 +91,13 @@ public class CommentServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの取得
-		String userId = request.getParameter("userId");
 		String comment = request.getParameter("comment");
 
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
 		// セッションスコープからの属性値の取得
 		int taskId = (int) session.getAttribute("taskId");
+		String userId = (String) session.getAttribute("userId");
 
 		// 新規コメントをpostCommentにセット
 		UserCommentBean postComment = new UserCommentBean();
@@ -105,7 +108,7 @@ public class CommentServlet extends HttpServlet {
 		// DAOの生成
 		CommentDAO commentDao = new CommentDAO();
 
-		int processingNumber = 0; // 処理件数
+		int processingNumber = 0; // 投稿実行件数
 		UserCategoryStatusTaskBean taskDetail = null;
 		List<UserCommentBean> commentList  = new ArrayList<>();
 
@@ -125,6 +128,8 @@ public class CommentServlet extends HttpServlet {
 		request.setAttribute("taskDetail", taskDetail);
 		// コメント一覧表示用リストをリクエストスコープに設定
 		request.setAttribute("commentList", commentList);
+		// 投稿実行件数をリクエストスコープに設定
+		request.setAttribute("processingNumber", processingNumber);
 
 		// 転送用オブジェクトの取得、転送
 		RequestDispatcher rd = request.getRequestDispatcher("comment.jsp");
