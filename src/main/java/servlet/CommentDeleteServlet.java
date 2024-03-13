@@ -46,8 +46,11 @@ public class CommentDeleteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//リクエストのエンコーディング方式を指定
+		request.setCharacterEncoding("UTF-8");
+		
 		//リクエストスコープから削除を実行するコメントIDを取得
-		int commentId = (int)request.getAttribute("commentId");
+		int commentId = Integer.parseInt(request.getParameter("commentId"));
 		
 		//セッションオブジェクトを取得、セッションスコープからtaskIdを取得
 		HttpSession session = request.getSession();

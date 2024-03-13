@@ -15,7 +15,7 @@
 	%>
 	<h1>コメント</h1>
 	<hr>
-	<h2>タスク情報</h2>
+	<!-- タスク詳細情報 -->
 	<table border="1">
 		<tr>
 			<th>タスク名</th>
@@ -33,34 +33,59 @@
 			<td><%=taskDetail.getStatusName() %>　</td>
 			<td><%=taskDetail.getMemo() %>　</td>
 		</tr>
-	</table><br>
-	
+	</table>
 	<%
 	//リクエストスコープからコメント情報を取得
 	List<UserCommentBean> commentList = new ArrayList<>();
 	commentList = (List) request.getAttribute("commentList");
 	%>
 	<h2>コメント一覧</h2>
+	<%
+	//削除実行用サーブレットで削除されたコメントがあればメッセージを表示
+	int deleteResult = 2;
+	deleteResult = (int)request.getAttribute("deleteResult");
+	if(deleteResult == 1){
+	%>
+		<b><%=deleteResult %>件のコメントを削除しました。</b>
+	<%
+	}else if(deleteResult == 0){
+	%>
+		<b>コメントを削除できませんでした。</b>
+	<%
+	}
+	%>
 	<table border="1">
 		<tr>
 			<th>投稿者</th>
 			<th>コメント内容</th>
 			<th>投稿日時</th>
+			<th>　</th>
 		</tr>
 		<%
+		//取得したリストからコメント情報を切り出し、表示
+		int commentId = 0;
 		for(UserCommentBean commentData : commentList){
+			commentId = commentData.getCommentId();
 		%>
 			<tr>
 				<td><%=commentData.getUserName() %></td>
 				<td><%=commentData.getComment() %></td>
 				<td><%=commentData.getUpdateDatetime() %></td>
+				<td><form action="CommentDeleteServlet" method="post">
+					<button type="submit" value="<%=commentId %>" name="commentId">削除</button>
+				</form></td>
 			</tr>
 		<%
 		}
 		%>
 	</table>
-
-	<br>
+		<%
+		if(commentId == 0){
+		%>
+			<b>登録されているコメントはありません。</b>
+		<%
+		}
+		%>
 	<form action="CommentServlet" method="post">
 		<h2>投稿</h2>
 		<textarea id="memo" name="memo" rows="8" cols="50" maxlength="100"> </textarea>
