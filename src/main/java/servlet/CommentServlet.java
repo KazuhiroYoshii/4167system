@@ -103,6 +103,7 @@ public class CommentServlet extends HttpServlet {
 		CommentDAO commentDao = new CommentDAO();
 
 		int processingNumber = 0; // 処理件数
+		int deleteResult = 2; // 削除実行件数
 		UserCategoryStatusTaskBean taskDetail = null;
 		List<UserCommentBean> commentList  = new ArrayList<>();
 
@@ -119,7 +120,7 @@ public class CommentServlet extends HttpServlet {
 		}
 
 		// コメント一覧表示用リストをリクエストスコープに設定
-		request.setAttribute("processingNumber", processingNumber);
+		request.setAttribute("deleteResult", deleteResult);
 		// タスク詳細情報をリクエストスコープに設定
 		request.setAttribute("taskDetail", taskDetail);
 		// コメント一覧表示用リストをリクエストスコープに設定
