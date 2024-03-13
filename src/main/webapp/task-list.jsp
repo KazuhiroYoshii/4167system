@@ -5,12 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>タスク一覧表示画面</title>
-<link rel="stylesheet" href="css/TaskList.css" type="text/css" />
 </head>
+<link rel="stylesheet" href="css/TaskList.css" type="text/css" />
 <body>
 	<!-- ログイン状態を判定 -->
 	<%@ include file ="login-check.jsp" %>
-
+	<header class="header">
+    	<p class="system">タスク管理システム</p>
+    	<p class="name">4167 SYSTEM</p>
+    </header>
 	<%
 	//リクエストスコープ内の一覧表示用リストを取得
 	List<UserCategoryStatusTaskBean> taskList = new ArrayList<>();
@@ -70,7 +73,7 @@
 					//非活性化された編集ボタンにツールチップを付与
 					if(!loggedInUserId.equals(userIdOnTask)){
 					%>
-						<div class="description4"><%=task.getUserName() %>さんのみ編集できます。</div>
+						<div class="description4"><%=task.getUserName() %>さんのみ権限があります。</div>
 					<%
 					}
 					%>

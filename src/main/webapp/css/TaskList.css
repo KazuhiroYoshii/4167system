@@ -4,6 +4,47 @@
 task-list.jspで用いるスタイルシート
 */
 
+*{
+	 font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+}
+.header {
+  background-color: rgb(18, 177, 190);
+  width: 100%;
+  height: 18%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.font{
+	font-size: 35px;
+ 	text-align: center;
+ 	color: #ffffff;
+ 	position: fixed;
+ 	top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.system{
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffffff;
+	line-height: 0;
+	padding: 10px 0 0 20px;
+}
+
+.name{
+	font-size: 45px;
+	font-weight: bold;
+	color: #ffffff;
+	line-height: 0;
+	padding-left: 20px;
+}
+
 /*
 引用元：「【CSS】ツールチップをHTMLとCSSだけで簡単に作る　4.テキストで左に作るツールチップ」
 https://www.jungleocean.com/programming/190308tooltip-css
