@@ -88,6 +88,10 @@ public class CommentDeleteServlet extends HttpServlet {
 		
 		// 削除実行件数をリクエストスコープに設定
 		request.setAttribute("deleteResult", deleteResult);
+		
+		//登録実行件数を初期化、リクエストスコープに設定
+		int processingNumber = 2;
+		request.setAttribute("processingNumber", processingNumber);
 
 		// 転送用オブジェクトの取得、転送
 		RequestDispatcher rd = request.getRequestDispatcher("comment.jsp");

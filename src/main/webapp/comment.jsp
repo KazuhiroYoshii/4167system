@@ -69,7 +69,7 @@
 		%>
 			<tr>
 				<td><%=commentData.getUserName() %></td>
-				<td><%=commentData.getComment() %></td>
+				<td><%=commentData.getComment() %>　</td>
 				<td><%=commentData.getUpdateDatetime() %></td>
 				<td><form action="CommentDeleteServlet" method="post">
 					<button type="submit" value="<%=commentId %>" name="commentId">削除</button>
@@ -86,11 +86,16 @@
 		<%
 		}
 		%>
+	<!-- コメント投稿機能 -->
+	<h2>投稿</h2>
 	<form action="CommentServlet" method="post">
-		<h2>投稿</h2>
-		<textarea id="memo" name="memo" rows="8" cols="50" maxlength="100"> </textarea>
+		<textarea name="comment" rows="8" cols="50" maxlength="100"> </textarea>
 		<br>
 		<input type="submit" value="投稿">
+	</form>
+	<br>
+	<form action="TaskListServlet" method="get">
+		<button type="submit">一覧画面に戻る</button>
 	</form>
 </body>
 </html>
