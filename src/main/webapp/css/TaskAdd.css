@@ -8,6 +8,7 @@
 	 font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
 
+
 .system{
 	font-size: 18px;
 	font-weight: bold;
@@ -25,7 +26,9 @@
 }
 
 table{
+	width: 90%;
 	margin: auto;
+	
 }
 
 textarea {
@@ -101,7 +104,7 @@ https://ui-hack.com/programming/html_css/howtocreate_aloginscreenwithcss/
 }
 
 .main {
-  width: 80%;
+  width: 70%;
   margin: 180px auto;
   padding: 20px;
   background-color: #ffffff;
@@ -116,8 +119,9 @@ h2 {
 
 input[type="text"],
 input[type="password"] {
-  width: 93%;
+  width: 90%;
   padding: 10px;
+  margin-top: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;

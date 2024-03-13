@@ -19,6 +19,9 @@
 	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
 	List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
 	List<UserCategoryStatusTaskBean> statusList = (List<UserCategoryStatusTaskBean>) request.getAttribute("StatusList");
+	
+	//セッションスコープからログイン済みユーザーのID、名前を取得
+	String loggedInUserId = (String)session.getAttribute("userId");
 	%>
 
 	<header class="header">
@@ -58,7 +61,16 @@
 								<%
 								for (UserCategoryStatusTaskBean user : userList) {
 								%>
-								<option value="<%=user.getUserId()%>"><%=user.getUserName()%></option>
+								<option value="<%=user.getUserId()%>"
+								<%
+								if(user.getUserId().equals(loggedInUserId)){
+								%>
+								selected
+								<%
+								}
+								%>
+								>
+								<%=user.getUserName()%></option>
 								<%
 								}
 								%>
@@ -83,10 +95,10 @@
 					</tr>
 				</table>
 				<table>
-				<tr>
-					<td><button type="submit">登録する</button></td>
-					<td><button type="reset">クリア</button>
-				</tr>
+					<tr>
+						<td><button type="submit">登録する</button></td>
+						<td><button type="reset">クリア</button>
+					</tr>
 				</table>
 			</form>
 			<br> <br>
