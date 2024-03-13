@@ -49,6 +49,7 @@ public class CommentServlet extends HttpServlet {
 
 		UserCategoryStatusTaskBean taskDetail = null;
 		List<UserCommentBean> commentList  = new ArrayList<>();
+		int deleteResult = 2; // 削除実行件数
 
 		try {
 			// DAOを利用して該当タスクの詳細情報を取得
@@ -64,6 +65,8 @@ public class CommentServlet extends HttpServlet {
 		request.setAttribute("taskDetail", taskDetail);
 		// コメント一覧表示用リストをリクエストスコープに設定
 		request.setAttribute("commentList", commentList);
+		// コメント一覧表示用リストをリクエストスコープに設定
+		request.setAttribute("deleteResult", deleteResult);
 
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
@@ -103,7 +106,6 @@ public class CommentServlet extends HttpServlet {
 		CommentDAO commentDao = new CommentDAO();
 
 		int processingNumber = 0; // 処理件数
-		int deleteResult = 2; // 削除実行件数
 		UserCategoryStatusTaskBean taskDetail = null;
 		List<UserCommentBean> commentList  = new ArrayList<>();
 
@@ -119,8 +121,6 @@ public class CommentServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// コメント一覧表示用リストをリクエストスコープに設定
-		request.setAttribute("deleteResult", deleteResult);
 		// タスク詳細情報をリクエストスコープに設定
 		request.setAttribute("taskDetail", taskDetail);
 		// コメント一覧表示用リストをリクエストスコープに設定
