@@ -91,7 +91,7 @@ public class CommentServlet extends HttpServlet {
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
 		// セッションスコープからの属性値の取得
-		int taskId = Integer.parseInt(request.getParameter("taskId"));
+		int taskId = (int) session.getAttribute("taskId");
 
 		// 新規コメントをpostCommentにセット
 		UserCommentBean postComment = new UserCommentBean();
@@ -118,6 +118,8 @@ public class CommentServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		// コメント一覧表示用リストをリクエストスコープに設定
+		request.setAttribute("processingNumber", processingNumber);
 		// タスク詳細情報をリクエストスコープに設定
 		request.setAttribute("taskDetail", taskDetail);
 		// コメント一覧表示用リストをリクエストスコープに設定
