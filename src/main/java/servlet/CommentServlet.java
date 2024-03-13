@@ -108,9 +108,10 @@ public class CommentServlet extends HttpServlet {
 		// DAOの生成
 		CommentDAO commentDao = new CommentDAO();
 
-		int processingNumber = 0; // 投稿実行件数
 		UserCategoryStatusTaskBean taskDetail = null;
 		List<UserCommentBean> commentList  = new ArrayList<>();
+		int processingNumber = 0; // 投稿実行件数
+		int deleteResult = 2; // 削除実行件数
 
 		try {
 			// DAOを利用してコメントを追加
@@ -130,6 +131,8 @@ public class CommentServlet extends HttpServlet {
 		request.setAttribute("commentList", commentList);
 		// 投稿実行件数をリクエストスコープに設定
 		request.setAttribute("processingNumber", processingNumber);
+		// 削除実行件数をリクエストスコープに設定
+		request.setAttribute("deleteResult", deleteResult);
 
 		// 転送用オブジェクトの取得、転送
 		RequestDispatcher rd = request.getRequestDispatcher("comment.jsp");
