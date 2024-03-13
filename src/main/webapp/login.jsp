@@ -9,17 +9,16 @@
 <link rel="stylesheet" href="css/Login.css" type="text/css" />
 <body>
 	<header class="header">
-    	<p class="font">タスク管理システム【4167system】</p>
+    	<p class="system">タスク管理システム</p>
+    	<p class="name">4167 SYSTEM</p>
     </header>
-    <div class="main">
-    	<main>
-			<form action="LoginServlet" method="post">
-				 <p class="fsize">ログイン画面</p>
-				 <input type="text" placeholder="Username" name="userId" />
-				 <input type="password" placeholder="Password" name="password" />
-				 <button type="submit">ログイン</button>
-			</form>
-		</main>
-	</div>
+    <main class="main">
+		<form action="LoginServlet" method="post">
+			 <p class="fsize">LOGIN</p>
+			 <input type="text" placeholder="Username" name="userId" />
+			 <input type="password" placeholder="Password" name="password" />
+			 <button type="submit">Login</button>
+		</form>
+	</main>
 </body>
 </html>

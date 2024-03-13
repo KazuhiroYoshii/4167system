@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-/*
-引用元：HTML・CSSで作るログイン画面！初心者でも簡単に実践できる！ | UI HACK
-https://ui-hack.com/programming/html_css/howtocreate_aloginscreenwithcss/
-*/
-
 *{
 	 font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
@@ -35,43 +30,33 @@ https://ui-hack.com/programming/html_css/howtocreate_aloginscreenwithcss/
 	padding-left: 20px;
 }
 
-
-.fsize{
-  font-size: 24px;
-  text-align: center;
+.main{
+	 margin: 150px 0 auto;
+	 text-align:center;
 }
 
-.main {
-  width: 300px;
-  margin: 180px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+h1{
+	font-size: 40px;
+	font-weight: bold;
+	color: rgb(18, 177, 190);
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: 93%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+p{
+	font-size: 25px;
+	padding: 10px;
+	line-height: 1;
 }
 
 button[type="submit"] {
-  width: 100%;
+  width: 30%;
+  margin: 10px auto;
   padding: 10px;
   background-color: rgb(18, 177, 190);
   color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 button[type="submit"]:hover {
