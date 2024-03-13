@@ -8,6 +8,7 @@ https://ui-hack.com/programming/html_css/howtocreate_aloginscreenwithcss/
 *{
 	 font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
+
 .header {
   background-color: rgb(18, 177, 190);
   width: 100%;
@@ -35,16 +36,17 @@ https://ui-hack.com/programming/html_css/howtocreate_aloginscreenwithcss/
 	padding-left: 20px;
 }
 
-
 .fsize{
-  font-size: 24px;
-  text-align: center;
+	font-size: 30px;
+	text-align: center;
+	font-weight: bold;
+	color: rgb(18, 177, 190);
 }
 
 .main {
   width: 300px;
-  margin: 180px auto;
-  padding: 20px;
+  margin: 180px auto 0;
+  padding: 18px;
   background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -66,6 +68,7 @@ input[type="password"] {
 
 button[type="submit"] {
   width: 100%;
+  margin: 10px 0 20px 0;
   padding: 10px;
   background-color: rgb(18, 177, 190);
   color: #ffffff;

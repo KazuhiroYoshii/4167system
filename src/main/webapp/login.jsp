@@ -17,7 +17,7 @@
 			 <p class="fsize">LOGIN</p>
 			 <input type="text" placeholder="Username" name="userId" />
 			 <input type="password" placeholder="Password" name="password" />
-			 <button type="submit">Login</button>
+			 <button type="submit">LOGIN</button>
 		</form>
 	</main>
 </body>
