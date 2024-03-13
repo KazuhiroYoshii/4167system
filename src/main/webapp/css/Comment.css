@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/*
+task-list.jspで用いるスタイルシート
+*/
+
+/*
+引用元：「【CSS】ツールチップをHTMLとCSSだけで簡単に作る　4.テキストで左に作るツールチップ」
+https://www.jungleocean.com/programming/190308tooltip-css
+*/
+.tooltip4{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+.tooltip4 p{
+    margin:0;
+    padding:0;
+}
+.description4 {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.6em;
+    color: #fff;
+    border-radius: 5px;
+    background: #000;
+    width: 100px;
+}
+.description4:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 130px;
+    border: 15px solid transparent;
+    border-top: 15px solid #000;
+    margin-left: -15px;
+    transform: rotateZ(270deg);
+}
+.tooltip4:hover .description4{
+    display: inline-block;
+    top: 0px;
+    left: -130px;
+}

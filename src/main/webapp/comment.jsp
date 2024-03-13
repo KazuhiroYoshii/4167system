@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" 
 	import= "java.util.List, java.util.ArrayList, model.entity.UserCategoryStatusTaskBean, 
-	model.entity.UserCommentBean" %>
+		model.entity.UserCommentBean" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>コメント</title>
+<link rel="stylesheet" href="css/Comment.css" type="text/css" />
 </head>
 <body>
 	<% 
@@ -27,17 +28,22 @@
 		</tr>
 		<tr>
 			<td><%=taskDetail.getTaskName() %></td>
-			<td><%=taskDetail.getCategoryName() %></td>
+			<td><%=taskDetail.getCategoryName() %>　</td>
 			<td><%=taskDetail.getLimitDate() %></td>
-			<td><%=taskDetail.getUserName() %>　</td>
-			<td><%=taskDetail.getStatusName() %>　</td>
+			<td><%=taskDetail.getUserName() %></td>
+			<td><%=taskDetail.getStatusName() %></td>
 			<td><%=taskDetail.getMemo() %>　</td>
 		</tr>
 	</table>
+	
+	<!-- コメント一覧、削除機能 -->
 	<%
 	//リクエストスコープからコメント情報を取得
 	List<UserCommentBean> commentList = new ArrayList<>();
 	commentList = (List) request.getAttribute("commentList");
+	
+	//セッションスコープからログイン中のユーザーIDを取得
+	String loggedInUserId = (String)session.getAttribute("userId");
 	%>
 	<h2>コメント一覧</h2>
 	<%
@@ -66,13 +72,33 @@
 		int commentId = 0;
 		for(UserCommentBean commentData : commentList){
 			commentId = commentData.getCommentId();
+			String commentUserId = commentData.getUserId();
 		%>
 			<tr>
 				<td><%=commentData.getUserName() %></td>
 				<td><%=commentData.getComment() %>　</td>
 				<td><%=commentData.getUpdateDatetime() %></td>
 				<td><form action="CommentDeleteServlet" method="post">
-					<button type="submit" value="<%=commentId %>" name="commentId">削除</button>
+					<div class="tooltip4">
+						<button id="btn" type="submit" value="<%=commentId %>" name="commentId"
+						<%
+						//ログイン中のユーザーとコメントしたユーザーが異なる場合は削除ボタン非活性
+						if(!loggedInUserId.equals(commentUserId)){
+						%>
+							disabled
+						<%
+						}
+						%>
+						>削除</button>
+					<%
+					//非活性化された削除ボタンにツールチップを付与
+					if(!loggedInUserId.equals(commentUserId)){
+					%>
+						<div class="description4"><%=commentData.getUserName() %>さんのみ削除できます。</div>
+					<%
+					}
+					%>
+					</div>
 				</form></td>
 			</tr>
 		<%
@@ -89,7 +115,7 @@
 	<!-- コメント投稿機能 -->
 	<h2>投稿</h2>
 	<form action="CommentServlet" method="post">
-		<textarea name="comment" rows="8" cols="50" maxlength="100"> </textarea>
+		<textarea name="comment" rows="6" cols="50" maxlength="100" required></textarea>
 		<br>
 		<input type="submit" value="投稿">
 	</form>
