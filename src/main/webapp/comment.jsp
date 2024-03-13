@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>コメント</title>
 <link rel="stylesheet" href="css/Comment.css" type="text/css" />
+<script src="js/deleteComment.js"></script>
 </head>
 <body>
 	<% 
@@ -80,7 +81,8 @@
 				<td><%=commentData.getUpdateDatetime() %></td>
 				<td><form action="CommentDeleteServlet" method="post">
 					<div class="tooltip4">
-						<button id="btn" type="submit" value="<%=commentId %>" name="commentId"
+						<button class="btn btn-primary" onClick = "return checkDelete()"
+								type="submit" value="<%=commentId %>" name="commentId"
 						<%
 						//ログイン中のユーザーとコメントしたユーザーが異なる場合は削除ボタン非活性
 						if(!loggedInUserId.equals(commentUserId)){
