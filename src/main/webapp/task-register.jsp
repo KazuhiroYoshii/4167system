@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク登録画面</title>
+<title>タスク登録｜4167 SYSTEM</title>
 <link rel="stylesheet" href="css/TaskAdd.css" type="text/css" />
 <script src="js/date.js"></script>
 </head>
@@ -31,12 +31,12 @@
 	<div class="main">
 		<main>
 			<form action="TaskAddServlet" method="POST">
-				<p class="fsize">タスク登録</p>
+				<h1>TASK REGISTRATION</h1>
 				<table border="1">
 					<tr>
 						<th>タスク名</th>
-						<td><input type="text" name="task_name" size="100"
-							maxlength="50" required></td>
+						<td><input type="text" name="task_name" maxlength="50"
+							required></td>
 					</tr>
 					<tr>
 						<th>カテゴリ情報</th>
@@ -62,15 +62,13 @@
 								for (UserCategoryStatusTaskBean user : userList) {
 								%>
 								<option value="<%=user.getUserId()%>"
-								<%
+									<%
 								if(user.getUserId().equals(loggedInUserId)){
 								%>
-								selected
-								<%
+									selected <%
 								}
-								%>
-								>
-								<%=user.getUserName()%></option>
+								%>>
+									<%=user.getUserName()%></option>
 								<%
 								}
 								%>
@@ -94,16 +92,19 @@
 						<td><textarea name="memo" rows="4" cols="25" maxlength="100"></textarea></td>
 					</tr>
 				</table>
+
 				<table>
 					<tr>
-						<td><button type="submit">登録する</button></td>
-						<td><button type="reset">クリア</button>
+						<td class="btn"><button type="submit">登録する</button></td>
 					</tr>
 				</table>
 			</form>
-			<br> <br>
 			<form action="menu.jsp" method="POST">
-				<input type="submit" value="メニュー画面に戻る">
+				<table>
+					<td><div class="menu">
+							<input type="submit" value="メニューに戻る">
+						</div></td>
+				</table>
 			</form>
 		</main>
 	</div>
