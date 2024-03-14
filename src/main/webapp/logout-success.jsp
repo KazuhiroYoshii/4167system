@@ -4,20 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログアウト画面</title>
+<title>ログアウト｜4167SYSTEM</title>
 </head>
+<link rel="stylesheet" href="css/Logout.css" type="text/css" />
 <body>
-	<h1>ログアウト画面</h1>
-	<hr>
-	
-	<h1>ログアウトしました。</h1>
-	<%
-		session.invalidate();
-	%>
-	<div>
+	<header class="header">
+    	<p class="system">タスク管理システム</p>
+    	<p class="name">4167 SYSTEM</p>
+    </header>
+    <main class="main">
+		<h1>LOGOUT</h1>
+		<h3>ログアウトしました。</h3>
+		<%
+			session.invalidate();
+		%>
 		<form action="login.jsp" method="POST">
-			<input type="submit" value="ログイン画面へ">
+			<button type="submit">ログイン</button>
 		</form>
-	</div>
+	</main>
 </body>
 </html>
