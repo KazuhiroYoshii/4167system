@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク一覧表示画面</title>
+<title>タスク一覧｜4167 SYSTEM</title>
 </head>
 <link rel="stylesheet" href="css/TaskList.css" type="text/css" />
 <%@ include file ="login-check.jsp" %>
@@ -91,7 +91,7 @@
 				%>
 			</tbody>
 		</table>
-		<button class="menu" onclick="location.href='menu.jsp'">メニュー画面に戻る</button>
+		<button class="menu" onclick="location.href='menu.jsp'">メニューに戻る</button>
 	</main>
 </body>
 </html>

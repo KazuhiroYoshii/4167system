@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン画面</title>
+<title>ログイン｜4167 SYSTEM</title>
 </head>
 <link rel="stylesheet" href="css/Login.css" type="text/css" />
 <body>

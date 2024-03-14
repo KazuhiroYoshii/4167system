@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>メニュー画面</title>
+<title>メニュー｜4167 SYSTEM</title>
 </head>
 <link rel="stylesheet" href="css/Menu.css" type="text/css" />
 <%@ include file ="login-check.jsp" %>
@@ -16,7 +16,7 @@
 			<button class="add" type="submit">タスク登録</button>	
 		</form>
 		<form action="TaskListServlet" method="get">
-			<button class="list" type="submit">タスク一覧表示</button>
+			<button class="list" type="submit">タスク一覧</button>
 		</form>
 		<form action="logout-success.jsp" method="post">
 			<button class="logout" type="submit">ログアウト</button>
