@@ -12,7 +12,7 @@ https://ui-hack.com/programming/html_css/howtocreate_aloginscreenwithcss/
 .header {
   background-color: rgb(18, 177, 190);
   width: 100%;
-  height: 18%;
+  height: 105px;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,7 +29,7 @@ https://ui-hack.com/programming/html_css/howtocreate_aloginscreenwithcss/
 }
 
 .name{
-	font-size: 45px;
+	font-size: 40px;
 	font-weight: bold;
 	color: #ffffff;
 	line-height: 0;
