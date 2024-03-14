@@ -1,48 +1,115 @@
 @charset "UTF-8";
-
 /*
-task-list.jspで用いるスタイルシート
+* 引用元：https://find-a.jp/seotimes/responsive-css-table-design/
 */
 
 *{
 	 font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 }
-.header {
+
+main{
+	 margin: 150px auto 40px;
+	 text-align:center;
+}
+
+h1{
+	font-size: 40px;
+	font-weight: bold;
+	color: rgb(18, 177, 190);
+}
+
+.table {
+  border-collapse: collapse;
+  margin: 0 auto 15px; 
+  border: 1px rgb(208, 208, 208) solid;
+}
+
+.table tr {
+  background-color: #e6f1f6;
+}
+
+.table tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.table th, .table td {
+  padding: 12px;
+}
+
+.table th {
+  font-weight: bold;
+  text-align: center;
+  background-color: rgb(229, 229, 229);
+}
+
+.task{
+	width: 170px;
+}
+
+.category{
+	width: 150px;
+}
+
+.limit{
+	width: 50px;
+}
+
+.user{
+	width: 95px;
+}
+
+.status{
+	width: 95px;
+}
+
+.memo{
+	width: 265px;
+}
+
+.buttun{
+	width: 70px;
+}
+
+.alter,.delete,.comment{
+	width: 70px;
+	padding: 5px;
+   background-color: rgb(255, 255, 255);
+  color: rgb(18, 177, 190);
+  border: solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.alter:hover,.delete:hover,.comment:hover{
+	background-color: rgb(229, 229, 229);
+ color: black;
+ opacity: 0.8;
+}
+
+.alter:disabled{
+	width: 70px;
+	padding: 5px;
+   background-color: rgb(226, 226, 226);
+  color: rgb(167, 167, 167);
+  border: solid 1px;
+  border-radius: 4px;
+}
+
+.menu{
+	width: 30%;
+  margin: 20px auto;
+  padding: 10px;
   background-color: rgb(18, 177, 190);
-  width: 100%;
-  height: 18%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.font{
-	font-size: 35px;
- 	text-align: center;
- 	color: #ffffff;
- 	position: fixed;
- 	top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-}
-
-.system{
-	font-size: 18px;
-	font-weight: bold;
-	color: #ffffff;
-	line-height: 0;
-	padding: 10px 0 0 20px;
-}
-
-.name{
-	font-size: 45px;
-	font-weight: bold;
-	color: #ffffff;
-	line-height: 0;
-	padding-left: 20px;
+.menu:hover{
+	background-color: rgb(14, 134, 143);
+	opacity: 0.8;
 }
 
 /*
