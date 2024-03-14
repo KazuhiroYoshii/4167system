@@ -35,7 +35,7 @@
 			<td><%=taskDetail.getStatusName() %></td>
 			<td><%=taskDetail.getMemo() %>　</td>
 		</tr>
-	</table>
+ 	</table>
 	
 	<!-- コメント一覧、削除機能 -->
 	<%
@@ -120,6 +120,7 @@
 		<textarea name="comment" rows="6" cols="50" maxlength="100" required></textarea>
 		<br>
 		<input type="submit" value="投稿">
+		<input type="reset" value="クリア">
 	</form>
 	<br>
 	<form action="TaskListServlet" method="get">
