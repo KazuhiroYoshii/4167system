@@ -9,14 +9,17 @@
 <title>コメント</title>
 <link rel="stylesheet" href="css/Comment.css" type="text/css" />
 <script src="js/deleteComment.js"></script>
+<!-- ログイン状態を判定 -->
+<%@ include file ="login-check.jsp" %>
+<!-- ヘッダー読み込み -->
+<%@ include file ="header.jsp" %>
 </head>
 <body>
+<main class="main">
 	<% 
 	//リクエストスコープからタスクの詳細情報を取得
 	UserCategoryStatusTaskBean taskDetail = (UserCategoryStatusTaskBean)request.getAttribute("taskDetail");
 	%>
-	<h1>コメント</h1>
-	<hr>
 	<!-- タスク詳細情報 -->
 	<table border="1">
 		<tr>
@@ -46,7 +49,8 @@
 	//セッションスコープからログイン中のユーザーIDを取得
 	String loggedInUserId = (String)session.getAttribute("userId");
 	%>
-	<h2>コメント一覧</h2>
+	<h1>コメント</h1>
+	<hr>
 	<%
 	//削除実行用サーブレットで削除されたコメントがあればメッセージを表示
 	int deleteResult = 2;
@@ -126,5 +130,6 @@
 	<form action="TaskListServlet" method="get">
 		<button type="submit">一覧画面に戻る</button>
 	</form>
+</main>
 </body>
 </html>

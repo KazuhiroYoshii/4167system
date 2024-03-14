@@ -4,6 +4,20 @@
 task-list.jspで用いるスタイルシート
 */
 
+*{
+	 font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+}
+
+.main{
+	 margin: 150px 0 70px;
+	 text-align:center;
+}
+
+table{
+	width: 70%;
+	margin: auto;
+}
+
 /*
 引用元：「【CSS】ツールチップをHTMLとCSSだけで簡単に作る　4.テキストで左に作るツールチップ」
 https://www.jungleocean.com/programming/190308tooltip-css
