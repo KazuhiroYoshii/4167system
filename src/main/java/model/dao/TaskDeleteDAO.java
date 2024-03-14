@@ -75,5 +75,34 @@ public class TaskDeleteDAO {
 		
 		return result;
 	}
+	
+	/**
+	 * タスクIDに該当するタスクに付随するコメントを全て削除するメソッド
+	 * @param taskId タスクID
+	 * @return コメントの削除実行件数
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	public int deleteAllComments(int taskId) throws ClassNotFoundException, SQLException {
+		
+		//削除実行件数を0で初期化
+		int result = 0;
+		
+		String sql = "DELETE\n"
+				+ "    FROM t_comment\n"
+				+ "WHERE\n"
+				+ "    task_id = ?";
+		
+		//データベースへの接続、SQL文の用意
+		try(Connection con = ConnectionManager.getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			//プレースホルダに値を設定、実行
+			pstmt.setInt(1, taskId);
+			result = pstmt.executeUpdate();
+		}
+		
+		return result;
+	}
 
 }

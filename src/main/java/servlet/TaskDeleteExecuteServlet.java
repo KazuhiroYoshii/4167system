@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,19 +42,31 @@ public class TaskDeleteExecuteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserCategoryStatusTaskBean task = (UserCategoryStatusTaskBean)session.getAttribute("task");
 		
-		//セッションスコープからタスクに付随するコメント数を取得
-		int numberOfComments = (int)session.getAttribute("numberOfComments");
-		
 		//TaskListDAOの削除実行メソッドの引数に用いるtaskIdを切り出し
 		int taskId = task.getTaskId();
 		
-		//TaskListDAOをインスタンス化、メソッドを用いて削除を実行し実行件数を取得
+		//セッションスコープからタスクに付随するコメント数を取得
+		int numberOfComments = (int)session.getAttribute("numberOfComments");
+		
+		//TaskListDAOをインスタンス化、該当タスクにコメントが1件でもついている場合はコメント全件削除
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
-		int result = taskDeleteDao.delete(taskId);
+		int commentDeleteResult = 0;
+		if(numberOfComments > 0) {
+			try {
+				commentDeleteResult = taskDeleteDao.deleteAllComments(taskId);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		//コメントの削除実行件数をリクエストスコープに設定
+		request.setAttribute("commentDeleteResult", commentDeleteResult);
+		
+		//タスク削除を実行し実行件数を取得
+		int taskDeleteResult = taskDeleteDao.delete(taskId);
 		
 		//実行件数が1の場合のみ削除完了画面のurl、それ以外の場合は削除失敗画面のurlを設定
 		String url = null;
-		if(result == 1) {
+		if(taskDeleteResult == 1) {
 			url = "delete-success.jsp";
 		}else {
 			url = "delete-failure.jsp";

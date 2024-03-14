@@ -23,7 +23,8 @@
 	<h1>タスク削除確認画面</h1>
 	<hr>
 	<%
-	if(numberOfComments != 0){
+	//タスクにコメントが1件でもついている場合はメッセージを変更
+	if(numberOfComments > 0){
 	%>
 		<h3>こちらのタスクにはコメントが<%=numberOfComments %>件付いています。</h3>
 		<h3>削除してもよろしいですか？</h3>
@@ -44,11 +45,18 @@
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>
 	</table>
 	<br>
-	<form action="CommentServlet" method="get">
-		<input type="hidden" value="<%=taskId %>" name="taskId">
-		<button type="submit">コメントを見る</button>
-	</form>
-	<br>
+	<%
+	//タスクにコメントが1件でもついている場合は「コメントを見る」ボタンを追加
+	if(numberOfComments > 0){
+	%>
+		<form action="CommentServlet" method="get">
+			<input type="hidden" value="<%=taskId %>" name="taskId">
+			<button type="submit">コメントを見る</button>
+		</form>
+		<br>
+	<%
+	}
+	%>
 	<button onclick="location.href='TaskDeleteExecuteServlet'" >削除する</button><br>
 	<br>
 	<button onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>

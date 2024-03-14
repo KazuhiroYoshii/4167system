@@ -2,8 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,11 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.dao.CommentDAO;
 import model.dao.TaskDeleteDAO;
 import model.dao.TaskListDAO;
 import model.entity.UserCategoryStatusTaskBean;
-import model.entity.UserCommentBean;
 
 /**
  * 一覧表示画面からタスク削除確認画面への遷移を制御するサーブレット
@@ -70,16 +66,16 @@ public class TaskDeleteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		//CommentDAOをインスタンス化、当該タスクのコメント情報を取得
-		CommentDAO commentDao = new CommentDAO();
-		List<UserCommentBean> commentList = new ArrayList<>();
-		try {
-			commentList = commentDao.selectComment(taskId);
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+//		//CommentDAOをインスタンス化、当該タスクのコメント情報を取得
+//		CommentDAO commentDao = new CommentDAO();
+//		List<UserCommentBean> commentList = new ArrayList<>();
+//		try {
+//			commentList = commentDao.selectComment(taskId);
+//		} catch (ClassNotFoundException | SQLException e) {
+//			e.printStackTrace();
+//		}
 		
-		//セッションスコープにタスク詳細情報、コメント数を設定を設定
+		//セッションスコープにタスク詳細情報、コメント数を設定
 		HttpSession session = request.getSession();
 		session.setAttribute("task", task);
 		session.setAttribute("numberOfComments", numberOfComments);
