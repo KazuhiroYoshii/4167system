@@ -6,19 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク登録成功画面</title>
+<title>タスク登録成功｜4167 SYSTEM</title>
 </head>
 <body>
-	<%@ include file ="login-check.jsp" %>
-	
+	<%@ include file="login-check.jsp"%>
+
 	<%
-	UserCategoryStatusTaskBean taskInfo 
-		= (UserCategoryStatusTaskBean) request.getAttribute("taskInfo");
+	UserCategoryStatusTaskBean taskInfo = (UserCategoryStatusTaskBean) request.getAttribute("taskInfo");
 	%>
-	<h1>タスク登録成功画面</h1>
+	<h1>タスク登録成功</h1>
 	<hr>
 	<h3>タスク情報を登録しました。</h3>
-	
+
 	<table border=1>
 		<tr>
 			<th>タスク名</th>
@@ -31,15 +30,15 @@
 		<tr>
 			<th>期限</th>
 			<%
-				if(taskInfo.getLimitDate() == ""){
+			if (taskInfo.getLimitDate() == "") {
 			%>
-					<td>未設定</td>
+			<td>未設定</td>
 			<%
-				}else{
+			} else {
 			%>
-					<td><%=taskInfo.getLimitDate() %>　</td>
+			<td><%=taskInfo.getLimitDate()%></td>
 			<%
-				}
+			}
 			%>
 		</tr>
 		<tr>
@@ -57,9 +56,19 @@
 	</table>
 	<br>
 
-	<form action="menu.jsp" method="POST">
-		<input type="submit" value="メニュー画面に戻る">
-	</form>
-
+	<table>
+		<tr>
+			<td>
+				<form action="menu.jsp" method="POST">
+					<input type="submit" value="メニューに戻る">
+				</form>
+			</td>
+			<td>
+				<form action="TaskListServlet" method="POST">
+					<input type="submit" value="タスク一覧へ">
+				</form>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
