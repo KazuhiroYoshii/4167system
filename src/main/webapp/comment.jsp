@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>コメント</title>
+<title>コメント｜4167 SYSTEM</title>
 <link rel="stylesheet" href="css/Comment.css" type="text/css" />
 <script src="js/deleteComment.js"></script>
 <!-- ログイン状態を判定 -->
@@ -24,10 +24,10 @@
 	<table border="1">
 		<tr>
 			<th>タスク名</th>
-			<th>カテゴリ情報</th>
+			<th>カテゴリ</th>
 			<th>期限</th>
-			<th>担当者情報</th>
-			<th>ステータス情報</th>
+			<th>担当者</th>
+			<th>ステータス</th>
 			<th>メモ</th>
 		</tr>
 		<tr>
@@ -50,7 +50,6 @@
 	String loggedInUserId = (String)session.getAttribute("userId");
 	%>
 	<h1>コメント</h1>
-	<hr>
 	<%
 	//削除実行用サーブレットで削除されたコメントがあればメッセージを表示
 	int deleteResult = 2;
@@ -114,7 +113,7 @@
 		<%
 		if(commentId == 0){
 		%>
-			<b>登録されているコメントはありません。</b>
+			<b><br>登録されているコメントはありません。</b>
 		<%
 		}
 		%>
@@ -123,12 +122,12 @@
 	<form action="CommentServlet" method="post">
 		<textarea name="comment" rows="6" cols="50" maxlength="100" required></textarea>
 		<br>
-		<input type="submit" value="投稿">
 		<input type="reset" value="クリア">
+		<input type="submit" value="投稿">
 	</form>
 	<br>
 	<form action="TaskListServlet" method="get">
-		<button type="submit">一覧画面に戻る</button>
+		<button type="submit">一覧に戻る</button>
 	</form>
 </main>
 </body>

@@ -5,11 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>削除完了画面</title>
+<link rel="stylesheet" href="css/TaskConfirm.css" type="text/css" />
+<!-- ログイン状態を判定 -->
+<%@ include file ="login-check.jsp" %>
+<!-- ヘッダー読み込み -->
+<%@ include file ="header.jsp" %>
 </head>
 <body>
-	<!-- ログイン状態を判定 -->
-	<%@ include file ="login-check.jsp" %>
-
+<main class="main">
 	<%
 	//セッションスコープから選択したタスクの詳細情報を取得
 	UserCategoryStatusTaskBean task = (UserCategoryStatusTaskBean)session.getAttribute("task");
@@ -17,9 +20,6 @@
 	//リクエストスコープからコメントの削除実行件数を取得
 	int commentDeleteResult = (int)request.getAttribute("commentDeleteResult");
 	%>
-	
-	<h1>タスク削除完了画面</h1>
-	<hr>
 	<%
 	//コメントを削除した場合のみメッセージを変更
 	if(commentDeleteResult > 0){
@@ -33,7 +33,7 @@
 	}
 	%>
 	
-	<table border = "1">
+	<table class="table" border = "1">
 		<!-- テーブル内で詳細情報を切り出し、表示 -->
 		<tr><th>タスク名</th><td><%=task.getTaskName() %></td></tr>
 		<tr><th>カテゴリ情報</th><td><%=task.getCategoryName() %></td></tr>
@@ -43,9 +43,8 @@
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>
 	</table>
 	<br>
-	<button onclick="location.href='TaskListServlet'" >一覧画面に戻る</button><br>
-	<br>
-	<button onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
-
+	<button class="menu" id="bottomBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
+	<button class="menu" id="bottomBtn" onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
+</main>
 </body>
 </html>
