@@ -35,11 +35,12 @@
 					<th class="buttun"></th>
 				</tr>
 				<%
+				int taskId = 0;
 				//リクエストスコープから取得した一覧表示用リストを切り分け、表示
 				for(UserCategoryStatusTaskBean task : taskList){
 					
 					//タスクID
-					int taskId = task.getTaskId();
+					taskId = task.getTaskId();
 					
 					//タスクごとのユーザーID
 					String userIdOnTask = task.getUserId();
@@ -91,6 +92,13 @@
 				%>
 			</tbody>
 		</table>
+		<%
+		if(taskId == 0){
+		%>
+			<h3><br>登録されているコメントはありません。<br></h3>
+		<%
+		}
+		%>
 		<button class="menu" onclick="location.href='menu.jsp'">メニューに戻る</button>
 	</main>
 </body>
