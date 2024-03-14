@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク登録失敗画面</title>
+<title>タスク登録失敗｜4167 SYSTEM</title>
 </head>
 <body>
 	<%@ include file ="login-check.jsp" %>

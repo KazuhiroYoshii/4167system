@@ -53,15 +53,8 @@
 			<td><%=alteredTask.getMemo()%></td>
 		</tr>
 	</table><br>
-	<table>
-		<tr>
-			<td><form action="TaskListServlet" method="post">
+	<td><form action="TaskListServlet" method="post">
 				<input type="submit" value="一覧画面に戻る">
 			</form></td>
-			<td><form action="menu.jsp">
-				<input type="submit" value="メニュー画面に戻る">
-			</form></td>
-		</tr>
-	</table>
 </body>
 </html>
