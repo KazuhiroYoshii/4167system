@@ -41,6 +41,9 @@ public class TaskDeleteExecuteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserCategoryStatusTaskBean task = (UserCategoryStatusTaskBean)session.getAttribute("task");
 		
+		//セッションスコープからタスクに付随するコメント数を取得
+		int numberOfComments = (int)session.getAttribute("numberOfComments");
+		
 		//TaskListDAOの削除実行メソッドの引数に用いるtaskIdを切り出し
 		int taskId = task.getTaskId();
 		

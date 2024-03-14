@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.dao.CommentDAO;
+import model.dao.TaskDeleteDAO;
 import model.dao.TaskListDAO;
 import model.entity.UserCategoryStatusTaskBean;
+import model.entity.UserCommentBean;
 
 /**
  * 一覧表示画面からタスク削除確認画面への遷移を制御するサーブレット
@@ -48,16 +54,35 @@ public class TaskDeleteServlet extends HttpServlet {
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
 		
-		//一覧表示画面で選択されたレコードのtaskIdを取得
+		//一覧表示画面で選択されたタスクのtaskIdを取得
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
 		
-		//DAOをインスタンス化、当該レコードの詳細情報取得
+		//TaskListDAOをインスタンス化、当該タスクの詳細情報を取得
 		TaskListDAO taskListDao = new TaskListDAO();
 		UserCategoryStatusTaskBean task = taskListDao.getTaskData(taskId);
 		
-		//セッションスコープに詳細情報を設定
+		//TaskDeleteDAOをインスタンス化、当該タスクに付随するコメント数を取得
+		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
+		int numberOfComments = 0;
+		try {
+			numberOfComments = taskDeleteDao.countComments(taskId);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//CommentDAOをインスタンス化、当該タスクのコメント情報を取得
+		CommentDAO commentDao = new CommentDAO();
+		List<UserCommentBean> commentList = new ArrayList<>();
+		try {
+			commentList = commentDao.selectComment(taskId);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//セッションスコープにタスク詳細情報、コメント数を設定を設定
 		HttpSession session = request.getSession();
 		session.setAttribute("task", task);
+		session.setAttribute("numberOfComments", numberOfComments);
 		
 		//転送用オブジェクトの取得、転送
 		RequestDispatcher rd = request.getRequestDispatcher("delete-confirm.jsp");

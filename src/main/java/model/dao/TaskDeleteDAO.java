@@ -2,6 +2,7 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 public class TaskDeleteDAO {
 	
 	/**
+	 * 削除実行用メソッド
 	 * @param taskId 削除したいタスクのID
 	 * @return 該当レコードの削除実行件数
 	 */
@@ -38,6 +40,37 @@ public class TaskDeleteDAO {
 			}
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * タスクに付けられたコメント数を取得するメソッド
+	 * @param taskId タスクID
+	 * @return タスクIDに対応するt_commentテーブルのレコード数
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public int countComments(int taskId) throws ClassNotFoundException, SQLException {
+		
+		//コメント数を0で初期化
+		int result = 0;
+		
+		String sql = "SELECT COUNT(*) FROM t_comment WHERE task_id = ?";
+		
+		//データベースへの接続、SQL文の用意
+		try(Connection con = ConnectionManager.getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			//プレースホルダに値を設定、実行
+			pstmt.setInt(1, taskId);
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			//取得データの1カラム目にある数値を取得
+			result = rs.getInt(1);
 		}
 		
 		return result;
