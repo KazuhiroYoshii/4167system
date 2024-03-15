@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>削除完了｜4167 SYSTEM</title>
-<link rel="stylesheet" href="css/TaskDeleteConfirm.css" type="text/css" />
+<link rel="stylesheet" href="css/TaskDeleteResult.css" type="text/css" />
 <!-- ログイン状態を判定 -->
 <%@ include file ="login-check.jsp" %>
 <!-- ヘッダー読み込み -->
