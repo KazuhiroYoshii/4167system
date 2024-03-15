@@ -9,7 +9,7 @@
 }
 
 .main {
-  width: 80%;
+  width: 75%;
   margin: 40px auto;
   background-color: #ffffff;
 }
@@ -36,7 +36,6 @@ table tr:nth-child(odd) {
 }
 
 table th, .table td {
-  padding: 12px;
   width: 30%;
 }
 
@@ -51,8 +50,8 @@ input[type="text"]{
   width: 90%;
   font-size: 15px;
   padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px auto;
+  margin-left: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -61,8 +60,8 @@ select{
   width: 50%;
   font-size: 15px;
   padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px auto;
+  margin-left: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -71,8 +70,8 @@ input[type="date"]{
   width: 48%;
   padding: 5px;
   font-size: 15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px auto;
+  margin-left: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -81,17 +80,17 @@ textarea {
   width: 90%;
   padding: 5px;
   font-size: 15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px auto;
+  margin-left: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 
 button[type="submit"] {
-  width: 30%;
-  margin: 20px auto;
+  width: 40%;
   padding: 10px;
+  margin-bottom: 40px;
   text-align: center;
   background-color: rgb(18, 177, 190);
   color: #ffffff;
@@ -107,16 +106,17 @@ button[type="submit"]:hover {
 }
 
 .btn {
-	width: 30%;
-	text-align: center;
-	margin: 0 auto 15px; 
+	width: 50%;
+	text-align: right;
+	margin-bottom: 40px;
+	
 }
 
 
-input[type="submit"] {
-  width: 30%;
-  margin: 40px auto;
+input[type="button"] {
+  width: 40%;
   padding: 10px;
+  margin-bottom: 40px;
   text-align: center;
   background-color: rgb(255, 255, 255);
   color: rgb(18, 177, 190);
@@ -126,7 +126,7 @@ input[type="submit"] {
   font-size: 18px;
 }
 
-input[type="submit"]:hover {
+input[type="button"]:hover {
   background-color: rgb(229, 229, 229);
   color: black;
   opacity: 0.8;
@@ -134,7 +134,7 @@ input[type="submit"]:hover {
 
 .menu {
   width: 50%;
-  text-align: center;
-  margin-top: 50px;
+  text-align: left;
+  margin-bottom: 40px;
   border-radius: 5px;
 }

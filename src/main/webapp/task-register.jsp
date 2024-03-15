@@ -15,16 +15,17 @@
 <!-- ヘッダーを追加 -->
 <%@ include file="header.jsp"%>
 <body>
-	<div class="main">
-		<%
-			// リクエストスコープから入力されたカテゴリ情報、ユーザ情報、ステータス情報を取得
-			List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
-			List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
-			List<UserCategoryStatusTaskBean> statusList = (List<UserCategoryStatusTaskBean>) request.getAttribute("StatusList");
 
-			//セッションスコープからログイン済みユーザーのID、名前を取得
-			String loggedInUserId = (String) session.getAttribute("userId");
-			%>
+	<%
+	// リクエストスコープから入力されたカテゴリ情報、ユーザ情報、ステータス情報を取得
+	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
+	List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
+	List<UserCategoryStatusTaskBean> statusList = (List<UserCategoryStatusTaskBean>) request.getAttribute("StatusList");
+
+	//セッションスコープからログイン済みユーザーのID、名前を取得
+	String loggedInUserId = (String) session.getAttribute("userId");
+	%>
+	<div class="main">
 		<form action="TaskAddServlet" method="POST">
 			<h1>TASK REGISTRATION</h1>
 			<table border="1">
@@ -34,15 +35,15 @@
 						required></td>
 				</tr>
 				<tr>
-					<th>カテゴリ情報</th>
+					<th>カテゴリ</th>
 					<td><select name="category_id" required>
 							<%
-								for (UserCategoryStatusTaskBean category : categoryList) {
-								%>
+							for (UserCategoryStatusTaskBean category : categoryList) {
+							%>
 							<option value="<%=category.getCategoryId()%>"><%=category.getCategoryName()%></option>
 							<%
-								}
-								%>
+							}
+							%>
 					</select></td>
 				</tr>
 				<tr>
@@ -51,30 +52,30 @@
 						required></td>
 				</tr>
 				<tr>
-					<th>担当者情報</th>
+					<th>担当者</th>
 					<td><select name="user_id" required>
 							<%
-								for (UserCategoryStatusTaskBean user : userList) {
-								%>
+							for (UserCategoryStatusTaskBean user : userList) {
+							%>
 							<option value="<%=user.getUserId()%>"
 								<%if (user.getUserId().equals(loggedInUserId)) {%> selected
 								<%}%>>
 								<%=user.getUserName()%></option>
 							<%
-								}
-								%>
+							}
+							%>
 					</select></td>
 				</tr>
 				<tr>
-					<th>ステータス情報</th>
+					<th>ステータス</th>
 					<td><select name="status_code" required>
 							<%
-								for (UserCategoryStatusTaskBean status : statusList) {
-								%>
+							for (UserCategoryStatusTaskBean status : statusList) {
+							%>
 							<option value="<%=status.getStatusCode()%>"><%=status.getStatusName()%></option>
 							<%
-								}
-								%>
+							}
+							%>
 
 					</select></td>
 				</tr>
@@ -86,15 +87,9 @@
 
 			<table>
 				<tr>
+					<td class="menu"><input type="button" onclick="history.back()"
+						value="メニューに戻る"></td>
 					<td class="btn"><button type="submit">登録する</button></td>
-				</tr>
-			</table>
-		</form>
-		<form action="menu.jsp" method="POST">
-			<table>
-				<tr>
-					<td class="menu"><input type="submit" value="メニューに戻る">
-					</td>
 				</tr>
 			</table>
 		</form>
