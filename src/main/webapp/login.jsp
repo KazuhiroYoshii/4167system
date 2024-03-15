@@ -8,6 +8,7 @@
 </head>
 <link rel="stylesheet" href="css/Login.css" type="text/css" />
 <body>
+	<% session.invalidate(); %>
 	<header class="header">
     	<p class="system">タスク管理システム</p>
     	<p class="name">4167 SYSTEM</p>

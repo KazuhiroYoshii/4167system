@@ -18,7 +18,7 @@
 		<form action="TaskListServlet" method="get">
 			<button class="list" type="submit">タスク一覧</button>
 		</form>
-		<form action="logout-success.jsp" method="post">
+		<form action="login.jsp" method="post">
 			<button class="logout" type="submit">ログアウト</button>
 		</form>
 	</main>
