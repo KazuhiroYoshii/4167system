@@ -53,7 +53,7 @@
 		</tr>
 	</table>
 	<br>
-	<button class="btn" id="whiteBtn" onclick="location.href='TaskAddServlet'" >タスク登録に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="history.back()" >タスク登録に戻る</button>
 	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニューに戻る</button>
 </body>
 </html>

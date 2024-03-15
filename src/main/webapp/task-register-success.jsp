@@ -57,8 +57,8 @@
 	</table>
 	<br>
 
-	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧へ</button>
 	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニューに戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧へ</button>
 </main>
 </body>
 </html>
