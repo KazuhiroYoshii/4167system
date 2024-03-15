@@ -62,15 +62,22 @@ h1{
  opacity: 0.8;
 }
 
+#delete:disabled{
+	   background-color: rgb(226, 226, 226);
+  color: rgb(167, 167, 167);
+  border: solid 1px;
+  border-radius: 4px;
+}
+
 .btn{
 	width: 15%;
   margin: 5px;
   padding: 5px;
-  font-size: 13px;
   margin: 0% 3%;
 }
 
 #blueBtn{
+	font-size: 18px;
 	background-color: rgb(18, 177, 190);
   color: #ffffff;
   border: none;
