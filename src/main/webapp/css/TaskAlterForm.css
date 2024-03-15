@@ -98,7 +98,7 @@ button[type="submit"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 button[type="submit"]:hover {
@@ -118,7 +118,7 @@ button[type="reset"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 button[type="reset"]:hover {
@@ -132,7 +132,7 @@ button[type="reset"]:hover {
 	margin: 0 auto 15px; 
 }
 
-input[type="button"] {
+button[type="button"] {
   width: 40%;
   padding: 10px;
   margin: 20px auto;
@@ -142,10 +142,10 @@ input[type="button"] {
   border: solid 1px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 15px;
 }
 
-input[type="button"]:hover {
+button[type="button"]:hover {
   background-color: rgb(229, 229, 229);
   color: black;
   opacity: 0.8;
