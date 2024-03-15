@@ -10,26 +10,22 @@
 <link rel="stylesheet" href="css/TaskAdd.css" type="text/css" />
 <script src="js/date.js"></script>
 </head>
+<!-- ログイン状態を判定 -->
+<%@ include file="login-check.jsp"%>
+<!-- ヘッダーを追加 -->
+<%@ include file="header.jsp"%>
 <body>
-	<!-- ログイン状態を判定 -->
-	<%@ include file="login-check.jsp"%>
-
-	<%
-	// リクエストスコープから入力されたカテゴリ情報、ユーザ情報、ステータス情報を取得
-	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
-	List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
-	List<UserCategoryStatusTaskBean> statusList = (List<UserCategoryStatusTaskBean>) request.getAttribute("StatusList");
-	
-	//セッションスコープからログイン済みユーザーのID、名前を取得
-	String loggedInUserId = (String)session.getAttribute("userId");
-	%>
-
-	<header class="header">
-		<p class="system">タスク管理システム</p>
-		<p class="name">4167 SYSTEM</p>
-	</header>
 	<div class="main">
 		<main>
+			<%
+			// リクエストスコープから入力されたカテゴリ情報、ユーザ情報、ステータス情報を取得
+			List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
+			List<UserCategoryStatusTaskBean> userList = (List<UserCategoryStatusTaskBean>) request.getAttribute("UserList");
+			List<UserCategoryStatusTaskBean> statusList = (List<UserCategoryStatusTaskBean>) request.getAttribute("StatusList");
+
+			//セッションスコープからログイン済みユーザーのID、名前を取得
+			String loggedInUserId = (String) session.getAttribute("userId");
+			%>
 			<form action="TaskAddServlet" method="POST">
 				<h1>TASK REGISTRATION</h1>
 				<table border="1">
@@ -62,12 +58,8 @@
 								for (UserCategoryStatusTaskBean user : userList) {
 								%>
 								<option value="<%=user.getUserId()%>"
-									<%
-								if(user.getUserId().equals(loggedInUserId)){
-								%>
-									selected <%
-								}
-								%>>
+									<%if (user.getUserId().equals(loggedInUserId)) {%> selected
+									<%}%>>
 									<%=user.getUserName()%></option>
 								<%
 								}
@@ -101,9 +93,9 @@
 			</form>
 			<form action="menu.jsp" method="POST">
 				<table>
-					<td><div class="menu">
+					<tr><td class="menu">
 							<input type="submit" value="メニューに戻る">
-						</div></td>
+					</td></tr>
 				</table>
 			</form>
 		</main>
