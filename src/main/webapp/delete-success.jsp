@@ -43,8 +43,8 @@
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>
 	</table>
 	<br>
-	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧に戻る</button>
 	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニューに戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧に戻る</button>
 </main>
 </body>
 </html>

@@ -120,14 +120,13 @@
 	<!-- コメント投稿機能 -->
 	<h2>投稿</h2>
 	<form action="CommentServlet" method="post">
-		<textarea name="comment" rows="6" cols="50" maxlength="100" required></textarea>
+		<textarea name="comment" rows="5" cols="50" maxlength="100" required></textarea>
 		<br>
 		<input class="btn" id="blueBtn" type="submit" value="投稿">
 	</form>
 	<br>
-	<form action="TaskListServlet" method="get">
-		<button class="btn" id="blueBtn" type="submit">一覧に戻る</button>
-	</form>
+	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニューに戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧に戻る</button>
 </main>
 </body>
 </html>

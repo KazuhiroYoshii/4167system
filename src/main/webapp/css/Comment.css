@@ -73,7 +73,7 @@ h1{
 	width: 15%;
   margin: 5px;
   padding: 5px;
-  margin: 0% 3%;
+  margin: 0% 5%;
 }
 
 #blueBtn{
@@ -88,6 +88,22 @@ h1{
 #blueBtn:hover{
 	background-color: rgb(14, 134, 143);
 	opacity: 0.8;
+}
+
+#whiteBtn{
+	margin: 25px;
+	font-size: 18px;
+	   background-color: rgb(255, 255, 255);
+  color: rgb(18, 177, 190);
+  border: solid 1px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#whiteBtn:hover{
+	background-color: rgb(229, 229, 229);
+ color: black;
+ opacity: 0.8;
 }
 
 /*
