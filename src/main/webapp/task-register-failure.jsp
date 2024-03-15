@@ -17,14 +17,14 @@
 	%>
 	<h1>タスク登録失敗画面</h1>
 	<hr>
-	<h3>タスク情報を登録できませんでした。</h3>
+	<h3>タスクを登録できませんでした。</h3>
 	<table border=1>
 		<tr>
 			<th>タスク名</th>
 			<td><%=taskInfo.getTaskName()%></td>
 		</tr>
 		<tr>
-			<th>カテゴリ情報</th>
+			<th>カテゴリ</th>
 			<td><%=taskInfo.getCategoryName()%></td>
 		</tr>
 		<tr>
@@ -42,11 +42,11 @@
 			%>
 		</tr>
 		<tr>
-			<th>担当者情報</th>
+			<th>担当者</th>
 			<td><%=taskInfo.getUserName()%></td>
 		</tr>
 		<tr>
-			<th>ステータス情報</th>
+			<th>ステータス</th>
 			<td><%=taskInfo.getStatusName()%></td>
 		</tr>
 		<tr>
