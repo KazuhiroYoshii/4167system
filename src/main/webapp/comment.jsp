@@ -118,9 +118,9 @@
 		}
 		%>
 	<!-- コメント投稿機能 -->
-	<h2>投稿</h2>
+	<br>
 	<form action="CommentServlet" method="post">
-		<textarea name="comment" rows="5" cols="50" maxlength="100" required></textarea>
+		<textarea class="textarea" name="comment" maxlength="100" placeholder="COMMENT" required></textarea>
 		<br>
 		<input class="btn" id="blueBtn" type="submit" value="投稿">
 	</form>

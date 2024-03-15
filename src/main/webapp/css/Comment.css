@@ -9,7 +9,6 @@ task-list.jspで用いるスタイルシート
 }
 
 .main{
-	
 	 margin: 40px 0 40px;
 	 text-align:center;
 }
@@ -43,6 +42,15 @@ h1{
   font-weight: bold;
   text-align: center;
   background-color: rgb(229, 229, 229);
+}
+
+.textarea{
+	margin: 10px;
+	width: 550px;
+	height: 60px;
+	resize: none;
+	border: 2px rgb(208, 208, 208) solid;
+	border-radius: 4px;
 }
 
 #delete{
