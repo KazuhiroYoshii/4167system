@@ -23,7 +23,7 @@
 				<td><%=newTask.getTaskName()%></td>
 			</tr>
 			<tr>
-				<th>カテゴリ情報</th>
+				<th>カテゴリ</th>
 				<td><%=newTask.getCategoryName()%></td>
 			</tr>
 			<tr>
@@ -39,11 +39,11 @@
 				</td>
 			</tr>
 			<tr>
-				<th>担当者情報</th>
+				<th>担当者</th>
 				<td><%=newTask.getUserName()%></td>
 			</tr>
 			<tr>
-				<th>ステータス情報</th>
+				<th>ステータス</th>
 				<td><%=newTask.getStatusName()%></td>
 			</tr>
 			<tr>
