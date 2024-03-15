@@ -59,8 +59,8 @@
 		%>
 	</table>
 	<br>
-	<button class="btn" id="blueBtn" onclick="location.href='TaskDeleteExecuteServlet'" >削除する</button>
 	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
+	<button class="btn" id="redBtn" onclick="location.href='TaskDeleteExecuteServlet'" >削除する</button>
 </main>
 </body>
 </html>
