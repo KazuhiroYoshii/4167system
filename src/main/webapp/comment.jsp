@@ -21,7 +21,7 @@
 	UserCategoryStatusTaskBean taskDetail = (UserCategoryStatusTaskBean)request.getAttribute("taskDetail");
 	%>
 	<!-- タスク詳細情報 -->
-	<table border="1">
+	<table class="table" border="1">
 		<tr>
 			<th>タスク名</th>
 			<th>カテゴリ</th>
@@ -49,7 +49,7 @@
 	//セッションスコープからログイン中のユーザーIDを取得
 	String loggedInUserId = (String)session.getAttribute("userId");
 	%>
-	<h1>コメント</h1>
+	<h1>COMMENTS</h1>
 	<%
 	//削除実行用サーブレットで削除されたコメントがあればメッセージを表示
 	int deleteResult = 2;
@@ -64,7 +64,7 @@
 	<%
 	}
 	%>
-	<table border="1">
+	<table class="table" border="1">
 		<tr>
 			<th>投稿者</th>
 			<th>コメント内容</th>
@@ -84,7 +84,7 @@
 				<td><%=commentData.getUpdateDatetime() %></td>
 				<td><form action="CommentDeleteServlet" method="post">
 					<div class="tooltip4">
-						<button class="btn btn-primary" onClick = "return checkDelete()"
+						<button class="btn btn-primary" id="delete" onClick = "return checkDelete()"
 								type="submit" value="<%=commentId %>" name="commentId"
 						<%
 						//ログイン中のユーザーとコメントしたユーザーが異なる場合は削除ボタン非活性
@@ -122,12 +122,11 @@
 	<form action="CommentServlet" method="post">
 		<textarea name="comment" rows="6" cols="50" maxlength="100" required></textarea>
 		<br>
-		<input type="reset" value="クリア">
-		<input type="submit" value="投稿">
+		<input class="btn" id="blueBtn" type="submit" value="投稿">
 	</form>
 	<br>
 	<form action="TaskListServlet" method="get">
-		<button type="submit">一覧に戻る</button>
+		<button class="btn" id="blueBtn" type="submit">一覧に戻る</button>
 	</form>
 </main>
 </body>
