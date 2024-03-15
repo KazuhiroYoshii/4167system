@@ -4,16 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン失敗画面</title>
+<title>ログイン失敗｜4167 SYSTEM</title>
 </head>
+<link rel="stylesheet" href="css/LoginFailure.css" type="text/css" />
 <body>
-	<h1>ログイン失敗画面</h1>
-	<hr>
-	<h1>ログインできませんでした。</h1>
-
-	<form action="login.jsp" method="POST">
-		<input type="submit" value="ログイン画面へ">
-	</form>
-
+	<header class="header">
+    	<p class="system">タスク管理システム</p>
+    	<p class="name">4167 SYSTEM</p>
+    </header>
+    <main class="main">
+		<p>ログインに失敗しました。<br>入力されたログイン情報が間違っています。</p>
+		<form action="login.jsp" method="post">
+			<button class="login" type="submit">ログイン</button>
+		</form>
+	</main>
 </body>
 </html>
