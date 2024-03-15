@@ -15,8 +15,6 @@
 	UserCategoryStatusTaskBean taskInfo 
 		= (UserCategoryStatusTaskBean) request.getAttribute("taskInfo");
 	%>
-	<h1>タスク登録失敗画面</h1>
-	<hr>
 	<h3>タスクを登録できませんでした。</h3>
 	<table border=1>
 		<tr>
@@ -55,7 +53,7 @@
 		</tr>
 	</table>
 	<br>
-	<button class="btn" id="whiteBtn" onclick="location.href='TaskAddServlet'" >タスク登録画面に戻る</button>
-	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskAddServlet'" >タスク登録に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニューに戻る</button>
 </body>
 </html>

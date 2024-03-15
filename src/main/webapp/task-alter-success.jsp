@@ -56,7 +56,7 @@
 			<td><%=alteredTask.getMemo()%></td>
 		</tr>
 	</table><br>
-	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧に戻る</button>
 </main>
 </body>
 </html>
