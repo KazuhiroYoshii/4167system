@@ -7,18 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>タスク登録成功｜4167 SYSTEM</title>
+<link rel="stylesheet" href="css/Result.css" type="text/css" />
+<%@ include file ="header.jsp" %>
 </head>
 <body>
+<main class="main">
 	<%@ include file="login-check.jsp"%>
 
 	<%
 	UserCategoryStatusTaskBean taskInfo = (UserCategoryStatusTaskBean) request.getAttribute("taskInfo");
 	%>
-	<h1>タスク登録成功</h1>
-	<hr>
 	<h3>タスク情報を登録しました。</h3>
 
-	<table border=1>
+	<table class="table" border=1>
 		<tr>
 			<th>タスク名</th>
 			<td><%=taskInfo.getTaskName()%></td>
@@ -56,19 +57,8 @@
 	</table>
 	<br>
 
-	<table>
-		<tr>
-			<td>
-				<form action="menu.jsp" method="POST">
-					<input type="submit" value="メニューに戻る">
-				</form>
-			</td>
-			<td>
-				<form action="TaskListServlet" method="POST">
-					<input type="submit" value="タスク一覧へ">
-				</form>
-			</td>
-		</tr>
-	</table>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
+</main>
 </body>
 </html>

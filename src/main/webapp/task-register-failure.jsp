@@ -55,13 +55,7 @@
 		</tr>
 	</table>
 	<br>
-
-	<form action="TaskAddServlet" method="GET">
-		<input type="submit" value="タスク登録画面に戻る">
-	</form>
-	<form action="menu.jsp" method="POST">
-		<input type="submit" value="メニュー画面に戻る">
-	</form>
-
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskAddServlet'" >タスク登録画面に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
 </body>
 </html>
