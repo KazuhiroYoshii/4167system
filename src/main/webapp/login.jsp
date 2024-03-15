@@ -16,8 +16,8 @@
     <main class="main">
 		<form action="LoginServlet" method="post">
 			 <p class="fsize">LOGIN</p>
-			 <input type="text" placeholder="Username" name="userId" />
-			 <input type="password" placeholder="Password" name="password" />
+			 <input type="text" placeholder="Username" name="userId" maxlength=20 required />
+			 <input type="password" placeholder="Password" name="password" maxlength=32 required />
 			 <button type="submit">LOGIN</button>
 		</form>
 	</main>
