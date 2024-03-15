@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク登録成功｜4167 SYSTEM</title>
+<title>タスク登録完了｜4167 SYSTEM</title>
 <link rel="stylesheet" href="css/Result.css" type="text/css" />
 <%@ include file ="header.jsp" %>
 </head>
@@ -17,7 +17,7 @@
 	<%
 	UserCategoryStatusTaskBean taskInfo = (UserCategoryStatusTaskBean) request.getAttribute("taskInfo");
 	%>
-	<h3>タスク情報を登録しました。</h3>
+	<h3>タスクを登録しました。</h3>
 
 	<table class="table" border=1>
 		<tr>
@@ -25,7 +25,7 @@
 			<td><%=taskInfo.getTaskName()%></td>
 		</tr>
 		<tr>
-			<th>カテゴリ情報</th>
+			<th>カテゴリ</th>
 			<td><%=taskInfo.getCategoryName()%></td>
 		</tr>
 		<tr>
@@ -43,11 +43,11 @@
 			%>
 		</tr>
 		<tr>
-			<th>担当者情報</th>
+			<th>担当者</th>
 			<td><%=taskInfo.getUserName()%></td>
 		</tr>
 		<tr>
-			<th>ステータス情報</th>
+			<th>ステータス</th>
 			<td><%=taskInfo.getStatusName()%></td>
 		</tr>
 		<tr>
