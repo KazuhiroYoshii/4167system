@@ -87,8 +87,8 @@
 
 			<table>
 				<tr>
-					<td class="menu"><input type="button" onclick="history.back()"
-						value="メニューに戻る"></td>
+					<td class="menu"><button type="button" onclick="history.back()">
+						メニューに戻る</button></td>
 					<td class="btn"><button type="submit">登録する</button></td>
 				</tr>
 			</table>
