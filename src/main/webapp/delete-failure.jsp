@@ -4,12 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>タスク削除失敗画面</title>
+<title>削除失敗｜4167 SYSTEM</title>
+<link rel="stylesheet" href="css/TaskDeleteConfirm.css" type="text/css" />
+<!-- ログイン状態を判定 -->
+<%@ include file ="login-check.jsp" %>
+<!-- ヘッダー読み込み -->
+<%@ include file ="header.jsp" %>
 </head>
 <body>
-	<!-- ログイン状態を判定 -->
-	<%@ include file ="login-check.jsp" %>
-
+<main class="main">
 	<%
 	//セッションスコープから選択したタスクの詳細情報を取得
 	UserCategoryStatusTaskBean task = (UserCategoryStatusTaskBean)session.getAttribute("task");
@@ -29,9 +32,9 @@
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>
 	</table>
 	<br>
-	<button onclick="location.href='TaskListServlet'" >一覧画面に戻る</button><br>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button><br>
 	<br>
-	<button onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
-
+	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
+</main>
 </body>
 </html>

@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>削除完了画面</title>
-<link rel="stylesheet" href="css/TaskConfirm.css" type="text/css" />
+<title>削除完了｜4167 SYSTEM</title>
+<link rel="stylesheet" href="css/TaskDeleteConfirm.css" type="text/css" />
 <!-- ログイン状態を判定 -->
 <%@ include file ="login-check.jsp" %>
 <!-- ヘッダー読み込み -->
@@ -24,7 +24,7 @@
 	//コメントを削除した場合のみメッセージを変更
 	if(commentDeleteResult > 0){
 	%>
-		<h3><%=commentDeleteResult %>件のコメントと、以下の内容のタスクを削除しました。</h3>
+		<h3>以下の内容のタスクと、<%=commentDeleteResult %>件のコメントを削除しました。</h3>
 	<%
 	}else{
 	%>
@@ -43,8 +43,8 @@
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>
 	</table>
 	<br>
-	<button class="menu" id="bottomBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
-	<button class="menu" id="bottomBtn" onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='menu.jsp'" >メニュー画面に戻る</button>
 </main>
 </body>
 </html>

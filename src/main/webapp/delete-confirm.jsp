@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>削除確認｜4167 SYSTEM</title>
-<link rel="stylesheet" href="css/TaskConfirm.css" type="text/css" />
+<link rel="stylesheet" href="css/TaskDeleteConfirm.css" type="text/css" />
 <!-- ログイン状態を判定 -->
 <%@ include file ="login-check.jsp" %>
 <!-- ヘッダー読み込み -->
@@ -44,22 +44,23 @@
 		<tr><th>担当者情報</th><td><%=task.getUserName() %></td></tr>
 		<tr><th>ステータス情報</th><td><%=task.getStatusName() %></td></tr>
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>
+		<%
+		//タスクにコメントが1件でもついている場合は「コメントを見る」ボタンを追加
+		if(numberOfComments > 0){
+		%>
+		<tr><td colspan="2">
+			<form action="CommentServlet" method="get">
+				<input type="hidden" value="<%=taskId %>" name="taskId">
+				<button class="btn" id="plainBtn" type="submit">コメントを見る</button>
+			</form>
+		</td></tr>
+		<%
+		}
+		%>
 	</table>
 	<br>
-	<%
-	//タスクにコメントが1件でもついている場合は「コメントを見る」ボタンを追加
-	if(numberOfComments > 0){
-	%>
-		<form action="CommentServlet" method="get">
-			<input type="hidden" value="<%=taskId %>" name="taskId">
-			<button class="menu" type="submit">コメントを見る</button>
-		</form>
-		<br>
-	<%
-	}
-	%>
-	<button class="menu" id="bottomBtn" onclick="location.href='TaskDeleteExecuteServlet'" >削除する</button>
-	<button class="menu" id="bottomBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
+	<button class="btn" id="blueBtn" onclick="location.href='TaskDeleteExecuteServlet'" >削除する</button>
+	<button class="btn" id="whiteBtn" onclick="location.href='TaskListServlet'" >一覧画面に戻る</button>
 </main>
 </body>
 </html>
