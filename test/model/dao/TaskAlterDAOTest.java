@@ -12,32 +12,33 @@ import org.junit.jupiter.api.Test;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
- * TaskAddDAOのメソッドをテストする
+ * TaskAlterDAOをテストする
  * @author 吉井
  */
-class TaskAddDAOTest {
+class TaskAlterDAOTest {
 
 	@Test
-	void testInsertTask1() {
+	void testUpdate1() {
 		
-		//TaskAddDAOをインスタンス化
-		TaskAddDAO taskAddDao = new TaskAddDAO();
+		//TaskAlterDAOをインスタンス化
+		TaskAlterDAO taskAlterDao = new TaskAlterDAO();
 		
 		//テストに用いるタスク情報をインスタンス化、情報を格納
 		UserCategoryStatusTaskBean taskData = new UserCategoryStatusTaskBean();
-		taskData.setTaskName("テストタスク1");
+		taskData.setTaskName("テストタスク2");
 		taskData.setCategoryId(1);
 		taskData.setLimitDate("");
 		taskData.setUserId("test1");
-		taskData.setStatusCode("00");
+		taskData.setStatusCode("99");
 		taskData.setMemo("");
+		taskData.setTaskId(120);
 		
-		//insertTaskメソッドの戻り値に使う変数を0で初期化
+		//Updateメソッドの戻り値に用いる変数を0で初期化
 		int actual = 0;
 		
-		//taskDataを用いてinsertTaskメソッドを実行
+		//taskDataを用いてUpdateメソッドを実行
 		try {
-			actual = taskAddDao.insertTask(taskData);
+			actual = taskAlterDao.update(taskData);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,28 +50,29 @@ class TaskAddDAOTest {
 		assertEquals(actual, expected);
 		
 	}
-	
+
 	@Test
-	void testInsertTask2() {
+	void testUpdate2() {
 		
-		//TaskAddDAOをインスタンス化
-		TaskAddDAO taskAddDao = new TaskAddDAO();
+		//TaskAlterDAOをインスタンス化
+		TaskAlterDAO taskAlterDao = new TaskAlterDAO();
 		
-		//テストに用いるタスク情報をインスタンス化、情報を格納（ユーザIDのみnullとする）
+		//テストに用いるタスク情報をインスタンス化、情報を格納
 		UserCategoryStatusTaskBean taskData = new UserCategoryStatusTaskBean();
 		taskData.setTaskName("テストタスク2");
 		taskData.setCategoryId(1);
 		taskData.setLimitDate("");
-		taskData.setUserId(null);
-		taskData.setStatusCode("00");
+		taskData.setUserId("test1");
+		taskData.setStatusCode("99");
 		taskData.setMemo("");
+		taskData.setTaskId(119);
 		
-		//insertTaskメソッドの戻り値に使う変数を0で初期化
+		//Updateメソッドの戻り値に用いる変数を0で初期化
 		int actual = 0;
 		
-		//taskDataを用いてinsertTaskメソッドを実行
+		//taskDataを用いてUpdateメソッドを実行
 		try {
-			actual = taskAddDao.insertTask(taskData);
+			actual = taskAlterDao.update(taskData);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -80,7 +82,10 @@ class TaskAddDAOTest {
 		
 		//実測値と期待値を比較
 		assertEquals(actual, expected);
-		
 	}
 
+	@Test
+	void selectTask1() {
+		
+	}
 }
