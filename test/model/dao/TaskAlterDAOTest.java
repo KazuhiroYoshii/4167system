@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import model.entity.UserCategoryStatusTaskBean;
 
 /**
- * TaskAlterDAOをテストする
+ * TaskAlterDAOをテストするクラス
  * @author 吉井
  */
 class TaskAlterDAOTest {
@@ -87,5 +87,64 @@ class TaskAlterDAOTest {
 	@Test
 	void selectTask1() {
 		
+		//TaskAlterDAOをインスタンス化
+		TaskAlterDAO taskAlterDao = new TaskAlterDAO();
+		
+		//メソッドの引数となるタスクIDを120に指定
+		int taskId = 120;
+		
+		//メソッドの戻り値となるタスク情報をインスタンス化
+		UserCategoryStatusTaskBean taskData = new UserCategoryStatusTaskBean();
+		
+		//メソッドを実行
+		try {
+			taskData = taskAlterDao.selectTask(taskId);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//戻り値からタスク名を切り出し、実測値とする
+		String actual = taskData.getTaskName();
+		
+		//期待値を「テストタスク2」とする
+		String expected = "テストタスク2";
+		
+		//実測値と期待値を比較
+		assertEquals(actual, expected);
+
+	}
+	
+	@Test
+	void selectTask2() {
+		
+		//TaskAlterDAOをインスタンス化
+		TaskAlterDAO taskAlterDao = new TaskAlterDAO();
+		
+		//メソッドの引数となるタスクIDを119に指定
+		int taskId = 119;
+		
+		//メソッドの戻り値となるタスク情報をインスタンス化
+		UserCategoryStatusTaskBean taskData = new UserCategoryStatusTaskBean();
+		
+		//メソッドを実行
+		try {
+			taskData = taskAlterDao.selectTask(taskId);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//戻り値からタスク名を切り出し、実測値とする
+		String actual = taskData.getTaskName();
+		
+		//期待値をnullとする
+		String expected = null;
+		
+		//実測値と期待値を比較
+		assertEquals(actual, expected);
+
 	}
 }
