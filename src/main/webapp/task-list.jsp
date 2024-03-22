@@ -89,9 +89,28 @@
 						</div>
 					</form></td>
 	
-					<!-- 編集ボタンからサーブレットにtaskIdの値を送信 -->
+					<!-- 削除ボタンからサーブレットにtaskIdの値を送信 -->
 					<td class="buttun"><form action="TaskDeleteServlet" method="post">
-							<button class="delete" type="submit" value="<%=taskId %>" name="taskId">削除</button>
+						<div class="tooltip4">
+							<button class="delete" type="submit" value="<%=taskId %>" name="taskId"
+								<%
+								//ログイン中ユーザー以外のタスク削除ボタンを非活性化
+								if(!loggedInUserId.equals(userIdOnTask)){
+								%>
+									disabled 
+								<%
+								}
+								%>>削除
+							</button>
+							<%
+							//非活性化された削除ボタンにツールチップを付与
+							if(!loggedInUserId.equals(userIdOnTask)){
+							%>
+								<div class="description4"><%=task.getUserName() %>さんのみ削除できます。</div>
+							<%
+							}
+							%>
+						</div>
 					</form></td>
 	
 					<!-- コメントボタンからサーブレットにtaskIdの値を送信 -->
