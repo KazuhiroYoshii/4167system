@@ -24,7 +24,19 @@
 		<!-- テーブル内で詳細情報を切り出し、表示 -->
 		<tr><th>タスク名</th><td><%=task.getTaskName() %></td></tr>
 		<tr><th>カテゴリ</th><td><%=task.getCategoryName() %></td></tr>
-		<tr><th>期限</th><td><%=task.getLimitDate() %>　</td></tr>
+		<tr><th>期限</th><td>
+			<%
+			if(task.getLimitDate() == null){
+			%>
+				未設定
+			<%
+			}else{
+			%>
+				<%=task.getLimitDate() %>
+			<%
+			}
+			%>
+		</td></tr>
 		<tr><th>担当者</th><td><%=task.getUserName() %></td></tr>
 		<tr><th>ステータス</th><td><%=task.getStatusName() %></td></tr>
 		<tr><th>メモ</th><td><%=task.getMemo() %></td></tr>

@@ -33,7 +33,17 @@
 		<tr>
 			<td><%=taskDetail.getTaskName() %></td>
 			<td><%=taskDetail.getCategoryName() %>　</td>
-			<td><%=taskDetail.getLimitDate() %></td>
+			<td><%
+			if(taskDetail.getLimitDate() == null){
+			%>
+				未設定
+			<%
+			}else{
+			%>
+				<%=taskDetail.getLimitDate() %>
+			<%
+			}
+			%></td>
 			<td><%=taskDetail.getUserName() %></td>
 			<td><%=taskDetail.getStatusName() %></td>
 			<td><%=taskDetail.getMemo() %>　</td>

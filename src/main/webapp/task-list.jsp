@@ -48,7 +48,19 @@
 				<tr>
 					<td class="task"><%=task.getTaskName()%></td>
 					<td class="category"><%=task.getCategoryName() %></td>
-					<td class="limit"><%=task.getLimitDate() %></td>
+					<td class="limit">
+					<%
+					if(task.getLimitDate() == null){
+					%>
+						未設定
+					<%
+					}else{
+					%>
+						<%=task.getLimitDate() %>
+					<%
+					}
+					%>
+					</td>
 					<td class="user"><%=task.getUserName() %></td>
 					<td class="status"><%=task.getStatusName() %></td>
 					<td class="memo"><%=task.getMemo() %></td>
