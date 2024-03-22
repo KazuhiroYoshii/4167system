@@ -49,7 +49,7 @@
 				<tr>
 					<th>期限</th>
 					<td><input type="date" name="limit_date"
-						value="<%=task.getLimitDate()%>" required></td>
+						value="<%=task.getLimitDate()%>"></td>
 				</tr>
 				<tr>
 					<th>担当者</th>
