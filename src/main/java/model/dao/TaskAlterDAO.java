@@ -26,8 +26,11 @@ public class TaskAlterDAO {
 
 		int processingNumber = 0; //処理件数
 
-		String sql = "UPDATE t_task SET task_name = ?, category_id = ?, "
-				+ "limit_date = ?, user_id = ?, status_code = ?, memo = ? WHERE task_id = ?";
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE t_task SET task_name = ?, category_id = ?, ");
+		sb.append("limit_date = ?, user_id = ?, status_code = ?, memo = ? WHERE task_id = ?");
+
+		String sql = sb.toString();
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
@@ -40,7 +43,7 @@ public class TaskAlterDAO {
 			pstmt.setString(5, taskBean.getStatusCode());
 			pstmt.setString(6, taskBean.getMemo());
 			pstmt.setInt(7, taskBean.getTaskId());
-			
+
 			if(taskBean.getLimitDate().equals("")) {
 				pstmt.setDate(3, null);
 			} else {
@@ -53,7 +56,7 @@ public class TaskAlterDAO {
 		}
 		return processingNumber;
 	}
-	
+
 	/**
 	 * 指定されたタスクIDのタスク情報を返します
 	 * @param taskId タスクID
@@ -65,12 +68,15 @@ public class TaskAlterDAO {
 
 		UserCategoryStatusTaskBean alterTask = new UserCategoryStatusTaskBean();
 
-		String sql = "SELECT t1.task_name, t3.category_name, t1.limit_date, t2.user_name, t4.status_name, t1.memo "
-				+ "FROM t_task t1 "
-				+ "INNER JOIN m_user t2 ON t1.user_id = t2.user_id "
-				+ "INNER JOIN m_category t3 ON t1.category_id = t3.category_id "
-				+ "INNER JOIN m_status t4 ON t1.status_code = t4.status_code "
-				+ "WHERE task_id = ?";
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT t1.task_name, t3.category_name, t1.limit_date, t2.user_name, t4.status_name, t1.memo ");
+		sb.append("FROM t_task t1 ");
+		sb.append("INNER JOIN m_user t2 ON t1.user_id = t2.user_id ");
+		sb.append("INNER JOIN m_category t3 ON t1.category_id = t3.category_id ");
+		sb.append("INNER JOIN m_status t4 ON t1.status_code = t4.status_code ");
+		sb.append("WHERE task_id = ?");
+		
+		String sql = sb.toString();
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
@@ -96,5 +102,5 @@ public class TaskAlterDAO {
 
 		return alterTask;
 	}
-	
+
 }

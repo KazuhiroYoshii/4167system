@@ -29,12 +29,12 @@ public class CommentDAO {
 		UserCategoryStatusTaskBean taskDetail = new UserCategoryStatusTaskBean();
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT t1.task_name,");
-		sb.append("t3.category_name,");
-		sb.append("t1.limit_date,");
-		sb.append("t2.user_name,");
-		sb.append("t4.status_name,");
-		sb.append("t1.memo");
+		sb.append("SELECT t1.task_name, ");
+		sb.append("t3.category_name, ");
+		sb.append("t1.limit_date, ");
+		sb.append("t2.user_name, ");
+		sb.append("t4.status_name, ");
+		sb.append("t1.memo ");
 		sb.append("FROM t_task t1 ");
 		sb.append("INNER JOIN m_user t2 ON t1.user_id = t2.user_id ");
 		sb.append("INNER JOIN m_category t3 ON t1.category_id = t3.category_id ");
@@ -78,17 +78,19 @@ public class CommentDAO {
 
 		List<UserCommentBean> commentList = new ArrayList<>();
 
-		String sql = "SELECT t1.comment_id"
-				+ " , t1.task_id"
-				+ " , t1.user_id"
-				+ " , t2.user_name"
-				+ " , t1.comment"
-				+ " , t1.update_datetime"
-				+ " FROM t_comment t1"
-				+ " INNER JOIN m_user t2"
-				+ " 	ON t1.user_id = t2.user_id"
-				+ " WHERE task_id = ?"
-				+ " ORDER BY comment_id ASC";
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT t1.comment_id, ");
+		sb.append("t1.task_id, ");
+		sb.append("t1.user_id, ");
+		sb.append("t2.user_name, ");
+		sb.append("t1.comment, ");
+		sb.append("t1.update_datetime ");
+		sb.append("FROM t_comment t1 ");
+		sb.append("INNER JOIN m_user t2 ON t1.user_id = t2.user_id ");
+		sb.append("WHERE task_id = ? ");
+		sb.append("ORDER BY comment_id ASC");
+		
+		String sql = sb.toString();
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
