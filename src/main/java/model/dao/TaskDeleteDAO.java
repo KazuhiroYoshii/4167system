@@ -15,28 +15,24 @@ public class TaskDeleteDAO {
 	 * 削除実行用メソッド
 	 * @param taskId 削除したいタスクのID
 	 * @return 該当レコードの削除実行件数
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public int delete(int taskId) {
+	public int delete(int taskId) throws SQLException, ClassNotFoundException {
 		
 		//実行件数を0で初期化
 		int result = 0;
 		
 		String sql = "DELETE FROM t_task WHERE task_id = ?";
 		
-		try {
-			//データベースへの接続、sql文の用意
-			try(Connection con = ConnectionManager.getConnection();
-					PreparedStatement pstmt = con.prepareStatement(sql)){
-				
-				//プレースホルダに値を設定、実行
-				pstmt.setInt(1, taskId);
-				result = pstmt.executeUpdate();
-				
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}catch(ClassNotFoundException e) {
-			e.printStackTrace();
+		//データベースへの接続、sql文の用意
+		try(Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			//プレースホルダに値を設定、実行
+			pstmt.setInt(1, taskId);
+			result = pstmt.executeUpdate();
+			
 		}
 		
 		return result;

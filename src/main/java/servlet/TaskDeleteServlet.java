@@ -48,7 +48,14 @@ public class TaskDeleteServlet extends HttpServlet {
 		
 		//TaskListDAOをインスタンス化、当該タスクの詳細情報を取得
 		TaskListDAO taskListDao = new TaskListDAO();
-		UserCategoryStatusTaskBean task = taskListDao.getTaskData(taskId);
+		UserCategoryStatusTaskBean task = new UserCategoryStatusTaskBean();
+		try {
+			task = taskListDao.getTaskData(taskId);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		//TaskDeleteDAOをインスタンス化、当該タスクに付随するコメント数を取得
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();

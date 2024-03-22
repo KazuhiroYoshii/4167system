@@ -54,7 +54,14 @@ public class TaskDeleteExecuteServlet extends HttpServlet {
 		request.setAttribute("commentDeleteResult", commentDeleteResult);
 		
 		//タスク削除を実行し実行件数を取得
-		int taskDeleteResult = taskDeleteDao.delete(taskId);
+		int taskDeleteResult = 0;
+		try {
+			taskDeleteResult = taskDeleteDao.delete(taskId);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		//実行件数が1の場合のみ削除完了画面のurl、それ以外の場合は削除失敗画面のurlを設定
 		String url = null;

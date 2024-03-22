@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,13 @@ public class TaskListServlet extends HttpServlet {
 		
 		//taskListDaoを使って一覧表示用リストを取得
 		List<UserCategoryStatusTaskBean> taskList = new ArrayList<>();
-		taskList = taskListDao.getTaskList();
+		try {
+			taskList = taskListDao.getTaskList();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		//一覧表示用リストをリクエストスコープに設定
 		request.setAttribute("taskList", taskList);
