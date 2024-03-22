@@ -24,20 +24,13 @@ import model.entity.UserCategoryStatusTaskBean;
 public class TaskDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TaskDeleteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 不正なアクセスがあったときの遷移を制御する
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// 転送用オブジェクトの取得、転送
+		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -65,16 +58,7 @@ public class TaskDeleteServlet extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		
-//		//CommentDAOをインスタンス化、当該タスクのコメント情報を取得
-//		CommentDAO commentDao = new CommentDAO();
-//		List<UserCommentBean> commentList = new ArrayList<>();
-//		try {
-//			commentList = commentDao.selectComment(taskId);
-//		} catch (ClassNotFoundException | SQLException e) {
-//			e.printStackTrace();
-//		}
-		
+
 		//セッションスコープにタスク詳細情報、コメント数を設定
 		HttpSession session = request.getSession();
 		session.setAttribute("task", task);

@@ -28,14 +28,6 @@ public class TaskAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public TaskAddServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
 	 * タスク登録画面の表示の際に使用するカテゴリ情報、担当者情報、ステータス情報を渡す
 	 * メニュー画面からタスク登録画面に遷移する
 	 */

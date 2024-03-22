@@ -26,14 +26,6 @@ public class CommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public CommentServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
 	 * タスク一覧画面からの遷移を制御する
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

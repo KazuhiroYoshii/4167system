@@ -22,14 +22,6 @@ import model.entity.UserCategoryStatusTaskBean;
 @WebServlet("/TaskDeleteExecuteServlet")
 public class TaskDeleteExecuteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public TaskDeleteExecuteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * 選択されたタスクを削除する
@@ -76,14 +68,6 @@ public class TaskDeleteExecuteServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
