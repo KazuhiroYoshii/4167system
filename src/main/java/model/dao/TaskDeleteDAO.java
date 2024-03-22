@@ -21,10 +21,7 @@ public class TaskDeleteDAO {
 		//実行件数を0で初期化
 		int result = 0;
 		
-		String sql = "DELETE\n"
-				+ "    FROM t_task\n"
-				+ "WHERE\n"
-				+ "    task_id = ?";
+		String sql = "DELETE FROM t_task WHERE task_id = ?";
 		
 		try {
 			//データベースへの接続、sql文の用意
@@ -88,10 +85,7 @@ public class TaskDeleteDAO {
 		//削除実行件数を0で初期化
 		int result = 0;
 		
-		String sql = "DELETE\n"
-				+ "    FROM t_comment\n"
-				+ "WHERE\n"
-				+ "    task_id = ?";
+		String sql = "DELETE FROM t_comment WHERE task_id = ?";
 		
 		//データベースへの接続、SQL文の用意
 		try(Connection con = ConnectionManager.getConnection();

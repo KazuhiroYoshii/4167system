@@ -23,24 +23,23 @@ public class TaskListDAO {
 		//戻り値のタスクリストをインスタンス化
 		List<UserCategoryStatusTaskBean> taskList = new ArrayList<>();
 
-		String sql = "SELECT\n"
-				+ "    tt.task_id,\n"
-				+ "    tt.task_name,\n"
-				+ "    mc.category_name,\n"
-				+ "    tt.limit_date,\n"
-				+ "    mu.user_name,\n"
-				+ "    mu.user_id,\n"
-				+ "    ms.status_name,\n"
-				+ "    tt.memo\n"
-				+ "FROM\n"
-				+ "    t_task tt\n"
-				+ "    INNER JOIN m_category mc\n"
-				+ "        ON tt.category_id = mc.category_id\n"
-				+ "    INNER JOIN m_user mu\n"
-				+ "        ON tt.user_id = mu.user_id\n"
-				+ "    INNER JOIN m_status ms\n"
-				+ "        ON tt.status_code = ms.status_code\n"
-				+ "ORDER BY tt.task_id ASC";
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT ");
+		sb.append("tt.task_id, ");
+		sb.append("tt.task_name, ");
+		sb.append("mc.category_name, ");
+		sb.append("tt.limit_date, ");
+		sb.append("mu.user_name, ");
+		sb.append("mu.user_id, ");
+		sb.append(" ms.status_name, ");
+		sb.append("tt.memo ");
+		sb.append("FROM t_task tt ");
+		sb.append("INNER JOIN m_category mc ON tt.category_id = mc.category_id ");
+		sb.append("INNER JOIN m_user mu ON tt.user_id = mu.user_id ");
+		sb.append("INNER JOIN m_status ms ON tt.status_code = ms.status_code ");
+		sb.append("ORDER BY tt.task_id ASC");
+
+		String sql = sb.toString();
 
 		try {
 			//データベースへの接続、sql文の用意
@@ -88,24 +87,21 @@ public class TaskListDAO {
 		//戻り値のタスク情報をインスタンス化
 		UserCategoryStatusTaskBean task = new UserCategoryStatusTaskBean();
 
-		String sql = "SELECT\n"
-				+ "    tt.task_id,\n"
-				+ "    tt.task_name,\n"
-				+ "    mc.category_name,\n"
-				+ "    tt.limit_date,\n"
-				+ "    mu.user_name,\n"
-				+ "    ms.status_name,\n"
-				+ "    tt.memo\n"
-				+ "FROM\n"
-				+ "    t_task tt\n"
-				+ "    INNER JOIN m_category mc\n"
-				+ "        ON tt.category_id = mc.category_id\n"
-				+ "    INNER JOIN m_user mu\n"
-				+ "        ON tt.user_id = mu.user_id\n"
-				+ "    INNER JOIN m_status ms\n"
-				+ "        ON tt.status_code = ms.status_code\n"
-				+ "WHERE\n"
-				+ "    tt.task_id = ?";
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT tt.task_id, ");
+		sb.append("tt.task_name, ");
+		sb.append("mc.category_name, ");
+		sb.append("tt.limit_date, ");
+		sb.append("mu.user_name, ");
+		sb.append("ms.status_name, ");
+		sb.append("tt.memo ");
+		sb.append("FROM t_task tt ");
+		sb.append( "INNER JOIN m_category mc ON tt.category_id = mc.category_id ");
+		sb.append("INNER JOIN m_user mu ON tt.user_id = mu.user_id ");
+		sb.append("INNER JOIN m_status ms ON tt.status_code = ms.status_code ");
+		sb.append("WHERE tt.task_id = ?");
+		
+		String sql = sb.toString();
 
 		try {
 			//データベースへの接続、PreparedStatementの用意
