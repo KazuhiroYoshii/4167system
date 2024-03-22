@@ -25,9 +25,12 @@ public class TaskAlterFormDAO {
 
 		UserCategoryStatusTaskBean task = new UserCategoryStatusTaskBean();
 
-		String sql = "SELECT task_name, category_id, limit_date,"
-				+ "user_id, status_code, memo "
-				+ "FROM t_task WHERE task_id = ?";
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT task_name, category_id, limit_date,");
+		sb.append("user_id, status_code, memo ");
+		sb.append("FROM t_task WHERE task_id = ?");
+		
+		String sql = sb.toString();
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
