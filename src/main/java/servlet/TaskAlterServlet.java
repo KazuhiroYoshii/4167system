@@ -48,6 +48,10 @@ public class TaskAlterServlet extends HttpServlet {
 		String statusCode = request.getParameter("status_code");
 		String memo = request.getParameter("memo");
 		
+		//メモ前後の改行、半角・全角スペースを削除
+		memo = memo.trim();
+		memo = memo.strip();
+		
 		//ChangeDAOをインスタンス化
 		ChangeDAO changeDao = new ChangeDAO();
 		
