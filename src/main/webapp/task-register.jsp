@@ -9,13 +9,15 @@
 <title>タスク登録｜4167 SYSTEM</title>
 <link rel="stylesheet" href="css/TaskAdd.css" type="text/css" />
 <script src="js/date.js"></script>
+
 </head>
 <!-- ログイン状態を判定 -->
 <%@ include file="login-check.jsp"%>
 <!-- ヘッダーを追加 -->
 <%@ include file="header.jsp"%>
 <body>
-
+<!-- 空文字チェック -->
+<script src="js/nullCheck.js"></script>
 	<%
 	// リクエストスコープから入力されたカテゴリ情報、ユーザ情報、ステータス情報を取得
 	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
@@ -25,8 +27,12 @@
 	//セッションスコープからログイン済みユーザーのID、名前を取得
 	String loggedInUserId = (String) session.getAttribute("userId");
 	%>
+
+	<script src="js/nullCheck.js"></script>
 	<div class="main">
 		<form action="TaskAddServlet" method="POST">
+		
+		
 			<h1>TASK REGISTRATION</h1>
 			<table border="1">
 				<tr>
@@ -48,8 +54,7 @@
 				</tr>
 				<tr>
 					<th>期限</th>
-					<td><input type="date" name="limit_date" id="today" min=""
-						required></td>
+					<td><input type="date" name="limit_date" id="today" min=""></td>
 				</tr>
 				<tr>
 					<th>担当者</th>
@@ -81,7 +86,7 @@
 				</tr>
 				<tr>
 					<th>メモ</th>
-					<td><textarea name="memo" rows="4" cols="25" maxlength="100"></textarea></td>
+					<td><textarea name="memo" id="textarea" rows="4" cols="25" maxlength="100"></textarea></td>
 				</tr>
 			</table>
 
