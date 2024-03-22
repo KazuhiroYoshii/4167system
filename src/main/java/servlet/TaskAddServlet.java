@@ -82,7 +82,7 @@ public class TaskAddServlet extends HttpServlet {
 		// DAOのインスタンス化
 		TaskAddDAO taskAddDao = new TaskAddDAO();
 		ChangeDAO changeDao = new ChangeDAO();
-		
+
 		// Beanのインスタンス化
 		UserCategoryStatusTaskBean taskInfo = new UserCategoryStatusTaskBean();
 
@@ -94,6 +94,12 @@ public class TaskAddServlet extends HttpServlet {
 		taskInfo.setStatusCode(request.getParameter("status_code"));
 		taskInfo.setMemo(request.getParameter("memo"));
 
+		//メモの改行、半角・全角スペースを削除する
+		String memo = taskInfo.getMemo();
+		memo = memo.trim();
+		memo = memo.strip();
+		taskInfo.setMemo(memo);
+		
 		// メソッドの処理件数
 		int processingNumber = 0;
 		//カテゴリ名を設定

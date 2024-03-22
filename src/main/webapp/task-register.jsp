@@ -9,15 +9,12 @@
 <title>タスク登録｜4167 SYSTEM</title>
 <link rel="stylesheet" href="css/TaskAdd.css" type="text/css" />
 <script src="js/date.js"></script>
-
 </head>
 <!-- ログイン状態を判定 -->
 <%@ include file="login-check.jsp"%>
 <!-- ヘッダーを追加 -->
 <%@ include file="header.jsp"%>
 <body>
-<!-- 空文字チェック -->
-<script src="js/nullCheck.js"></script>
 	<%
 	// リクエストスコープから入力されたカテゴリ情報、ユーザ情報、ステータス情報を取得
 	List<UserCategoryStatusTaskBean> categoryList = (List<UserCategoryStatusTaskBean>) request.getAttribute("CategoryList");
@@ -86,7 +83,7 @@
 				</tr>
 				<tr>
 					<th>メモ</th>
-					<td><textarea name="memo" id="textarea" rows="4" cols="25" maxlength="100"></textarea></td>
+					<td><textarea name="memo" rows="4" cols="25" maxlength="100"></textarea></td>
 				</tr>
 			</table>
 
