@@ -84,7 +84,10 @@ public class CommentServlet extends HttpServlet {
 
 		// リクエストパラメータの取得
 		String comment = request.getParameter("comment");
+		
+		//コメントの改行、半角・全角スペース、タブを削除し、空文字の場合はnullにして投稿を失敗させる
 		comment = comment.trim();
+		comment = comment.strip();
 		if(comment.equals("")) {
 			comment = null;
 		}
