@@ -177,7 +177,7 @@ class SelectBoxDAOTest {
 				//カンマで分割した内容を配列に格納する
 				String[] data = line.split(",");
 
-				assertEquals(Integer.parseInt(data[0]), statusList.get(i - 1).getStatusCode());
+				assertEquals(data[0], statusList.get(i - 1).getStatusCode());
 				assertEquals(data[1], statusList.get(i - 1).getStatusName());
 				
 				}
@@ -196,6 +196,5 @@ class SelectBoxDAOTest {
 				e.printStackTrace();
 			}
 		}
-	}
-	
+	}	
 }
