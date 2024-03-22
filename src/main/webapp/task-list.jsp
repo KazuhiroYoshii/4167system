@@ -63,7 +63,19 @@
 					</td>
 					<td class="user"><%=task.getUserName() %></td>
 					<td class="status"><%=task.getStatusName() %></td>
-					<td class="memo"><%=task.getMemo() %></td>
+					<td class="memo">
+					<%
+					if(task.getMemo() == null){
+					%>
+						　
+					<%
+					}else{
+					%>
+						<%=task.getMemo() %>
+					<%
+					}
+					%>
+					</td>
 	
 					<!-- 編集ボタンからサーブレットにtaskIdの値を送信 -->
 					<td class="buttun"><form action="TaskAlterFormServlet" method="post">
