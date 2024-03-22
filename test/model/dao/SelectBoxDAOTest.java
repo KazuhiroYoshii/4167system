@@ -18,8 +18,10 @@ class SelectBoxDAOTest {
 	@Test
 	void testSelectCategory() {
 		List<UserCategoryStatusTaskBean> categoryList = new ArrayList<UserCategoryStatusTaskBean>();
+		// DAOをインスタンス化
 		SelectBoxDAO selectBoxDAO = new SelectBoxDAO();
-		//ファイル読み込みで使用する３つのクラス
+		
+		// ファイル読み込みで使用する３つのクラス
 		FileInputStream fi = null;
 		InputStreamReader is = null;
 		BufferedReader br = null;
@@ -79,8 +81,10 @@ class SelectBoxDAOTest {
 	@Test
 	void testSelectUser() {
 		List<UserCategoryStatusTaskBean> userList = new ArrayList<UserCategoryStatusTaskBean>();
+		// DAOをインスタンス化
 		SelectBoxDAO selectBoxDAO = new SelectBoxDAO();
-		//ファイル読み込みで使用する３つのクラス
+		
+		// ファイル読み込みで使用する３つのクラス
 		FileInputStream fi = null;
 		InputStreamReader is = null;
 		BufferedReader br = null;
@@ -140,8 +144,10 @@ class SelectBoxDAOTest {
 	@Test
 	void testSelectStatus() {
 		List<UserCategoryStatusTaskBean> statusList = new ArrayList<UserCategoryStatusTaskBean>();
+		// DAOをインスタンス化
 		SelectBoxDAO selectBoxDAO = new SelectBoxDAO();
-		//ファイル読み込みで使用する３つのクラス
+		
+		// ファイル読み込みで使用する３つのクラス
 		FileInputStream fi = null;
 		InputStreamReader is = null;
 		BufferedReader br = null;

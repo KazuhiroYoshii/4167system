@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class TaskDeleteDAOTest {
 
 	@Test
-	void delete() throws SQLException, ClassNotFoundException {
+	void testdelete() throws SQLException, ClassNotFoundException {
 		
 		//DAOをインスタンス化
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
@@ -24,7 +24,7 @@ class TaskDeleteDAOTest {
 	}
 
 	@Test
-	void countCommentsTest() {
+	void testcountComments() {
 
 		//DAOをインスタンス化
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
@@ -42,7 +42,7 @@ class TaskDeleteDAOTest {
 	}
 
 	@Test
-	void deleteAllComments() {
+	void testdeleteAllComments() {
 		
 		//DAOをインスタンス化
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();

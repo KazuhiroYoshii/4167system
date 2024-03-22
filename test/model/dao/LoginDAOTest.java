@@ -12,32 +12,36 @@ class LoginDAOTest {
 
 	@Test
 	void test1SelectUserName() {
-		LoginDAO dao = new LoginDAO();
+		//DAOをインスタンス化
+		LoginDAO loginDao = new LoginDAO();
+		//メソッドの戻り値を格納する変数の初期化
 		UserBean user = null;
-		String userName = null;
-			try {
-				user = dao.selectName("admin", "admin");
-				// userBean型で帰ってきているのでuserNameを取り出す
-				userName = user.getUserName();
+	
+		try {
+				// ユーザIDが「admin」、パスワードが「admin」のユーザ情報を呼び出す
+				user = loginDao.selectName("admin", "admin");
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
-			// 期待値と実際値が同じかどうか判定する
-			assertEquals("山田",userName);
+		// 期待値(山田)と実際値が同じかどうか判定する
+		assertEquals("山田",user.getUserName());
 	}
 
 	@Test
 	void test2SelectUserName() {
-		LoginDAO dao = new LoginDAO();
+		//DAOをインスタンス化
+		LoginDAO loginDao = new LoginDAO();
+		
+		//メソッドの戻り値を格納する変数の初期化
 		UserBean user = null;
-		String userName = null;
-			try {
-				user = dao.selectName("", "");
-				userName = user.getUserName();
+		
+		try {
+				// ユーザIDが「」、パスワードが「」のユーザ情報を呼び出す
+				user = loginDao.selectName("", "");
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
-			// 
-			assertNull(userName);
+		// 実際値がnullかどうか判定する
+		assertNull(user.getUserName());
 	}
 }
