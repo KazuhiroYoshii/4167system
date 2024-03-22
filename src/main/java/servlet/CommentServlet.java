@@ -84,6 +84,10 @@ public class CommentServlet extends HttpServlet {
 
 		// リクエストパラメータの取得
 		String comment = request.getParameter("comment");
+		comment = comment.trim();
+		if(comment.equals("")) {
+			comment = null;
+		}
 
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
@@ -108,12 +112,24 @@ public class CommentServlet extends HttpServlet {
 		try {
 			// DAOを利用してコメントを追加
 			processingNumber = commentDao.insertComment(postComment);
-			// DAOを利用して該当タスクの詳細情報を取得
-			taskDetail = commentDao.selectTask(taskId);
-			// DAOを利用して該当タスクのコメント情報を取得
-			commentList = commentDao.selectComment(taskId);
-
 		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		// DAOを利用して該当タスクの詳細情報を取得
+		try {
+			taskDetail = commentDao.selectTask(taskId);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// DAOを利用して該当タスクのコメント情報を取得
+		try {
+			commentList = commentDao.selectComment(taskId);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 

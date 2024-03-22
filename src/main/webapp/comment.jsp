@@ -74,6 +74,16 @@
 	<%
 	}
 	%>
+	<%
+	//登録実行用サーブレットで登録されたコメントがあればメッセージを表示
+	int processingNumber = 2;
+	processingNumber = (int)request.getAttribute("processingNumber");
+	if(processingNumber == 0){
+	%>
+		<b>コメントを投稿できませんでした。</b>
+	<%
+	}
+	%>
 	<table class="table" border="1">
 		<tr>
 			<th>投稿者</th>
