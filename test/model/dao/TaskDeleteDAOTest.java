@@ -9,11 +9,10 @@ import org.junit.jupiter.api.Test;
 class TaskDeleteDAOTest {
 
 	@Test
-	void delete() {
+	void delete() throws SQLException, ClassNotFoundException {
 		
 		//DAOをインスタンス化
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
-		
 		//メソッドの戻り値を格納する変数の初期化
 		int result = 0;
 		
@@ -29,7 +28,6 @@ class TaskDeleteDAOTest {
 
 		//DAOをインスタンス化
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
-
 		//メソッドの戻り値を格納する変数の初期化
 		int result = 0;
 
@@ -48,7 +46,6 @@ class TaskDeleteDAOTest {
 		
 		//DAOをインスタンス化
 		TaskDeleteDAO taskDeleteDao = new TaskDeleteDAO();
-		
 		//メソッドの戻り値を格納する変数の初期化
 		int result = 0;
 		
