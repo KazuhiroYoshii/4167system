@@ -28,20 +28,20 @@ public class CommentDAO {
 
 		UserCategoryStatusTaskBean taskDetail = new UserCategoryStatusTaskBean();
 
-		String sql = "SELECT t1.task_name"
-				+ " , t3.category_name"
-				+ " , t1.limit_date"
-				+ " , t2.user_name"
-				+ " , t4.status_name"
-				+ " , t1.memo"
-				+ " FROM t_task t1 "
-				+ " INNER JOIN m_user t2 "
-				+ " 	ON t1.user_id = t2.user_id "
-				+ " INNER JOIN m_category t3 "
-				+ "     ON t1.category_id = t3.category_id "
-				+ " INNER JOIN m_status t4 "
-				+ "     ON t1.status_code = t4.status_code"
-				+ " WHERE task_id = ?";
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT t1.task_name,");
+		sb.append("t3.category_name,");
+		sb.append("t1.limit_date,");
+		sb.append("t2.user_name,");
+		sb.append("t4.status_name,");
+		sb.append("t1.memo");
+		sb.append("FROM t_task t1 ");
+		sb.append("INNER JOIN m_user t2 ON t1.user_id = t2.user_id ");
+		sb.append("INNER JOIN m_category t3 ON t1.category_id = t3.category_id ");
+		sb.append("INNER JOIN m_status t4 ON t1.status_code = t4.status_code ");
+		sb.append("WHERE task_id = ?");
+
+		String sql = sb.toString();
 
 		// データベースへの接続の取得、PreparedStatementの取得
 		try (Connection con = ConnectionManager.getConnection();
@@ -112,7 +112,7 @@ public class CommentDAO {
 				comment.setUserName(res.getString("user_name"));
 				comment.setComment(res.getString("comment"));
 				comment.setUpdateDatetime(res.getString("update_datetime"));
-				
+
 				// レコードをリストに追加
 				commentList.add(comment);
 			}
@@ -150,7 +150,7 @@ public class CommentDAO {
 		return processingNumber;
 
 	}
-	
+
 	/**
 	 * 指定されたコメントIDのコメントを削除します
 	 * @param commentId コメントID
@@ -172,7 +172,7 @@ public class CommentDAO {
 
 			// プレースホルダへの値の設定
 			pstmt.setInt(1, commentId);
-			
+
 			// 実行
 			deleteResult = pstmt.executeUpdate();
 		}
